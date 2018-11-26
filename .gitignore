@@ -1,0 +1,18 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+firebase-debug.log*
+
+# Firebase cache
+.firebase/
+
+# Firebase config
+# Compiled & built
+public/*.js
+public/*.css
+
+# Dependency directories
+node_modules/
