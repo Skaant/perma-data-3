@@ -1,5 +1,5 @@
 const html = require('../html')
-const { plant: plantFetcher } = require('../fetchers')
+const { plant: plantFetcher, lang: langFetcher } = require('../fetchers')
 const getHigherRanks = require('./utils/getHigherRanks')
 
 module.exports = (req, res) => {
@@ -9,12 +9,15 @@ module.exports = (req, res) => {
   plantFetcher(plantId)
     .then(plant => {
       plant.id = plantId
-      getHigherRanks(plant)
-        .then(plant => {
+      Promise.all([langFetcher(lang), getHigherRanks(plant)])
+        .then(([langs, plant]) => {
           res.send(html({
             name: 'plant',
             lang,
-            data: { plant }
+            langs,
+            data: {
+              plant
+            }
           }))
         })
         .catch(err => console.log(err))

@@ -7,7 +7,8 @@ export default props => {
   if (props.data && props.data.plant) {
     return (
       <LangContext.Provider value={ {
-          lang: props.lang
+          lang: props.lang,
+          langs: props.langs
       } }>
         <div className='row'>
           <RankBar rank={ props.data.plant.rank }
