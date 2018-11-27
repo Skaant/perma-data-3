@@ -16,13 +16,13 @@ const buildJS = () => gulp.src(['./server/templates/*.js'])
   .pipe(webpackStream(webpackServerConfig, webpack))
   .pipe(gulp.dest('./server/templates/build'))
 
-/* const buildSass = () => gulp.src('./server/sass/*.scss')
+const buildSass = () => gulp.src(['./styles/*.scss', './server/styles/*.scss'])
   .pipe(sass().on('error', sass.logError))
-  .pipe(gulp.dest('../public/styles')) */
+  .pipe(gulp.dest('../public/styles'))
 
 module.exports = done => {
   clean()
   buildJS()
-  // buildSass()
+  buildSass()
   done()     
 }
