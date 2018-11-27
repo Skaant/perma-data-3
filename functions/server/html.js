@@ -10,7 +10,7 @@ module.exports = props => (
       <meta name="theme-color" content="#000000">
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
-      <title>PERMA-DATA</title>
+      <title>PERMA·DATA</title>
     </head>
     <body>
       <noscript>
