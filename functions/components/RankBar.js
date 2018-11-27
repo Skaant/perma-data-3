@@ -2,11 +2,11 @@ import React from 'react'
 import RankItem from './rankbar/RankItem'
 
 export default ({ rank, ...props }) => (
-  <div className='row'>
+  <div id='rank-bar' className='row'>
     {
       ['family', 'genus', 'species', 'variety'].map(key => (
         <RankItem key={ key } label={ key }
-          current={ rank === key } value={ props[key] }/>
+          current={ rank === key } plant={ props[key] }/>
       ))
     }
   </div>

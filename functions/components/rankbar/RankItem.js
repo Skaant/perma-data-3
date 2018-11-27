@@ -1,18 +1,24 @@
 import React from 'react'
 import LangContext from '../contexts/LangContext'
 
-export default ({ label, value, current }) => (
-  <div className='col-sm-6 col-lg-3'>
+export default ({ label, plant, current }) => (
+  <div className='rank-item col-sm-6 col-lg-3'>
     <LangContext.Consumer>
       {
-        ({ lang, langs: { ranks } }) => current ? (
-          <h3>{ ranks[label] }</h3>
-        ) : (
+        ({ lang, langs: { ranks } }) => (
           <React.Fragment>
-            <h4>{ ranks[label] }</h4>
+            { 
+              !current && (
+                <h4>{ ranks[label] }</h4>
+              )
+            }
             {
-              value && value.names && (
-                <h3>{ value.names[lang] }</h3>
+              plant && plant.names ? (
+                <h3><a href={ `/${ lang }/plant/${ plant.id }` }>
+                  { plant.names[lang] }</a></h3>
+              ) : (
+                <h3 className={ current ? 'current-rank' : '' }>
+                  { current ? ranks[label] : '-' }</h3>
               )
             }
           </React.Fragment>

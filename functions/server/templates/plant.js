@@ -10,11 +10,11 @@ export default props => {
           lang: props.lang,
           langs: props.langs
       } }>
-        <div className='row'>
-          <div className='col-md-4'>
+        <div id='plant' className='row'>
+          <div id='miniature' className='col-md-4'>
             <img src={ props.data.plant.miniature }/>
           </div>
-          <div className='col-md-8'>
+          <div id='description' className='col-md-8'>
             <RankBar rank={ props.data.plant.rank }
                 family={ props.data.plant.family }
                 genus={ props.data.plant.genus }
