@@ -11,8 +11,8 @@ firebase-debug.log*
 
 # Firebase config
 # Compiled & built
-public/*.js
-public/*.css
+public/modules/*.js
+public/modules/styles/*.css
 
 # Dependency directories
 node_modules/

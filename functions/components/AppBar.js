@@ -1,6 +1,7 @@
 import React from 'react'
-import LangContext from './contexts/LangContext';
-import IconClose from 'material-design-icons/navigation/svg/production/ic_close_48px.svg'
+import LangContext from './contexts/LangContext'
+import IconClose from 'material-design-icons/navigation/svg/production/ic_close_24px.svg'
+import IconSearch from 'material-design-icons/action/svg/production/ic_search_24px.svg'
 
 export default class extends React.Component {
   constructor() {
@@ -34,6 +35,17 @@ export default class extends React.Component {
             )
           }
           <h1>PERMA<br/>DATA</h1>
+          <div id='search-entry' className='input-group mb-3'>
+            <input type='text' className='form-control'
+              placeholder='type a plant name' aria-label='search plant name'/>
+            {
+              open && (
+                <div className='input-group-append'>
+                  <IconSearch/>
+                </div>
+              )
+            }
+          </div>
         </div>
         { 
           !open && (

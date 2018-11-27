@@ -43,12 +43,35 @@
       width: 160px;
       padding-top: 70px;
       line-height: 2.5rem; }
+    #app-bar > #logo > #search-entry {
+      margin-top: 80px;
+      display: flex;
+      justify-content: center; }
+      #app-bar > #logo > #search-entry > input.form-control {
+        max-width: calc(50vh - 100px);
+        border-radius: 0;
+        border: 0;
+        border-bottom: white 1px solid;
+        background: none;
+        color: white; }
+        #app-bar > #logo > #search-entry > input.form-control:focus {
+          box-shadow: none; }
+        #app-bar > #logo > #search-entry > input.form-control::placeholder {
+          color: white; }
+      #app-bar > #logo > #search-entry > .input-group-append {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; }
+        #app-bar > #logo > #search-entry > .input-group-append > svg {
+          fill: white; }
   #app-bar > #menu {
-    justify-content: center; }
+    justify-content: center;
+    width: 100vw; }
     #app-bar > #menu > button {
       background: none;
       color: #EA2027;
       font-size: 1.6rem;
       text-transform: uppercase;
       letter-spacing: 5px;
-      font-weight: 700; }
+      font-weight: 700;
+      padding-left: 32px; }
