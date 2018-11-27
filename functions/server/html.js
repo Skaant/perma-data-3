@@ -9,6 +9,7 @@ module.exports = props => (
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="theme-color" content="#000000">
       <link rel="stylesheet" type="text/css" href="/styles/main.css">
+      <link rel="stylesheet" type="text/css" href="/modules/styles/app-bar.css">
       <link rel="stylesheet" type="text/css" href="/styles/plant.css">
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
@@ -18,11 +19,12 @@ module.exports = props => (
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
+      <div id="app-bar"></div>
       <div class="container">
-        <div id="app-bar"></div>
         ${ renderer(templates[props.name], props) }
         <div id="plant-data"></div>
       </div>
+      <script src="/modules/app-bar.js"></script>
     </body>
   </html>`
 )
