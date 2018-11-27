@@ -87,6 +87,42 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/RankBar.js":
+/*!*******************************!*\
+  !*** ./components/RankBar.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _rankbar_RankItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rankbar/RankItem */ \"./components/rankbar/RankItem.js\");\nfunction _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }\n\nfunction _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var rank = _ref.rank,\n      props = _objectWithoutProperties(_ref, [\"rank\"]);\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, ['family', 'genus', 'species', 'variety'].map(function (key) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_rankbar_RankItem__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n      key: key,\n      label: key,\n      current: rank === key,\n      value: props[key]\n    });\n  }));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./components/RankBar.js?");
+
+/***/ }),
+
+/***/ "./components/contexts/LangContext.js":
+/*!********************************************!*\
+  !*** ./components/contexts/LangContext.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({}));\n\n//# sourceURL=webpack://%5Bname%5D.js/./components/contexts/LangContext.js?");
+
+/***/ }),
+
+/***/ "./components/rankbar/RankItem.js":
+/*!****************************************!*\
+  !*** ./components/rankbar/RankItem.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _contexts_LangContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contexts/LangContext */ \"./components/contexts/LangContext.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var label = _ref.label,\n      value = _ref.value,\n      current = _ref.current;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"col-sm-6 col-lg-3\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contexts_LangContext__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Consumer, null, function (_ref2) {\n    var lang = _ref2.lang;\n    return current ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, label) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h4\", null, label), value && value.names && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, value.names[lang]));\n  }));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./components/rankbar/RankItem.js?");
+
+/***/ }),
+
 /***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
@@ -155,7 +191,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, props.data && props.data.name);\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_RankBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/RankBar */ \"./components/RankBar.js\");\n/* harmony import */ var _components_contexts_LangContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/contexts/LangContext */ \"./components/contexts/LangContext.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  if (props.data && props.data.plant) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_contexts_LangContext__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Provider, {\n      value: {\n        lang: props.lang\n      }\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"row\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_RankBar__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n      rank: props.data.plant.rank,\n      family: props.data.plant.family,\n      genus: props.data.plant.genus,\n      species: props.data.plant.species\n    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, props.data.plant.names && props.data.plant.names[props.lang]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, props.data.plant.id && typeof props.data.plant.id === 'string' && \"\".concat(props.data.plant.id[0].toUpperCase()).concat(props.data.plant.id.slice(1)))));\n  } else {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"row\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h2\", null, \"no plant data\"));\n  }\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant.js?");
 
 /***/ }),
 
