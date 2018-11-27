@@ -1,6 +1,13 @@
 {
   "hosting": {
     "public": "public",
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/en/plant/mentha%20×%20piperita",
+        "type" : 302
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
