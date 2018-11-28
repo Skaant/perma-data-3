@@ -10,17 +10,16 @@ module.exports = (req, res) => {
     .then(plant => {
       plant.id = plantId
       Promise.all([langFetcher(lang), getHigherRanks(plant)])
-        .then(([langs, plant]) => {
-          res.send(html({
-            name: 'plant',
-            lang,
-            langs,
-            data: {
-              plant
-            }
-          }))
-        })
-        .catch(err => console.log(err))
+        .then(([langs, plant]) => res.send(html({
+          name: 'plant',
+          lang,
+          langs,
+          data: {
+            plant
+          }
+        }))
+      )
+      .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 }

@@ -24,7 +24,7 @@ module.exports = props => (
         ${ renderer(templates[props.name], props) }
         <div id="plant-data"></div>
       </div>
-      <script src="/modules/app-bar.js"></script>
+      <script src="/modules/plant.js"></script>
     </body>
   </html>`
 )
