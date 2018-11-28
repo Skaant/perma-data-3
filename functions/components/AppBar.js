@@ -34,7 +34,8 @@ export default class extends React.Component {
               </button>
             )
           }
-          <h1>PERMA<br/>DATA</h1>
+          <h1 onClick={ () => this.handleOpen(true) }>
+            PERMA<br/>DATA</h1>
           <div id='search-entry' className='input-group mb-3'>
             <input type='text' className='form-control'
               placeholder='type a plant name' aria-label='search plant name'/>
@@ -47,15 +48,6 @@ export default class extends React.Component {
             }
           </div>
         </div>
-        { 
-          !open && (
-            <div id='menu' className='row'>
-              <button type='button' className='btn btn-muted col-md-4'
-                  onClick={ () => this.handleOpen(true) }>
-                search</button>
-            </div>
-          )
-        }
       </LangContext.Provider>
     )
   }

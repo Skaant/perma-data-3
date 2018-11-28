@@ -24,6 +24,7 @@ module.exports = props => (
         ${ renderer(templates[props.name], props) }
         <div id="plant-data"></div>
       </div>
+      <script>window.PLANT_ID = '${ props.data && props.data.plant && props.data.plant.id }'</script>
       <script src="/modules/plant.js"></script>
     </body>
   </html>`
