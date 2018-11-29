@@ -20,13 +20,8 @@ module.exports = props => (
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
-      <div id="app-bar"></div>
-      <div class="container">
-        ${ renderer(templates[props.name], props) }
-        <div id="plant-data"></div>
-      </div>
-      <script>window.PLANT_ID = '${ props.data && props.data.plant && props.data.plant.id }'</script>
-      <script src="/modules/plant.js"></script>
+      <h1 href='/'>PERMA·DATA</h1>
+      ${ renderer(templates[props.name], props) }
     </body>
   </html>`
 )

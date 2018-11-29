@@ -25,28 +25,26 @@ export default class extends React.Component {
         lang,
         langs
       } }>
-        <div id='logo' className={ open ? 'open' : '' }>
+        <div id='app-bar' className={ open ? 'open' : '' }>
           {
-            open && (
+            open ? (
               <button type='button' className='btn btn-muted close'
                   onClick={ () => this.handleOpen(false) }>
                 <IconClose height={ 24 } width={ 24 }/>  
               </button>
+            ) : (
+              <button type='button' className='btn btn-muted close'
+                  onClick={ () => this.handleOpen(true) }>
+                <IconSearch height={ 24 } width={ 24 }/>  
+              </button>
             )
           }
-          <h1 onClick={ () => this.handleOpen(true) }>
-            PERMA<br/>DATA</h1>
-          <div id='search-entry' className='input-group mb-3'>
-            <input type='text' className='form-control'
-              placeholder='type a plant name' aria-label='search plant name'/>
-            {
-              open && (
-                <div className='input-group-append'>
-                  <IconSearch/>
-                </div>
-              )
-            }
-          </div>
+          <h1 href='/'>PERMA·DATA</h1>
+          {
+            open && (
+              <div id='search-entry'></div>
+            )
+          }
         </div>
       </LangContext.Provider>
     )

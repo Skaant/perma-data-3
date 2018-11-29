@@ -1,10 +1,15 @@
 module.exports = plantId => new Promise((resolve, reject) => {
-  let extracts = {}
-  let ref = global.db.collection('extracts')
+  global.db.collection('extracts')
     .where('plants', 'array-contains', plantId).get()
     .then(snapshot => {
-      snapshot.forEach(doc => extracts[doc.id] = doc.data())
-      resolve(nodes)
+      let extracts = {}
+      snapshot.forEach(doc => {
+        const data = doc.data()
+        extracts[doc.id] = Object.assign({}, data, {
+          id: doc.id
+        })
+      })
+      resolve(extracts)
     })
     .catch(err => reject(err))
 })
