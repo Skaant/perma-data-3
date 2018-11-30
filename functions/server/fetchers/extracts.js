@@ -1,8 +1,11 @@
-module.exports = plantId => new Promise((resolve, reject) => {
+module.exports = (lang, plantId) => new Promise((resolve, reject) => {
+  console.log(global.db.collection('plants').doc(plantId))
   global.db.collection('extracts')
-    .where('plants', 'array-contains', plantId).get()
+    .where('lang', '==', lang)
+    .where('plants', 'array-contains', global.db.collection('plants').doc(plantId)).get()
     .then(snapshot => {
       let extracts = {}
+      console.log(snapshot.docs)
       snapshot.forEach(doc => {
         const data = doc.data()
         extracts[doc.id] = Object.assign({}, data, {

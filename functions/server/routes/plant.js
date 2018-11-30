@@ -9,7 +9,7 @@ module.exports = (req, res) => {
   plantFetcher(plantId)
     .then(plant => {
       plant.id = plantId
-      Promise.all([langFetcher(lang), getHigherRanks(plant), extractsFetcher(plantId)])
+      Promise.all([langFetcher(lang), getHigherRanks(plant), extractsFetcher(lang, plantId)])
         .then(([langs, plant, extracts]) => res.send(html({
           name: 'plant',
           lang,

@@ -1,1 +1,9 @@
-
+#title-link {
+  text-decoration: none !important;
+  
+  > #title {
+    color: black;
+    margin: 10vh auto;
+    width: fit-content;
+  }
+}

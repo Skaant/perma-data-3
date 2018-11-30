@@ -20,7 +20,8 @@ module.exports = props => (
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
-      <h1 href='/'>PERMA·DATA</h1>
+      <a id='title-link' href='/'>
+        <h1 id='title'>PERMA·DATA</h1></a>
       ${ renderer(templates[props.name], props) }
     </body>
   </html>`

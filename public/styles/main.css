@@ -1,0 +1,6 @@
+#title-link {
+  text-decoration: none !important; }
+  #title-link > #title {
+    color: black;
+    margin: 10vh auto;
+    width: fit-content; }
