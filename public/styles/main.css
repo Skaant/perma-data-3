@@ -2,5 +2,18 @@
   text-decoration: none !important; }
   #title-link > #title {
     color: black;
-    margin: 10vh auto;
+    margin: 10vh auto 0 auto;
     width: fit-content; }
+  #title-link > #subtitle {
+    color: black;
+    margin: 0 auto 10vh auto;
+    width: fit-content;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 200; }
+
+#footer > h3 {
+  width: fit-content;
+  margin: 10px auto;
+  font-size: 0.8rem;
+  font-weight: 200; }

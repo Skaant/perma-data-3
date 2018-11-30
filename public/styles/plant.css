@@ -55,6 +55,12 @@
   margin-bottom: 10vh; }
   #data #extracts > .card {
     border-radius: 0; }
+    #data #extracts > .card > .card-title {
+      padding: 40px 40px 4px 40px; }
+    #data #extracts > .card > .card-subtitle {
+      padding: 0 40px;
+      font-size: 0.8rem;
+      text-transform: uppercase; }
     #data #extracts > .card > .card-body p {
       font-weight: 200; }
       #data #extracts > .card > .card-body p > strong {

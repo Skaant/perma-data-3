@@ -14,15 +14,21 @@ module.exports = props => (
       <link rel="stylesheet" type="text/css" href="/styles/plant.css">
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
-      <title>PERMA·DATA</title>
+      <title>PERMA·DATA, growing good, good ${
+        props.data && props.data.plant && props.data.plant
+          && props.data.plant.names[props.lang]
+      }</title>
     </head>
     <body>
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
       <a id='title-link' href='/'>
-        <h1 id='title'>PERMA·DATA</h1></a>
+        <h1 id='title'>PERMA·DATA</h1>
+        <h2 id='subtitle'>growing good</h2></a>
       ${ renderer(templates[props.name], props) }
+      <div id='footer'>
+        <h3>PERMA·DATA, 2018</h3></div>
     </body>
   </html>`
 )
