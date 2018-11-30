@@ -18,8 +18,14 @@ export default props => {
                 genus={ props.data.plant.genus }
                 species={ props.data.plant.species }/>
             <h1>{ props.data.plant.names && props.data.plant.names[props.lang] }</h1>
-            <h2>{ props.data.plant.id && typeof props.data.plant.id === 'string'
-              && `${ props.data.plant.id[0].toUpperCase() }${ props.data.plant.id.slice(1) }` }</h2>
+            <div id='tool-bar'>
+              <h2>{ props.data.plant.id && typeof props.data.plant.id === 'string'
+                && `${ props.data.plant.id[0].toUpperCase() }${ props.data.plant.id.slice(1) }` }</h2>
+              <a href={ `/${ props.lang === 'en' ? 'fr' : 'en' }/plant/${
+                props.data.plant && props.data.plant.id  
+              }` }>
+                { props.lang === 'en' ? 'FR' : 'EN' }</a>
+            </div>
           </div>
         </div>
         <div id='data'>
