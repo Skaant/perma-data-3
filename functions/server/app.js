@@ -3,10 +3,13 @@ const routes = require('./routes')
 const middlewares = require('./middlewares')
 const apiRouter = require('./routes/routers/api')
 const LANGS = require('../utils/refs/langs')
+const { contributor } = require('./routes')
 
 const app = express()
 
 app.use('/api', apiRouter(express.Router()))
+
+app.get('/contributor', contributor)
 
 const langRouter = express.Router()
 

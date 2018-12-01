@@ -1,7 +1,7 @@
 const renderer = require('./renderer')
 const templates = require('./templates/build')
 
-module.exports = props => (
+module.exports = (name, props) => (
   `<!DOCTYPE html>
   <html lang="${ props.lang }">
     <head>
@@ -10,8 +10,9 @@ module.exports = props => (
       <meta name="theme-color" content="#000000">
       <link rel="stylesheet" type="text/css" href="/styles/main.css">
       <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="/modules/styles/app-bar.css">
-      <link rel="stylesheet" type="text/css" href="/styles/plant.css">
+      <link rel="stylesheet" type="text/css" href="/modules/styles/app-bar.css">${
+        name === 'plant' && `
+      <link rel="stylesheet" type="text/css" href="/styles/plant.css">` }
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
       <title>PERMA·DATA, growing good, good ${
@@ -26,9 +27,12 @@ module.exports = props => (
       <a id='title-link' href='/'>
         <h1 id='title'>PERMA·DATA</h1>
         <h2 id='subtitle'>growing good</h2></a>
-      ${ renderer(templates[props.name], props) }
+      ${ renderer(templates[name], props) }
       <div id='footer'>
-        <h3>PERMA·DATA, 2018</h3></div>
+        <h3>PERMA·DATA, 2018</h3></div>${
+          name === 'contributor' && `
+      <script src='/modules/contributor.js'></script>`
+        }
     </body>
   </html>`
 )
