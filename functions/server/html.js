@@ -29,7 +29,8 @@ module.exports = (name, props) => (
         <h2 id='subtitle'>growing good</h2></a>
       ${ renderer(templates[name], props) }
       <div id='footer'>
-        <h3>PERMA·DATA, 2018</h3></div>${
+        <h3>PERMA·DATA, 2018</h3></div>
+      <script src='/tesseract/tesseract.min.js'></script>${
           name === 'contributor' && `
       <script src='/modules/contributor.js'></script>`
         }
