@@ -12,7 +12,7 @@ export default ({ content, biblio, section }) => (
       { biblio && biblio.title }  -  { biblio && biblio.author }</h6>
     <div className='card-body'>
       <ReactMarkdown source={
-        content.join(newLine)
+        Array.isArray(content) ? content.join(newLine) : content
       }/>
     </div>
   </div>

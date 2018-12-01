@@ -11,8 +11,10 @@ module.exports = (name, props) => (
       <link rel="stylesheet" type="text/css" href="/styles/main.css">
       <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="/modules/styles/app-bar.css">${
-        name === 'plant' && `
-      <link rel="stylesheet" type="text/css" href="/styles/plant.css">` }
+        name === 'plant' ? `
+      <link rel="stylesheet" type="text/css" href="/styles/plant.css"/>` : '' }${
+        name === 'contributor' ? `
+      <link rel="stylesheet" type="text/css" href="/modules/styles/contributor.css"/>` : '' }
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
       <title>PERMA·DATA, growing good, good ${

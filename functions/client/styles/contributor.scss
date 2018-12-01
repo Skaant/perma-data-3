@@ -1,0 +1,26 @@
+#contributor {
+
+  > #image-converter {
+
+    #load {
+      margin-bottom: 25px;
+    }
+
+    #correct {
+      height: 30vh;
+    }
+
+    #render {
+      margin-top: 40px;
+    }
+
+    #form {
+      align-items: center;
+
+      > h3 {
+        margin-bottom: 0;
+        margin-left: 40px;
+      }
+    }
+  }
+}

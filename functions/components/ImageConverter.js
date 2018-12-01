@@ -8,7 +8,8 @@ export default class extends React.Component {
     super()
     this.state = {
       image: null,
-      lang: null
+      lang: null,
+      markdown: ''
     }
   }
 
@@ -21,10 +22,10 @@ export default class extends React.Component {
   }
 
   convertImage() {
-    const { image, lang } = this.state
+    const { image, lang, markdown } = this.state
     Tesseract.recognize(image, { lang })
       .then(result => this.setState({
-        markdown: result.text
+        markdown: markdown + (markdown ? ' ' : '') + result.text
       }))
       .catch(err => console.log(err))
   }
@@ -33,33 +34,54 @@ export default class extends React.Component {
     this.setState({ markdown })
   }
 
+  sendContent() {
+    const { markdown } = this.state
+    fetch('/contribute/content', {
+      method: 'PUT',
+      body: markdown
+    })
+    .then(result => result.json())
+    .then(({ id }) => this.setState({
+      extractId: id
+    }))
+  }
+
   render() {
-    const { image, lang, markdown } = this.state
+    const { image, lang, markdown, extractId } = this.state
     return (
       <div className='container'>
-        <div id='1-upload' className='row'>
+        <div id='load' className='row'>
           <input type='file' accept='image/*'
               className='col-md-8'
               onChange={ e => this.handleImageChange(e.target.files[0]) }/>
-          <select className='col-md-2'
+          <select className='col-md-2 form-control'
               onChange={ e => this.handleLangChange(e.target.value) }>
             <option value={ null }>lang</option>
             <option value='eng'>EN</option>
             <option value='fra'>FR</option>
           </select>
-          <button className='col-md-2'
+          <button className='col-md-2 btn btn-primary'
               onClick={ () => this.convertImage() }
               disabled={ !image || !lang }>
             convert</button>
         </div>
-        <div id='3-correct' className='row'>
-          <textarea value={ markdown } className='col-12'
+        <div id='correct' className='row'>
+          <textarea value={ markdown } className='col-12 form-control'
               onChange={ e => this.handleMarkdownChange(e.target.value) }/>
         </div>
-        <div id='4-render' className='row'>
+        <div id='render' className='row'>
           <ReactMarkdown source={ markdown }/>
         </div>
-        <div id='5-form' className='row'>
+        <div id='form' className='row'>
+          <button className='col-md-4 btn btn-primary'
+              onClick={ () => this.sendContent() }
+              disabled={ !markdown }>
+            send content</button>
+          {
+            extractId && (
+              <h3>extract id: { extractId }</h3>
+            )
+          }
         </div>
       </div>
     )
