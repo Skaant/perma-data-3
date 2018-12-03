@@ -22,11 +22,18 @@ module.exports = (req, res) => {
   plantRefs.then(snapshot => {
     let plants = {}
     snapshot.forEach(doc => {
-      const data = doc.data()
-      plants[doc.id] = Object.assign({}, data, {
-        id: doc.id
-      })
+      const { names, rank, family, genus, species, variety } = doc.data()
+      plants[doc.id] = {
+        id: doc.id,
+        names,
+        rank,
+        family: family ? family.id : null,
+        genus: genus ? genus.id : null,
+        species: species ? species.id : null,
+        variety: variety ? variety.id : null
+      }
     })
+    console.log(plants)
     res.json(plants)
   })
   .catch(err => console.log(err))
