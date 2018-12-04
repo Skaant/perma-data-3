@@ -13,6 +13,13 @@ export default class extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch('/api/biblios')
+      .then(result => result.json())
+      .then(a => console.log(a))
+      .catch(err => console.log(err))
+  }
+
   handleImageChange(image) {
     this.setState({ image })
   }
@@ -73,6 +80,15 @@ export default class extends React.Component {
           <ReactMarkdown source={ markdown }/>
         </div>
         <div id='form' className='row'>
+          <div className='col-md-6'>
+            {
+
+            }
+          </div>
+          <div className='col-md-6'>
+          </div>
+        </div>
+        <div className='row'>
           <button className='col-md-4 btn btn-primary'
               onClick={ () => this.sendContent() }
               disabled={ !markdown }>
