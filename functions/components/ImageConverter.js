@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
+import SearchPlant from './SearchPlant'
 
 const Tesseract = window.Tesseract
 
@@ -9,14 +10,19 @@ export default class extends React.Component {
     this.state = {
       image: null,
       lang: null,
-      markdown: ''
+      markdown: '',
+      biblios: {},
+      biblio: '',
+      sectionTitle: '',
+      pages: '',
+      plants: []
     }
   }
 
   componentDidMount() {
     fetch('/api/biblios')
       .then(result => result.json())
-      .then(a => console.log(a))
+      .then(biblios => this.setState({ biblios }))
       .catch(err => console.log(err))
   }
 
@@ -41,11 +47,51 @@ export default class extends React.Component {
     this.setState({ markdown })
   }
 
-  sendContent() {
-    const { markdown } = this.state
-    fetch('/contribute/content', {
+  handleBiblioChange(biblio) {
+    this.setState({ biblio })
+  }
+
+  handleSectionTitleChange(sectionTitle) {
+    this.setState({ sectionTitle })
+  }
+
+  handlePagesChange(pages) {
+    this.setState({ pages })
+  }
+
+  handlePlantChange(plantId, index) {
+    const { plants } = this.state
+    if (plantId === '' && index !== -1) {
+      this.removePlant(index)
+    } else if (plantId && !plants.includes(plantId)) {
+      this.addPlant(plantId)
+    }
+  }
+
+  addPlant(plantId) {
+    const { plants } = this.state
+    plants.push(plantId)
+    this.setState({ plants })
+  }
+
+  removePlant(index) {
+    const { plants } = this.state
+    plants.splice(index, 1)
+    this.setState({ plants })
+  }
+
+  sendPlant() {
+    const { lang, markdown, biblio, sectionTitle, pages, plants } = this.state
+    fetch('/contribute/extract', {
       method: 'PUT',
-      body: markdown
+      body: JSON.stringify({
+        lang,
+        content: markdown,
+        biblio,
+        sectionTitle,
+        pages,
+        plants
+      })
     })
     .then(result => result.json())
     .then(({ id }) => this.setState({
@@ -54,7 +100,9 @@ export default class extends React.Component {
   }
 
   render() {
-    const { image, lang, markdown, extractId } = this.state
+    const { image, 
+      lang, markdown, biblios, biblio, sectionTitle, pages, plants,
+    extractId } = this.state
     return (
       <div className='container'>
         <div id='load' className='row'>
@@ -81,18 +129,50 @@ export default class extends React.Component {
         </div>
         <div id='form' className='row'>
           <div className='col-md-6'>
-            {
-
-            }
+            <select className='form-control'
+                value={ biblio }
+                onChange={ e => this.handleBiblioChange(e.target.value) }>
+              <option value=''>choose a biblio</option>
+              {
+                Object.keys(biblios).map(key => (
+                  <option key={ key } value={ key }>
+                    { biblios[key].title } ({ biblios[key].author })</option>
+                ))
+              }
+            </select>
+            <input type='text'
+              className='form-control'
+              placeholder='section title'
+              value={ sectionTitle }
+              onChange={ e => this.handleSectionTitleChange(e.target.value) }/>
+            <input type='text'
+              className='form-control'
+              placeholder='extract pages'
+              value={ pages }
+              onChange={ e => this.handlePagesChange(e.target.value) }/>
           </div>
           <div className='col-md-6'>
+            {
+              plants.map((plant, index) => (
+                <SearchPlant key={ plant }
+                  value={ plant }
+                  index={ index }
+                  selectPlant={ this.handlePlantChange.bind(this) }/>
+              ))
+            }
+            <div className='empty'>
+              <SearchPlant index={ -1 }
+                  key='empty'
+                  value=''
+                  selectPlant={ this.handlePlantChange.bind(this) }/>
+            </div>
           </div>
         </div>
         <div className='row'>
           <button className='col-md-4 btn btn-primary'
-              onClick={ () => this.sendContent() }
+              onClick={ () => this.sendPlant() }
               disabled={ !markdown }>
-            send content</button>
+            send extract</button>
           {
             extractId && (
               <h3>extract id: { extractId }</h3>

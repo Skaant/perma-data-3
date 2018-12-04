@@ -1,8 +1,8 @@
-const content = require('./contribute/content')
+const extract = require('./contribute/extract')
 const plant = require('./contribute/plant')
 
 module.exports = router => {
-  router.route('/content').put(content)
+  router.route('/extract').put(extract)
   router.route('/plant').put(plant)
   return router
 }

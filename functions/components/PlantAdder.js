@@ -48,6 +48,7 @@ export default class extends React.Component {
       method: 'PUT',
       body: JSON.stringify(this.state)
     })
+      .then(result => result.json())
       .then(({ id }) => this.setState({ id }))
       .catch(err => console.log(err))
   }

@@ -20,7 +20,6 @@ module.exports = (req, res) => {
   }
   global.db.collection('plants')
     .doc(names.lt).set(data)
-    .then(result => result.json())
     .then(() => {
       res.json({
         id: names.lt
