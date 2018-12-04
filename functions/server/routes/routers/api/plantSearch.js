@@ -16,7 +16,6 @@ const getRankPlant = (rank, keyword) => global.db.collection('plants')
   .where('rank', '==', rank).get()
 
 module.exports = (req, res) => {
-  console.log(req.params)
   const { rank, keyword } = req.params
   let plantRefs = rank ? getRankPlant(rank, keyword) : getDirectPlant(keyword)
   plantRefs.then(snapshot => {
@@ -27,13 +26,12 @@ module.exports = (req, res) => {
         id: doc.id,
         names,
         rank,
-        family: family ? family.id : null,
-        genus: genus ? genus.id : null,
-        species: species ? species.id : null,
-        variety: variety ? variety.id : null
+        family: family && family.id,
+        genus: genus && genus.id,
+        species: species && species.id,
+        variety: variety && variety.id
       }
     })
-    console.log(plants)
     res.json(plants)
   })
   .catch(err => console.log(err))

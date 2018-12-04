@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import ImageConverter from '../../components/ImageConverter'
+import PlantAdder from '../../components/PlantAdder';
 
 class Contributor extends React.Component {
   constructor() {
@@ -18,13 +19,15 @@ class Contributor extends React.Component {
     const { mode } = this.state
     return (
       <div>
-        <div className='row'>
-          <button type='button' className='btn btn-primary'
-              onClick={ () => this.handleModeChange('image-converter') }>
-            image converter</button>
-          <button type='button' className='btn btn-primary'
-              onClick={ () => this.handleModeChange('plant-adder') }>
-            plant adder</button>
+        <div className='container'>
+          <div className='row'>
+            <button type='button' className='btn btn-primary'
+                onClick={ () => this.handleModeChange('image-converter') }>
+              image converter</button>
+            <button type='button' className='btn btn-primary'
+                onClick={ () => this.handleModeChange('plant-adder') }>
+              plant adder</button>
+          </div>
         </div>
         {
           mode === 'image-converter' && (
@@ -33,7 +36,7 @@ class Contributor extends React.Component {
         }
         {
           mode === 'plant-adder' && (
-            <span>salut</span>
+            <PlantAdder/>
           )
         }
       </div>
@@ -41,4 +44,4 @@ class Contributor extends React.Component {
   }
 }
 
-render(<Contributor/>, document.getElementById('image-converter'))
+render(<Contributor/>, document.getElementById('contributor'))
