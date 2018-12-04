@@ -18,14 +18,18 @@ class Contributor extends React.Component {
   render() {
     const { mode } = this.state
     return (
-      <div>
-        <div className='container'>
+      <React.Fragment>
+        <div id='menu' className='container'>
           <div className='row'>
-            <button type='button' className='btn btn-primary'
-                onClick={ () => this.handleModeChange('image-converter') }>
+            <button type='button'
+                className={ `btn btn-primary col-md-3${ mode === 'image-converter' ? ' active' : '' }` }
+                onClick={ () => this.handleModeChange('image-converter') }
+                disabled={ mode === 'image-converter' }>
               image converter</button>
-            <button type='button' className='btn btn-primary'
-                onClick={ () => this.handleModeChange('plant-adder') }>
+            <button type='button'
+                className={ `btn btn-primary col-md-3${ mode === 'plant-adder' ? ' active' : '' }` }
+                onClick={ () => this.handleModeChange('plant-adder') }
+                disabled={ mode === 'plant-adder' }>
               plant adder</button>
           </div>
         </div>
@@ -39,7 +43,7 @@ class Contributor extends React.Component {
             <PlantAdder/>
           )
         }
-      </div>
+      </React.Fragment>
     )
   }
 }

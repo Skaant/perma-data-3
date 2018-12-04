@@ -1,5 +1,70 @@
 #contributor {
 
+  #menu {
+
+    > .row {
+      justify-content: center;
+      margin-bottom: 40px;
+
+      > button {
+
+        &.active {
+          background: black;
+          color: white;
+        }
+      }
+
+      > button:first-child {
+        margin-right: 4px;
+      }
+
+      > button:last-child {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .container {
+
+    > h3 {
+      width: fit-content;
+      text-transform: uppercase;
+      background: black;
+      margin: 28px auto;
+      color: white;
+      padding: 4px 8px;
+    }
+
+    > .row {
+      margin: 10px initial;
+
+      button.btn.btn-primary {
+        background: #EEE;
+        border-radius: 0;
+        color: black;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        margin-top: 12px;
+      }
+
+      input:not([type="file"]),
+      select,
+      button {
+        border-radius: 0;
+        margin: 2px;
+      }
+    }
+  }
+
   > #image-converter {
 
     #load {
@@ -8,6 +73,7 @@
 
     #correct {
       height: 30vh;
+      min-height: 200px;
     }
 
     #render {

@@ -49,17 +49,21 @@ export default class extends React.Component {
       body: JSON.stringify(this.state)
     })
       .then(result => result.json())
-      .then(({ id }) => this.setState({ id }))
+      .then(({ id }) => this.setState({
+        plantId: id
+      }))
       .catch(err => console.log(err))
   }
 
   render() {
-    const { id, rank, family, genus, species } = this.state
+    const { plantId, rank, family, genus, species } = this.state
     return (
       <div className='container'>
+        <h3>Plant data</h3>
         <div id='form'
             className='row'>
           <div className='col-md-6'>
+            <label>Rank</label>
             <select className='form-control'
                 value={ rank }
                 onChange={ e => this.handleRankChange(e.target.value) }>
@@ -74,52 +78,67 @@ export default class extends React.Component {
               <option value='variety'>
                 variety</option>
             </select>
+            <label>ID (latin name)</label>
             <input type='text'
                   className='form-control'
-                  placeholder='id :: latin name'
+                  placeholder='latin name'
                   onChange={ e => this.handleNamesChange('lt', e.target.value) }/>
           </div>
           <div className='col-md-6'>
+            <label>English name</label>
             <input type='text'
                 className='form-control'
                 placeholder='en name'
                 onChange={ e => this.handleNamesChange('en', e.target.value) }/>
+            <label>French name</label>
             <input type='text'
                 className='form-control'
                 placeholder='fr name'
                 onChange={ e => this.handleNamesChange('fr', e.target.value) }/>
           </div>
         </div>
+        <h3>Rank hierarchy</h3>
         <div id='hierarchy' className='row'>
           {
             rank !== 'family' && (
-              <SearchPlant value={ family }
-                  classNames={ 'col-md-4' }
-                  selectPlant={ this.handleFamilyChange.bind(this)} />
+              <div className='col-md-4'>
+                <label>Family</label>
+                <SearchPlant value={ family }
+                    selectPlant={ this.handleFamilyChange.bind(this)} />
+              </div>
             )
           }
           {
             (rank !== 'family' && rank !== 'genus') && (
-              <SearchPlant value={ genus }
-                  classNames={ 'col-md-4' }
-                  selectPlant={ this.handleGenusChange.bind(this)} />
+              <div className='col-md-4'>
+                <label>Genus</label>
+                <SearchPlant value={ genus }
+                    selectPlant={ this.handleGenusChange.bind(this)} />
+              </div>
             )
           }
           {
             rank === 'variety' && (
-              <SearchPlant value={ species }
-                  classNames={ 'col-md-4' }
-                  selectPlant={ this.handleSpeciesChange.bind(this)} />
+              <div className='col-md-4'>
+                <label>Variety</label>
+                <SearchPlant value={ species }
+                    selectPlant={ this.handleSpeciesChange.bind(this)} />
+              </div>
             )
           }
         </div>
         <div className='row'>
-          <p className='offset-md-4 col-md-4'>
-            plant added with id "{ id }"</p>
-          <button type='button'
-              className={ `${ id ? 'offset-md-8' : ''} col-md-4 btn btn-primary` }
-              onClick={ e => this.sendPlant(e.target.value) }>
-            send plant</button>
+          <div className='col-md-4 offset-md-8'>
+            <button type='button'
+                className='btn btn-primary col'
+                onClick={ e => this.sendPlant(e.target.value) }>
+              send plant</button>
+            {
+              plantId && (
+                <h4>plant id: { plantId }</h4>
+              )
+            }
+          </div>
         </div>
       </div>
     )
