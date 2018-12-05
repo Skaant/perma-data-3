@@ -13,6 +13,7 @@ firebase-debug.log*
 # Compiled & built
 public/modules/*.js
 public/modules/styles/*.css
+public/styles/*.css
 functions/server/templates/build/*.js
 
 # Dependency directories
