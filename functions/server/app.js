@@ -21,6 +21,6 @@ app.use(middlewares.lang)
 Object.keys(routes).forEach(name => langRouter.route(`/${ name }*`).get(routes[name]))
 
 // 2. associate the lang router to every lang prefix
-LANGS.forEach(lang => app.use('/' + lang.toLowerCase(), langRouter))
+LANGS.forEach(lang => app.use('/' + lang, langRouter))
 
 module.exports = app

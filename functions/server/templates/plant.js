@@ -11,12 +11,9 @@ export default props => {
             <img src={ props.data.plant.miniature }/>
           </div>
           <div id='description' className='col-md-8'>
-            <RankBar rank={ props.data.plant.rank }
+            <RankBar plant={ props.data.plant }
                 lang={ props.lang }
-                langs={ props.langs }
-                family={ props.data.plant.family }
-                genus={ props.data.plant.genus }
-                species={ props.data.plant.species }/>
+                langs={ props.langs }/>
             <h1>{ props.data.plant.names && props.data.plant.names[props.lang] }</h1>
             <div id='tool-bar'>
               <h2>{ props.data.plant.id && typeof props.data.plant.id === 'string'

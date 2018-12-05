@@ -18,11 +18,13 @@ module.exports = plant => new Promise((resolve, reject) => {
     .map(key => higherRanks[key]))
 
   promises.then(values => {
-    Object.keys(higherRanks)
+    resolve(Object.keys(higherRanks)
       .sort((a, b) => a.localeCompare(b))
-      .forEach((key, index) => plant[key] = Object.assign({}, values[index], {
-        id: plant[key].id
-      }))
-    resolve(plant)
+      .reduce((newHigherRanks, key, index) => {
+        newHigherRanks[key] = Object.assign({}, values[index], {
+          id: plant[key].id
+        })
+        return newHigherRanks
+      }, {}))
   }).catch(err => reject(err))
 })

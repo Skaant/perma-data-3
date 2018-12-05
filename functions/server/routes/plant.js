@@ -10,11 +10,11 @@ module.exports = (req, res) => {
     .then(plant => {
       plant.id = plantId
       Promise.all([langFetcher(lang), getHigherRanks(plant), extractsFetcher(lang, plantId)])
-        .then(([langs, plant, extracts]) => res.send(html('plant', {
+        .then(([langs, higherRanks, extracts]) => res.send(html('plant', {
           lang,
           langs,
           data: {
-            plant,
+            plant: Object.assign({}, plant, higherRanks),
             extracts
           }
         }))
