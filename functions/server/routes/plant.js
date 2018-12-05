@@ -18,7 +18,9 @@ module.exports = (req, res) => {
             lang,
             langs,
             data: {
-              plant: Object.assign({}, plant, higherRanks, rankSuggestions),
+              plant: Object.assign({}, plant, higherRanks, {
+                suggestions: rankSuggestions
+              }),
               extracts
             }
           }))

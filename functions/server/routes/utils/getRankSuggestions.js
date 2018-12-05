@@ -1,15 +1,16 @@
 const { plants: plantsFetcher } = require('../../fetchers')
-const getMoreGenus = require('./rankSuggestions/getMoreGenus')
-const getMoreSpecies = require('./rankSuggestions/getMoreSpecies')
-const getMoreVarieties = require('./rankSuggestions/getMoreVarieties')
+const getFamilySuggestions = require('./rankSuggestions/getFamilySuggestions')
+const getGenusSuggestions = require('./rankSuggestions/getGenusSuggestions')
+const getSpeciesSuggestions = require('./rankSuggestions/getSpeciesSuggestions')
+const getVarietySuggestions = require('./rankSuggestions/getVarietySuggestions')
 
 module.exports = plant => new Promise((resolve, reject) => {
   let suggestions = {}
 
-  suggestions.moreFamilies = plantsFetcher('family')
-  suggestions.moreGenus = getMoreGenus(plant)
-  suggestions.moreSpecies = getMoreSpecies(plant)
-  suggestions.moreVarities = getMoreVarieties(plant)
+  suggestions.family = getFamilySuggestions(plant)
+  suggestions.genus = getGenusSuggestions(plant)
+  suggestions.species = getSpeciesSuggestions(plant)
+  suggestions.variety = getVarietySuggestions(plant)
 
   const promises = Promise.all(Object.keys(suggestions)
     .sort((a, b) => a.localeCompare(b))
@@ -19,6 +20,11 @@ module.exports = plant => new Promise((resolve, reject) => {
     resolve(Object.keys(suggestions)
       .sort((a, b) => a.localeCompare(b))
       .reduce((filledSuggestions, key, index) => {
+        if (plant[key]) {
+          delete values[index][plant[key].id]
+        } else if (plant.rank === key) {
+          delete values[index][plant.id]
+        }
         filledSuggestions[key] = values[index]
         return filledSuggestions
       }, {}))
