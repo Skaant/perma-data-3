@@ -10,7 +10,7 @@ module.exports = plant => new Promise((resolve, reject) => {
     higherRanks.genus = plantFetcher(plant.genus.id)
   }
   if (plant.species) {
-    higherRanks.genus = plantFetcher(plant.species.id)
+    higherRanks.species = plantFetcher(plant.species.id)
   }
 
   const promises = Promise.all(Object.keys(higherRanks)
