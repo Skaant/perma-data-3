@@ -8,15 +8,28 @@ export default ({ lang, langs, rank, plant, current }) => (
       )
     }
     {
-      plant && plant.names ? (
-        <h3><a href={ `/${ lang }/plant/${ plant.id }` }>
-          { plant.names[lang] }</a></h3>
+      plant[rank] && plant[rank].names ? (
+        <h3><a href={ `/${ lang }/plant/${ plant[rank].id }` }>
+          { plant[rank].names[lang] }</a></h3>
       ) : (
         <h3>{ current ? langs && langs.ranks[rank] : '-' }</h3>
       )
     }
-    <h6 className='reveal'>
-      { langs.suggestions.more }</h6>
-    <h6>{ langs.suggestions.less }</h6>
+    {
+      Object.keys(plant.suggestions[rank]).length > 0 ? (
+        <React.Fragment>
+          <h6 id={ `suggestions-more-${ rank }` }
+              className={ `suggestions-more${ current ? '' : ' reveal' }` }
+              data-rank={ rank }>
+            { langs.suggestions.more }</h6>
+          <h6 id={ `suggestions-less-${ rank }` }
+              className={ `suggestions-less${ current ? ' reveal' : '' }` }
+              data-rank={ rank }>
+            { langs.suggestions.less }</h6>
+        </React.Fragment>
+      ) : (
+        <span>-</span>
+      )
+    }
   </div>
 )

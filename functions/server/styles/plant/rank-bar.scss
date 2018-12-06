@@ -1,7 +1,8 @@
 #rank-bar {
   text-align: center;
 
-  > #rank-hierarchy {    
+  > #rank-hierarchy {
+    margin-bottom: 12px; 
 
     > .rank-item {
       padding-bottom: 15px;
@@ -57,6 +58,7 @@
   > #rank-suggestions {
     
     > div {
+      padding-top: 13px;
       display: none;
 
       &.reveal {
@@ -64,20 +66,20 @@
       }
 
       > h5 {
-        color: white;
-        text-transform: uppercase;        
-        font-size: 1.2rem;        
-        margin-top: 16px;
-        background: black;
-        margin-bottom: 25px;
+        border-bottom: solid 1px black;
+        text-transform: uppercase;    font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 28px;
         padding: 12px;
       }
 
       > .row {
+        margin-bottom: 28px;
         
         > a {
           color: black;
           text-transform: uppercase;
+          margin-bottom: 4px;
         }
       }
     }

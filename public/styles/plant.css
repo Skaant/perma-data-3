@@ -13,53 +13,58 @@
     justify-content: flex-end; }
     #plant > #description #rank-bar {
       text-align: center; }
-      #plant > #description #rank-bar > #rank-hierarchy > .rank-item {
-        padding-bottom: 15px;
-        padding-top: 15px; }
-        #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank {
-          margin-top: 26px;
-          color: white;
-          background: black;
-          margin-top: 0; }
-          #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank > h3 {
+      #plant > #description #rank-bar > #rank-hierarchy {
+        margin-bottom: 12px; }
+        #plant > #description #rank-bar > #rank-hierarchy > .rank-item {
+          padding-bottom: 15px;
+          padding-top: 15px; }
+          #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank {
             margin-top: 26px;
-            color: white; }
-          #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank > h6 {
             color: white;
-            opacity: 0.78; }
-        #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h4 {
-          text-transform: uppercase;
-          font-weight: 200;
-          letter-spacing: 1px;
-          font-size: 1rem; }
-        #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h3 {
-          text-transform: uppercase;
-          font-size: 1.25rem;
-          margin-bottom: 24px; }
-          #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h3 > a {
-            color: black; }
-        #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h6 {
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          cursor: pointer;
-          display: none; }
-          #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h6.reveal {
-            display: block; }
+            background: black;
+            margin-top: 0; }
+            #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank > h3 {
+              margin-top: 26px;
+              color: white; }
+            #plant > #description #rank-bar > #rank-hierarchy > .rank-item.current-rank > h6 {
+              color: white;
+              opacity: 0.78; }
+          #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h4 {
+            text-transform: uppercase;
+            font-weight: 200;
+            letter-spacing: 1px;
+            font-size: 1rem; }
+          #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h3 {
+            text-transform: uppercase;
+            font-size: 1.25rem;
+            margin-bottom: 24px; }
+            #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h3 > a {
+              color: black; }
+          #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h6 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: none; }
+            #plant > #description #rank-bar > #rank-hierarchy > .rank-item > h6.reveal {
+              display: block; }
       #plant > #description #rank-bar > #rank-suggestions > div {
+        padding-top: 13px;
         display: none; }
         #plant > #description #rank-bar > #rank-suggestions > div.reveal {
           display: block; }
         #plant > #description #rank-bar > #rank-suggestions > div > h5 {
-          color: white;
+          border-bottom: solid 1px black;
           text-transform: uppercase;
-          font-size: 1.2rem;
-          margin-top: 16px;
-          background: black;
-          margin-bottom: 25px;
+          font-weight: 300;
+          font-size: 1rem;
+          margin-bottom: 28px;
           padding: 12px; }
-        #plant > #description #rank-bar > #rank-suggestions > div > .row > a {
-          color: black;
-          text-transform: uppercase; }
+        #plant > #description #rank-bar > #rank-suggestions > div > .row {
+          margin-bottom: 28px; }
+          #plant > #description #rank-bar > #rank-suggestions > div > .row > a {
+            color: black;
+            text-transform: uppercase;
+            margin-bottom: 4px; }
     #plant > #description > h1 {
       text-transform: uppercase;
       background: black;
