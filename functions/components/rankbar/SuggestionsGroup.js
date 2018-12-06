@@ -4,7 +4,8 @@ export default ({ lang, langs, plant, rank, device }) => {
   const suggestions = plant.suggestions[rank]
   return (
     <div id={ `suggestions-${ rank }` }
-        className={ `suggestions-group${ plant.rank === rank ? ' reveal' : '' } ${ device }` }>
+        className={ `suggestions-group${
+          plant.rank === rank ? ' reveal' : '' } ${ device } col-12` }>
       <h5>{ langs.suggestions.others[rank] }</h5>
       <div className='row'>
         {

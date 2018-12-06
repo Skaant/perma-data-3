@@ -1,6 +1,6 @@
 import React from 'react'
 import RankItem from './rankbar/RankItem'
-import RankSuggestions from './rankbar/RankSuggestions'
+import SuggestionsGroup from './rankbar/SuggestionsGroup'
 
 export default ({ lang, langs, plant }) => (
   <div id='rank-bar'>
@@ -13,7 +13,7 @@ export default ({ lang, langs, plant }) => (
               current={ plant.rank === key } plant={ plant }/>
             {
               Object.keys(plant.suggestions[key]).length > 0 && (
-                <RankSuggestions key={ key } rank={ key }
+                <SuggestionsGroup key={ key } rank={ key }
                     lang={ lang } langs={ langs }
                     plant={ plant } device='mobile'/>
               )
@@ -27,7 +27,7 @@ export default ({ lang, langs, plant }) => (
         ['family', 'genus', 'species', 'variety']
           .filter(key => Object.keys(plant.suggestions[key]).length > 0)
           .map(key => (
-            <RankSuggestions key={ key } rank={ key }
+            <SuggestionsGroup key={ key } rank={ key }
               lang={ lang } langs={ langs }
               plant={ plant } device='desktop'/>
           ))

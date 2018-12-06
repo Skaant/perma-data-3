@@ -19,7 +19,7 @@ jQuery(document).ready($ => {
     })
 
   $(`.suggestions-less`)
-    .on('click', () => {
+    .on('click', e => {
       const rank = $(e.target).data('rank')
       $(`#suggestions-less-${ rank }, #suggestions-${ rank }`)
         .removeClass('reveal')

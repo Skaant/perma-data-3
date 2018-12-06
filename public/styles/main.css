@@ -1,13 +1,3 @@
-@media (max-width: 991px) {
-  .desktop {
-    display: none; } }
-
-.mobile {
-  display: none; }
-  @media (max-width: 991px) {
-    .mobile {
-      display: initial; } }
-
 #title-link {
   text-decoration: none !important; }
   #title-link > #title {
