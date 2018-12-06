@@ -10,9 +10,22 @@ module.exports = (rank, parent) => new Promise((resolve, reject) => {
   plantRefs.get()
     .then(snapshot => {
       let plants = {}
-      snapshot.forEach(doc => plants[doc.id] = Object.assign({}, plants[doc.id], {
-        id: doc.id
-      }))
+      snapshot.forEach(doc =>{
+        let data = doc.data()
+        if (data.family) {
+          data.family = data.family.id
+        }
+        if (data.genus) {
+          data.genus = data.genus.id
+        }
+        if (data.species) {
+          data.species = data.species.id
+        }
+        plants[doc.id] = Object.assign({}, data, { 
+          id: doc.id
+        })
+      })
+      console.log(plants)
       return resolve(plants)
     })
     .catch(err => reject(err))
