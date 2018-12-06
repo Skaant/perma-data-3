@@ -7,13 +7,13 @@ export default ({ lang, langs, plant }) => (
     <div id='rank-hierarchy' className='row'>
       {
         ['family', 'genus', 'species', 'variety'].map(key => (
-          <RankItem key={ key } label={ key }
+          <RankItem key={ key } rank={ key }
             lang={ lang } langs={ langs }
             current={ plant.rank === key } plant={ plant[key] }/>
         ))
       }
     </div>
-    <div id='rank-suggestions' className='container'>
+    <div id='rank-suggestions'>
       {
         ['family', 'genus', 'species', 'variety'].map(key => (
           <RankSuggestions key={ key } rank={ key }
