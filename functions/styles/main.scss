@@ -3,14 +3,14 @@
   
   > #title {
     color: black;
-    margin: 10vh auto 0 auto;
+    margin: calc(10vh + 50px) auto 0 auto;
     width: fit-content;
     width: -moz-fit-content;
   }
   
   > #subtitle {
     color: black;
-    margin: 0 auto 10vh auto;
+    margin: 0 auto 8vw auto;
     width: fit-content;
     width: -moz-fit-content;
     font-size: 1.4rem;
