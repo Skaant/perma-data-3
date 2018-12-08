@@ -44,6 +44,8 @@ export default class extends React.Component {
                   <select className='form-control'
                       value={ value }
                       onChange={ e => this.handlePlantChange(e.target.value) }>
+                    <option value=''>
+                        choose a plant ({ Object.keys(plants).length })</option>
                     {
                       Object.keys(plants).map(key => (
                         <option key={ key } value={ key }>
