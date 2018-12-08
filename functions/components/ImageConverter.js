@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import SearchPlant from './SearchPlant'
+import ExtractItem from './ExtractItem';
 
 const Tesseract = window.Tesseract
 
@@ -136,8 +137,15 @@ export default class extends React.Component {
         </div>
         <h3>Preview result</h3>
         <div id='render' className='row'>
-          <div className='col-md-4 offset-md-4 col-sm-6 offset-sm-3'>
-            <ReactMarkdown source={ markdown || '*Fill conversion input*' }/>
+          <div className='col-md-4 offset-md-4 col-sm-6 offet-sm-3'>
+            <ExtractItem content={ markdown }
+                biblio={ {
+                  title: biblio ? biblios[biblio].title : 'biblio title',
+                  author: biblio ? biblios[biblio].title : 'author'
+                } }
+                section={ {
+                  title: sectionTitle || 'section title'
+                } }/>
           </div>
         </div>
         <h3>Additional data</h3>

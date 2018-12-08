@@ -27,7 +27,7 @@ export default class extends React.Component {
     const { value, classNames } = this.props
     const { plants } = this.state
     return (
-      <div className={ classNames }>
+      <div className='search-plant'>
         {
           (value !== '' && !Object.keys(plants).includes(value)) ? (
             <h4>
@@ -39,18 +39,20 @@ export default class extends React.Component {
                   className='form-control'
                   placeholder='plant name, min. 3 letters'
                   onChange={ e => this.handleSearchChange(e.target.value) }/>
-              <select className='form-control'
-                  value={ value }
-                  onChange={ e => this.handlePlantChange(e.target.value) }>
-                <option value=''>
-                  choose a plant</option>
-                {
-                  Object.keys(plants).map(key => (
-                    <option key={ key } value={ key }>
-                      { key }</option>
-                  ))
-                }
-              </select>
+              {
+                (plants && Object.keys(plants).length > 0) && (
+                  <select className='form-control'
+                      value={ value }
+                      onChange={ e => this.handlePlantChange(e.target.value) }>
+                    {
+                      Object.keys(plants).map(key => (
+                        <option key={ key } value={ key }>
+                          { key }</option>
+                      ))
+                    }
+                  </select>
+                )
+              }
             </React.Fragment>
           )
         }

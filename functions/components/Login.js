@@ -74,9 +74,8 @@ export default class extends React.Component {
   render() {
     const { user, children } = this.props
     const { mode, email, password } = this.state
-    console.log(user)
     return user ? 
-      user && React.cloneElement(children, { user }) :
+      user && React.cloneElement(children) :
       (
         <div id='login-form' className='container'>
           <div className='col-md-6 offset-md-3'>

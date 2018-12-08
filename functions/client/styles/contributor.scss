@@ -38,6 +38,32 @@
 
     > .row {
       margin: 10px initial;
+  
+      &#load {
+        margin-bottom: 25px;
+      }
+  
+      &#correct {
+        height: 30vh;
+        min-height: 200px;
+      }
+  
+      &#render {
+        margin-top: 40px;
+  
+        > div {
+          @import '../../styles/extract.scss';
+        }
+      }
+  
+      &#form {
+        align-items: center;
+  
+        > h3 {
+          margin-bottom: 0;
+          margin-left: 40px;
+        }
+      }
 
       button.btn.btn-primary {
         background: #EEE;
@@ -63,30 +89,12 @@
         border-radius: 0;
         margin: 2px;
       }
-    }
-  }
 
-  > #image-converter {
+      .search-plant {
 
-    #load {
-      margin-bottom: 25px;
-    }
-
-    #correct {
-      height: 30vh;
-      min-height: 200px;
-    }
-
-    #render {
-      margin-top: 40px;
-    }
-
-    #form {
-      align-items: center;
-
-      > h3 {
-        margin-bottom: 0;
-        margin-left: 40px;
+        > select {
+          margin-top: 8px;
+        }
       }
     }
   }
