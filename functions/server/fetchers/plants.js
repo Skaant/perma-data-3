@@ -25,7 +25,6 @@ module.exports = (rank, parent) => new Promise((resolve, reject) => {
           id: doc.id
         })
       })
-      console.log(plants)
       return resolve(plants)
     })
     .catch(err => reject(err))
