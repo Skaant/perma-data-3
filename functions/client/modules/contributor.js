@@ -23,7 +23,15 @@ class Contributor extends React.Component {
 
   updateUser(user) {
     if (user) {
-      this.setState({ user })
+      const { uid, email } = user
+      fetch(`/api/user-data/${ email }`)
+        .then(result => result.json())
+        .then(userData => this.setState({
+          user: Object.assign({}, {
+            uid,
+            email
+          }, userData)
+        }))
     } else {
       this.setState({
         user: null
@@ -36,32 +44,36 @@ class Contributor extends React.Component {
     return (
       <Login user={ user }
           updateUser={ this.updateUser.bind(this) }>
-        <div id='panel'>
-          <div id='menu' className='container'>
-            <div className='row'>
-              <button type='button'
-                  className={ `btn btn-primary col-md-3${ mode === 'image-converter' ? ' active' : '' }` }
-                  onClick={ () => this.handleModeChange('image-converter') }
-                  disabled={ mode === 'image-converter' }>
-                image converter</button>
-              <button type='button'
-                  className={ `btn btn-primary col-md-3${ mode === 'plant-adder' ? ' active' : '' }` }
-                  onClick={ () => this.handleModeChange('plant-adder') }
-                  disabled={ mode === 'plant-adder' }>
-                plant adder</button>
+        {
+          (user && user.roles.includes('contributor')) && (
+            <div id='panel'>
+              <div id='menu' className='container'>
+                <div className='row'>
+                  <button type='button'
+                      className={ `btn btn-primary col-md-3${ mode === 'image-converter' ? ' active' : '' }` }
+                      onClick={ () => this.handleModeChange('image-converter') }
+                      disabled={ mode === 'image-converter' }>
+                    image converter</button>
+                  <button type='button'
+                      className={ `btn btn-primary col-md-3${ mode === 'plant-adder' ? ' active' : '' }` }
+                      onClick={ () => this.handleModeChange('plant-adder') }
+                      disabled={ mode === 'plant-adder' }>
+                    plant adder</button>
+                </div>
+              </div>
+              {
+                mode === 'image-converter' && (
+                  <ImageConverter/>
+                )
+              }
+              {
+                mode === 'plant-adder' && (
+                  <PlantAdder/>
+                )
+              }
             </div>
-          </div>
-          {
-            mode === 'image-converter' && (
-              <ImageConverter/>
-            )
-          }
-          {
-            mode === 'plant-adder' && (
-              <PlantAdder/>
-            )
-          }
-        </div>
+          )
+        }
       </Login>
     )
   }
