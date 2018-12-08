@@ -145,7 +145,8 @@ export default class extends React.Component {
                 } }
                 section={ {
                   title: sectionTitle || 'section title'
-                } }/>
+                } }
+                pages={ pages }/>
           </div>
         </div>
         <h3>Additional data</h3>
