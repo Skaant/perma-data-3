@@ -22,10 +22,9 @@ module.exports = (name, props) => (
       }
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
-      <title>PERMA DATA, growing good, good ${
-        props.data && props.data.plant && props.data.plant
-          && props.data.plant.names[props.lang]
-      }</title>
+      <title>${
+        props.title ? `${ props.title } ` : ''
+      }PERMA DATA</title>
     </head>
     <body>
       <noscript>

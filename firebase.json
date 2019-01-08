@@ -4,7 +4,7 @@
     "redirects": [
       {
         "source": "/",
-        "destination": "/en/plant/mentha%20×%20piperita",
+        "destination": "/en/plant/mentha",
         "type" : 302
       }
     ],
