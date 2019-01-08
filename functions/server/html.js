@@ -30,9 +30,8 @@ module.exports = (name, props) => (
       <noscript>
         You need to enable JavaScript to run this app.
       </noscript>
-      <a id='title-link' href='/'>
-        <h1 id='title'>PERMA DATA</h1>
-        <h2 id='subtitle'>growing good</h2></a>
+      <a id='title' href='/'>
+        <h1 id='title__main'>PERMA DATA</h1></a>
       ${ renderer(templates[name], props) }
       <div id='footer'>
         <h3>PERMA DATA, 2018</h3></div>

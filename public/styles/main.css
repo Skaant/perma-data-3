@@ -1,18 +1,13 @@
-#title-link {
-  text-decoration: none !important; }
-  #title-link > #title {
-    color: black;
-    margin: 10vh auto 0 auto;
+#title {
+  text-decoration: none !important;
+  color: black; }
+  #title > #title__main {
+    margin: 40px auto 80px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 10px;
     width: fit-content;
     width: -moz-fit-content; }
-  #title-link > #subtitle {
-    color: black;
-    margin: 0 auto 10vh auto;
-    width: fit-content;
-    width: -moz-fit-content;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    font-weight: 200; }
 
 #footer > h3 {
   width: fit-content;
