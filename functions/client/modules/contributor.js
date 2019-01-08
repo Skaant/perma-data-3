@@ -4,7 +4,7 @@ import firebaseConfig from '../../firebase.config'
 import { render } from 'react-dom'
 import ImageConverter from '../../components/ImageConverter'
 import PlantAdder from '../../components/PlantAdder'
-import Login from '../../components/Login';
+import Login from '../../components/Login/Login';
 import VerticalLeftMenu from '../components/contributor/VerticalLeftMenu/VerticalLeftMenu';
 
 firebase.initializeApp(firebaseConfig)

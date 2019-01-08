@@ -2,6 +2,7 @@ import React from 'react'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import AuthFrameMenu from './AuthFrameMenu/AuthFrameMenu';
 
 export default class extends React.Component {
   constructor() {
@@ -75,7 +76,13 @@ export default class extends React.Component {
     const { user, children } = this.props
     const { mode, email, password } = this.state
     return user ? 
-      user && React.cloneElement(children) :
+      user && (
+        <React.Fragment>
+          <AuthFrameMenu user={ user }
+              signOut={ this.signOut.bind(this) }/>
+          { children }
+        </React.Fragment>
+      ) :
       (
         <div id='login-form' className='container'>
           <div className='col-md-6 offset-md-3'>

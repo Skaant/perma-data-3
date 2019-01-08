@@ -1,4 +1,15 @@
+@import '../../components/Login/Login.scss';
+
 #contributor {
+
+  #contributor__tool {
+
+    > .contributor__title {
+      min-height: 70px;
+      padding-top: 70px;
+      padding-bottom: 40px;
+    }
+  }
 
   .contributor__title {
     font-weight: 300;
