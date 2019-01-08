@@ -5,6 +5,7 @@ import { render } from 'react-dom'
 import ImageConverter from '../../components/ImageConverter'
 import PlantAdder from '../../components/PlantAdder'
 import Login from '../../components/Login';
+import VerticalLeftMenu from '../components/contributor/VerticalLeftMenu/VerticalLeftMenu';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -12,13 +13,16 @@ class Contributor extends React.Component {
   constructor() {
     super()
     this.state = {
-      mode: 'image-converter',
+      mode: 'plant-adder',
       user: null
     }
   }
 
   handleModeChange(mode) {
-    this.setState({ mode })
+    const { mode: prevMode } = this.state
+    if (mode != prevMode) {
+      this.setState({ mode })
+    }
   }
 
   updateUser(user) {
@@ -46,31 +50,21 @@ class Contributor extends React.Component {
           updateUser={ this.updateUser.bind(this) }>
         {
           (user && user.roles.includes('contributor')) && (
-            <div id='panel'>
-              <div id='menu' className='container'>
-                <div className='row'>
-                  <button type='button'
-                      className={ `btn btn-primary col-md-3${ mode === 'image-converter' ? ' active' : '' }` }
-                      onClick={ () => this.handleModeChange('image-converter') }
-                      disabled={ mode === 'image-converter' }>
-                    image converter</button>
-                  <button type='button'
-                      className={ `btn btn-primary col-md-3${ mode === 'plant-adder' ? ' active' : '' }` }
-                      onClick={ () => this.handleModeChange('plant-adder') }
-                      disabled={ mode === 'plant-adder' }>
-                    plant adder</button>
-                </div>
+            <div id='panel' className='row'>
+              <VerticalLeftMenu mode={ mode }
+                  handleModeChange={ this.handleModeChange.bind(this) } />
+              <div className='col-md-8'>
+                {
+                  mode === 'plant-adder' && (
+                    <PlantAdder/>
+                  )
+                }
+                {
+                  mode === 'image-converter' && (
+                    <ImageConverter/>
+                  )
+                }
               </div>
-              {
-                mode === 'image-converter' && (
-                  <ImageConverter/>
-                )
-              }
-              {
-                mode === 'plant-adder' && (
-                  <PlantAdder/>
-                )
-              }
             </div>
           )
         }

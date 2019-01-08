@@ -1,28 +1,6 @@
 #contributor {
 
-  #menu {
-
-    > .row {
-      justify-content: center;
-      margin-bottom: 40px;
-
-      > button {
-
-        &.active {
-          background: black;
-          color: white;
-        }
-      }
-
-      > button:first-child {
-        margin-right: 4px;
-      }
-
-      > button:last-child {
-        margin-left: 4px;
-      }
-    }
-  }
+  @import '../components/contributor/VerticalLeftMenu/VerticalLeftMenu.scss';
 
   .container {
 
