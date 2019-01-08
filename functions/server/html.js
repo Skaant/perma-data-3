@@ -31,7 +31,10 @@ module.exports = (name, props) => (
         You need to enable JavaScript to run this app.
       </noscript>
       <a id='title' href='/'>
-        <h1 id='title__main'>PERMA DATA</h1></a>
+        <h1 id='title__main'>PERMA DATA</h1>${
+          props.pageSubTitle ? `
+        <h2 id='title__sub'>${ props.pageSubTitle.toUpperCase() }</h2>` : ''
+        }</a>
       ${ renderer(templates[name], props) }
       <div id='footer'>
         <h3>PERMA DATA, 2018</h3></div>

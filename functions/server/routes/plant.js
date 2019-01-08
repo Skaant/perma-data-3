@@ -21,6 +21,7 @@ module.exports = (req, res) => {
             lang,
             langs,
             title: `${ plant.names[lang] } (${ lang.toUpperCase() }, ${ plant.id }) -`,
+            pageSubTitle: langs.misc.plants,
             data: {
               plant: Object.assign({}, plant, higherRanks, {
                 suggestions: rankSuggestions
