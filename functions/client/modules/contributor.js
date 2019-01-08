@@ -50,10 +50,10 @@ class Contributor extends React.Component {
           updateUser={ this.updateUser.bind(this) }>
         {
           (user && user.roles.includes('contributor')) && (
-            <div id='panel' className='row'>
+            <div className='row'>
               <VerticalLeftMenu mode={ mode }
                   handleModeChange={ this.handleModeChange.bind(this) } />
-              <div className='col-md-8'>
+              <div id='contributor__tool' className='col-md-8 container-fluid'>
                 {
                   mode === 'plant-adder' && (
                     <PlantAdder/>

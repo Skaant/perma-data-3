@@ -1,18 +1,16 @@
 #contributor {
 
+  .contributor__title {
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+  }
+
   @import '../components/contributor/VerticalLeftMenu/VerticalLeftMenu.scss';
 
   .container {
-
-    > h3 {
-      width: fit-content;
-      width: -moz-fit-content;
-      text-transform: uppercase;
-      background: black;
-      margin: 28px auto;
-      color: white;
-      padding: 4px 8px;
-    }
 
     > .row {
       margin: 10px initial;

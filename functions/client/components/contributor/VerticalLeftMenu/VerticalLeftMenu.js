@@ -1,8 +1,9 @@
 import React from 'react'
 
+// included in contibutor module
 export default ({ mode, handleModeChange }) => (
-  <div id='vertical-left-menu' className='col-md-4'>
-    <h3 id='vertical-left-menu__title'>TOOL LIST</h3>
+  <div id='vertical-left-menu' className='col-lg-4'>
+    <h3 className='contributor__title'>CONTRIBUTOR TOOLS</h3>
     <h4 className={ `vertical-left-menu__tool ${ mode === 'plant-adder' ? ' active' : '' }` }
         onClick={ () => handleModeChange('plant-adder') }>
       plant adder</h4>

@@ -58,8 +58,11 @@ export default class extends React.Component {
   render() {
     const { plantId, rank, family, genus, species } = this.state
     return (
-      <div className='container'>
-        <h3>Plant data</h3>
+      <React.Fragment>
+        <h3 className='contributor__title'>PLANT DATA</h3>
+        <h1 className='row'>PLANT TITLE</h1>
+        <h2 className='row'>RANK</h2>
+        <h2 className='row'>NAMES</h2>
         <div id='form'
             className='row'>
           <div className='col-md-6'>
@@ -140,7 +143,7 @@ export default class extends React.Component {
             }
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 }
