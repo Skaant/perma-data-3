@@ -24,6 +24,7 @@
 #footer > h3 {
   width: fit-content;
   width: -moz-fit-content;
-  margin: 10px auto;
-  font-size: 0.8rem;
-  font-weight: 200; }
+  margin: 112px auto 10px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 4px; }

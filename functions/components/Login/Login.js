@@ -86,47 +86,48 @@ export default class extends React.Component {
       (
         <div id='login-form' className='container'>
           <div className='col-md-6 offset-md-3'>
-            <div className="input-group mb-3">
-              <label>email</label>
-              <input type='email' className='form-control' value={ email }
-                  onChange={ e => this.handleEmailChange(e.target.value) }/>
-            </div>
+            <label>email</label>
+            <input type='email' className='form-control' value={ email }
+                onChange={ e => this.handleEmailChange(e.target.value) }/>
             {
               mode === 'login' && (
-                <div className="input-group mb-3">
+                <React.Fragment>
                   <label>password</label>
                   <input type='password' className='form-control' value={ password }
                       onChange={ e => this.handlePasswordChange(e.target.value) }/>
-                </div>
+                </React.Fragment>
               )
             }
-            <div>
+            <div id='login-form__menu'>
               {
                 mode == 'login' ? (
-                  <div className='btn-group' role='group'>
-                    <button type='button' className='btn btn-primary'
+                  <React.Fragment>
+                    <button type='button'
+                        className='btn btn-outline-secondary col-lg-4 col-md-6'
+                        onClick={ () => this.switchToResetPassword() }>
+                      reset password</button>
+                    <button type='button'
+                        className='btn btn-outline-secondary col-lg-4 col-md-6'
                         onClick={ () => this.signIn() }>
                       sign in</button>
-                    <button type='button' className='btn btn-outline-secondary'
+                    <button type='button'
+                        className='btn btn-primary col-lg-4'
                         onClick={ () => this.signUp() }>
                       sign up</button>
-                  </div>
+                  </React.Fragment>
                 ) : (
-                  <button type='button' className='btn btn-primary'
-                      onClick={ () => this.resetPassword(resetPasswordSuccess) }>
-                    reset</button>
+                  <React.Fragment>
+                    <button type='button'
+                        className='btn btn-outline-secondary col-md-6'
+                        onClick={ () => this.switchToLogin() }>
+                      back to login</button>
+                    <button type='button' className='btn btn-primary col-md-6'
+                        onClick={ () => this.resetPassword(resetPasswordSuccess) }>
+                      send recovery</button>
+                  </React.Fragment>
                 )
               }
             </div>
-            {
-              mode == 'login' ? (
-                <a href='#' onClick={ () => this.switchToResetPassword() }>
-                  reset password</a>
-              ) : (
-                <a href='#' onClick={ () => this.switchToLogin() }>
-                  back to login</a>
-              )
-            }
           </div>
         </div>
       )
