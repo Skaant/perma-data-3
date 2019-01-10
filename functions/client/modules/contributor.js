@@ -5,7 +5,7 @@ import { render } from 'react-dom'
 import ImageConverter from '../../components/ImageConverter'
 import PlantAdder from '../../components/PlantAdder'
 import Login from '../../components/Login/Login';
-import VerticalLeftMenu from '../components/contributor/VerticalLeftMenu/VerticalLeftMenu';
+import ContributeMenu from '../components/contributor/ContributeMenu/ContributeMenu';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -13,7 +13,7 @@ class Contributor extends React.Component {
   constructor() {
     super()
     this.state = {
-      mode: 'plant-adder',
+      mode: null,
       user: null
     }
   }
@@ -50,22 +50,34 @@ class Contributor extends React.Component {
           updateUser={ this.updateUser.bind(this) }>
         {
           (user && user.roles.includes('contributor')) && (
-            <div className='row'>
-              <VerticalLeftMenu mode={ mode }
-                  handleModeChange={ this.handleModeChange.bind(this) } />
-              <div id='contributor__tool' className='col-md-8 container-fluid'>
+            <React.Fragment>
+              <div className='row'>
                 {
-                  mode === 'plant-adder' && (
-                    <PlantAdder/>
-                  )
-                }
-                {
-                  mode === 'image-converter' && (
-                    <ImageConverter/>
+                  mode !== null ? (
+                    <button type='button' className='btn btn-outline-dark col-md-4'
+                        onClick={ () => this.handleModeChange(null) }>
+                      ⇐ back</button>
+                  ) : (
+                    <ContributeMenu mode={ mode }
+                        handleModeChange={ this.handleModeChange.bind(this) } />
                   )
                 }
               </div>
-            </div>
+              <div className='row'>
+                <div id='contributor__tool' className='col-md-8 container-fluid'>
+                  {
+                    mode === 'add-plant' && (
+                      <PlantAdder/>
+                    )
+                  }
+                  {
+                    mode === 'add-extract' && (
+                      <ImageConverter/>
+                    )
+                  }
+                </div>
+              </div>
+            </React.Fragment>
           )
         }
       </Login>

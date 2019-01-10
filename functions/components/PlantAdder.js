@@ -59,7 +59,6 @@ export default class extends React.Component {
     const { plantId, rank, family, genus, species } = this.state
     return (
       <React.Fragment>
-        <h3 className='contributor__title'>PLANT DATA</h3>
         <h1 className='row'>PLANT TITLE</h1>
         <h2 className='row'>RANK</h2>
         <h2 className='row'>NAMES</h2>

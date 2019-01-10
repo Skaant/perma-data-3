@@ -106,7 +106,6 @@ export default class extends React.Component {
     extractId } = this.state
     return (
       <div className='container'>
-        <h3>Load image</h3>
         <div id='load' className='row'>
           <div className='col-md-8'>
             <label>Image to convert</label>

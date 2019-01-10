@@ -1,0 +1,41 @@
+#contribute-menu {
+  text-align: center;
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 300;
+    letter-spacing: 0.15em;
+  }
+
+  > h1 {
+    font-size: 1.8rem;
+    margin-bottom: 28px;
+  }
+
+  > h2 {
+    font-size: 1.4rem;
+    margin-top: 16px;
+  }
+  
+  > h3 {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  > .contribute-menu__tool {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.active {
+      font-weight: initial;
+    }
+  }
+}
