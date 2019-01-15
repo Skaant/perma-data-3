@@ -4,6 +4,31 @@
 
   @import '../components/contributor/ContributeMenu/ContributeMenu.scss';
 
+  #contributor__top-menu {
+    margin-bottom: 40px;
+
+    > #contributor__back-btn {
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+  }
+
+  #contributor__tool {
+
+    h1 {
+      text-align: center;
+      letter-spacing: 8px;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    #contributor__bot-menu {
+      margin-top: 40px;
+    }
+  }
+
   .container {
 
     > .row {

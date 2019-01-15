@@ -6,6 +6,7 @@ import ImageConverter from '../../components/ImageConverter'
 import PlantAdder from '../../components/PlantAdder'
 import Login from '../../components/Login/Login';
 import ContributeMenu from '../components/contributor/ContributeMenu/ContributeMenu';
+import AddPlant from '../components/contributor/AddPlant/AddPlant';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -51,12 +52,13 @@ class Contributor extends React.Component {
         {
           (user && user.roles.includes('contributor')) && (
             <React.Fragment>
-              <div className='row'>
+              <div id='contributor__top-menu' className='row'>
                 {
                   mode !== null ? (
-                    <button type='button' className='btn btn-outline-dark col-md-4'
+                    <button type='button' id='contributor__back-btn'
+                        className='btn btn-outline-dark col-md-4'
                         onClick={ () => this.handleModeChange(null) }>
-                      ⇐ back</button>
+                      back</button>
                   ) : (
                     <ContributeMenu mode={ mode }
                         handleModeChange={ this.handleModeChange.bind(this) } />
@@ -64,10 +66,10 @@ class Contributor extends React.Component {
                 }
               </div>
               <div className='row'>
-                <div id='contributor__tool' className='col-md-8 container-fluid'>
+                <div id='contributor__tool' className='col-8 col-md-6 container-fluid'>
                   {
                     mode === 'add-plant' && (
-                      <PlantAdder/>
+                      <AddPlant/>
                     )
                   }
                   {
