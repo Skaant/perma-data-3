@@ -1,7 +1,15 @@
-#plant-search {
-  
-}
+.plant-search__results {
 
-.plant-result {
+  > li {
+    padding-left: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
 
+    > a {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }

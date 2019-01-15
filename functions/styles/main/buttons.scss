@@ -3,5 +3,10 @@ button.btn-x {
   text-transform: uppercase;
   font-size: 0.6rem;
   letter-spacing: 2px;
-  padding: 12px; 
+  padding: 12px;
+  margin-top: 8px;
+
+  &.btn-x-border {
+    border: 1px solid #DDD;
+  }
 }

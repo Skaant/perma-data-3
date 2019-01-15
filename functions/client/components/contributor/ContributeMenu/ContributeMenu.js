@@ -18,7 +18,7 @@ export default ({ mode, handleModeChange }) => (
     <h3 className={ mode === 'add-extract' ? ' active' : '' }
         onClick={ () => handleModeChange('add-extract') }>
       add extract</h3>
-    <h2 className>DATA</h2>
+    <h2>DATA</h2>
     <h3 className={ mode === 'add-data' ? ' active' : '' }
         onClick={ () => handleModeChange('add-data') }>
       add data</h3>

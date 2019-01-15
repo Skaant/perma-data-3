@@ -5,36 +5,64 @@ export default class extends React.Component {
   constructor() {
     super()
     this.state = {
-      id: '',
-      rank: 'species',
-      sup: null
+      plant: {
+        id: '',
+        rank: 'species',
+        sup: null
+      },
+      message: null
     }
   }
 
   handleIdChange(id) {
-    this.setState({ id })
+    const { plant } = this.state
+    this.setState({ 
+      plant: Object.assign({}, plant, { id }),
+      message: null
+    })
   }
 
   handleRankChange(rank) {
-    this.setState({ rank })
+    const { plant } = this.state
+    this.setState({ 
+      plant: Object.assign({}, plant, { rank }),
+      message: null
+    })
   }
 
   handleSupChange(sup) {
-    this.setState({ sup })
+    const { plant } = this.state
+    this.setState({ 
+      plant: Object.assign({}, plant, { sup }),
+      message: null
+    })
   }
 
   addPlant() {
     fetch('/api/plants', {
       method: 'PUT',
-      body: JSON.stringify(this.state)
+      body: JSON.stringify(this.state.plant)
     })
       .then(result => result.json())
-      .then(plant => console.log(plant))
-      .catch(err => console.log(err))
+      .then(() => this.setState({
+        message: {
+          type: 'success',
+          value: 'plant added'
+        }
+      }))
+      .catch(err => {
+        console.log(err)
+        this.setState({
+          message: {
+            type: 'danger',
+            value: err.message
+          }
+        })
+      })
   }
 
   render() {
-    const { id, rank, sup } = this.state
+    const { plant: { id, rank, sup }, message } = this.state
     return (
       <React.Fragment>
         <h1 className='row'>ADD PLANT</h1>
@@ -48,29 +76,36 @@ export default class extends React.Component {
               onChange={ e => this.handleRankChange(e.target.value) }>
             <option value={ null }>
               choose a rank</option>
-            <option value='family'>
-              family</option>
-            <option value='genus'>
-              genus</option>
-            <option value='species'>
-              species</option>
             <option value='variety'>
               variety</option>
+            <option value='species'>
+              species</option>
+            <option value='genus'>
+              genus</option>
+            <option value='family'>
+              family</option>
           </select>
           {
             (rank !== null && rank !== 'family') && (
               <React.Fragment>
                 <label>Rank sup{
                   sup && ` (${ sup })` }</label>
-                <PlantSearch selectPlant={ this.handleSupChange.bind(this) }/>
+                <PlantSearch mode='mono' plant={ sup }
+                    selectPlant={ this.handleSupChange.bind(this) }/>
               </React.Fragment>
             )
           }
         </div>
-        <div className='row'>
-          <div className='col-md-4 offset-md-8'>
+        {
+          message && (
+            <div className={ `row alert alert-${ message.type }` }>
+              { message.value }</div>
+          )
+        }
+        <div id='contributor__bot-menu' className='row'>
+          <div className='col-md-6 offset-md-6'>
             <button type='button'
-                className='btn btn-primary col'
+                className='btn btn-primary btn-x col'
                 onClick={ () => this.addPlant() }
                 disabled={ !id || !rank ||
                   (rank !== null && rank !== 'family' && !sup) }>

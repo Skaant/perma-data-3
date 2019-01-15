@@ -1,14 +1,12 @@
 module.exports = {
   add: (req, res) => {
     const plant = JSON.parse(req.body)
-    console.log(typeof plant, plant.id)
-    global.db.collection('plants').doc(plant.id).set(plant)
+    const newPlant = Object.assign({}, plant, {
+      sup: global.db.collection('plants').doc(plant.sup)
+    })
+    global.db.collection('plants').doc(plant.id).set(newPlant)
       .then(() => {
-        res.json({
-          [plant.id]: {
-            plant
-          }
-        })
+        res.json(plant)
       })
       .catch(err => {
         console.log(err)

@@ -26,7 +26,10 @@ button.btn-x {
   text-transform: uppercase;
   font-size: 0.6rem;
   letter-spacing: 2px;
-  padding: 12px; }
+  padding: 12px;
+  margin-top: 8px; }
+  button.btn-x.btn-x-border {
+    border: 1px solid #DDD; }
 
 label {
   text-transform: uppercase;
@@ -35,7 +38,8 @@ label {
   font-size: 0.8rem;
   margin-top: 20px; }
 
-input {
+input,
+select {
   font-weight: 300;
   letter-spacing: 2px; }
 

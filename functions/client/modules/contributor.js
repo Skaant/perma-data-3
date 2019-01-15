@@ -3,7 +3,6 @@ import firebase from 'firebase/app'
 import firebaseConfig from '../../firebase.config'
 import { render } from 'react-dom'
 import ImageConverter from '../../components/ImageConverter'
-import PlantAdder from '../../components/PlantAdder'
 import Login from '../../components/Login/Login';
 import ContributeMenu from '../components/contributor/ContributeMenu/ContributeMenu';
 import AddPlant from '../components/contributor/AddPlant/AddPlant';
