@@ -37,7 +37,10 @@ export default class extends React.Component {
     const { lang } = this.props
     return (
       <React.Fragment>
-        kek
+        <label>Image to convert</label>
+        <input type='file' accept='image/*'
+            className='col-md-8'
+            onChange={ e => this.handleImageChange(e.target.files[0]) }/>
       </React.Fragment>
     )
   }

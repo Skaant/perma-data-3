@@ -64,7 +64,7 @@ export default class extends React.Component {
 
   render() {
     const { 
-      biblio: { lang, title, author, content, edition, alias },
+      section: { lang, title, author, content, edition, alias },
       open,
       message
     } = this.state

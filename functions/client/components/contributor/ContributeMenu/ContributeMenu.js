@@ -9,12 +9,6 @@ export default ({ mode, handleModeChange }) => (
         onClick={ () => handleModeChange('add-plant') }>
       add plant</h3>
     <h2>EXTRACTS</h2>
-    <h3 className={ mode === 'add-biblio' ? ' active' : '' }
-        onClick={ () => handleModeChange('add-biblio') }>
-      add biblio</h3>
-    <h3 className={ mode === 'add-section' ? ' active' : '' }
-        onClick={ () => handleModeChange('add-section') }>
-      add section</h3>
     <h3 className={ mode === 'add-extract' ? ' active' : '' }
         onClick={ () => handleModeChange('add-extract') }>
       add extract</h3>

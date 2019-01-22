@@ -1,5 +1,6 @@
 import React from 'react'
-import PlantSearch from '../../PlantSearch/PlantSearch';
+import PlantSearch from '../../PlantSearch/PlantSearch'
+import calculateRank from '../../../../utils/functions/calculateRank'
 
 export default class extends React.Component {
   constructor() {
@@ -25,7 +26,10 @@ export default class extends React.Component {
   handleRankChange(rank) {
     const { plant } = this.state
     this.setState({ 
-      plant: Object.assign({}, plant, { rank }),
+      plant: Object.assign({}, plant, {
+        rank,
+        sup: null
+      }),
       message: null
     })
   }
@@ -66,10 +70,12 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <h1 className='row'>ADD PLANT</h1>
-        <div id='add-plant-form' className='row'>
+        <div className='row'>
           <label>id (latin taxonomy)</label>
           <input type='text' className='form-control'
               onChange={ e => this.handleIdChange(e.target.value) } />
+        </div>
+        <div className='row'>
           <label>Plant rank</label>
           <select className='form-control'
               value={ rank }
@@ -85,17 +91,14 @@ export default class extends React.Component {
             <option value='family'>
               family</option>
           </select>
-          {
-            (rank !== null && rank !== 'family') && (
-              <React.Fragment>
-                <label>Rank sup{
-                  sup && ` (${ sup })` }</label>
-                <PlantSearch mode='mono' plant={ sup }
-                    selectPlant={ this.handleSupChange.bind(this) }/>
-              </React.Fragment>
-            )
-          }
         </div>
+        {
+          (rank !== null && rank !== 'family') && (
+            <PlantSearch mode='mono' plant={ sup } rank={ rank }
+                label={ `parent rank plant (${ calculateRank(rank, -1) })` }
+                selectPlant={ this.handleSupChange.bind(this) }/>
+          )
+        }
         {
           message && (
             <div className={ `row alert alert-${ message.type }` }>
