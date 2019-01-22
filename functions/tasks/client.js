@@ -10,12 +10,13 @@ const clean = () => del(['../public/modules*.js', '../modules/styles/*.css'], {
     force: true
   })
 
-const buildJS = () => gulp.src(['./client/modules/*.js'])
+const buildJS = () => gulp.src(['./client/modules/*/*.js'])
   .pipe(named())
   .pipe(webpackStream(webpackClientConfig, webpack))
   .pipe(gulp.dest('../public/modules'))
 
-const buildSass = () => gulp.src('./client/styles/*.scss')
+const buildSass = () => gulp.src('./client/modules/*/*.scss')
+  .pipe(named())
   .pipe(sass().on('error', sass.logError))
   .pipe(gulp.dest('../public/modules/styles'))
 

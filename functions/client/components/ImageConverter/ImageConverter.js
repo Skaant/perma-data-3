@@ -1,7 +1,4 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import SearchPlant from './SearchPlant'
-import ExtractItem from './ExtractItem';
 
 const Tesseract = window.Tesseract
 

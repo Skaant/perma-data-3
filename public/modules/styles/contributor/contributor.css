@@ -1,0 +1,72 @@
+#auth-frame-menu #auth-frame-menu__user > h6 {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: right; }
+  #auth-frame-menu #auth-frame-menu__user > h6 > a {
+    color: black !important;
+    cursor: pointer; }
+    #auth-frame-menu #auth-frame-menu__user > h6 > a:hover {
+      text-decoration: underline; }
+    #auth-frame-menu #auth-frame-menu__user > h6 > a#auth-frame-menu__user-btn--sign-out {
+      opacity: 0.7; }
+
+#login-form #login-form__info {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-top: 40px;
+  text-align: center; }
+
+#login-form #login-form__menu {
+  margin-top: 12px; }
+
+#contributor #contribute-menu {
+  text-align: center; }
+  #contributor #contribute-menu h1,
+  #contributor #contribute-menu h2,
+  #contributor #contribute-menu h3 {
+    font-weight: 300;
+    letter-spacing: 0.15em; }
+  #contributor #contribute-menu > h1 {
+    font-size: 1.8rem;
+    margin-bottom: 28px; }
+  #contributor #contribute-menu > h2 {
+    font-size: 1.4rem;
+    margin-top: 16px; }
+  #contributor #contribute-menu > h3 {
+    font-size: 1rem;
+    cursor: pointer; }
+  #contributor #contribute-menu > .contribute-menu__tool {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    cursor: pointer; }
+    #contributor #contribute-menu > .contribute-menu__tool:hover {
+      text-decoration: underline; }
+    #contributor #contribute-menu > .contribute-menu__tool.active {
+      font-weight: initial; }
+
+#contributor #contributor__top-menu {
+  margin-bottom: 40px; }
+  #contributor #contributor__top-menu > #contributor__back-btn {
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300; }
+
+#contributor #contributor__tool h1 {
+  text-align: center;
+  letter-spacing: 8px;
+  font-weight: 300;
+  margin-bottom: 40px; }
+
+#contributor #contributor__tool .alert {
+  margin-top: 6px; }
+  #contributor #contributor__tool .alert > a {
+    text-decoration: underline;
+    cursor: pointer; }
+
+#contributor #contributor__tool #contributor__bot-menu {
+  margin-top: 40px; }

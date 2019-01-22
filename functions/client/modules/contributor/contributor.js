@@ -1,11 +1,11 @@
 import React from 'react'
 import firebase from 'firebase/app'
-import firebaseConfig from '../../firebase.config'
+import firebaseConfig from '../../../firebase.config'
 import { render } from 'react-dom'
-import ImageConverter from '../../components/ImageConverter'
-import Login from '../../components/Login/Login';
-import ContributeMenu from '../components/contributor/ContributeMenu/ContributeMenu';
-import AddPlant from '../components/contributor/AddPlant/AddPlant';
+import Login from '../../components/Login/Login'
+import ContributeMenu from './ContributeMenu/ContributeMenu'
+import AddPlant from './AddPlant/AddPlant'
+import AddExtract from './AddExtract/AddExtract'
 
 firebase.initializeApp(firebaseConfig)
 
@@ -73,7 +73,7 @@ class Contributor extends React.Component {
                   }
                   {
                     mode === 'add-extract' && (
-                      <ImageConverter/>
+                      <AddExtract/>
                     )
                   }
                 </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import PlantSearch from '../../PlantSearch/PlantSearch'
+import PlantSearch from '../../../components/PlantSearch/PlantSearch'
 import calculateRank from '../../../../utils/functions/calculateRank'
 
 export default class extends React.Component {

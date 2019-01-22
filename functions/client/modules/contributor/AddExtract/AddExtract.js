@@ -1,8 +1,5 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
-import SearchPlant from './SearchPlant'
-import ExtractItem from './ExtractItem';
-import ImageConverter from '../../ImageConverter/ImageConverter';
+import ImageConverter from '../../../components/ImageConverter/ImageConverter';
 
 const Tesseract = window.Tesseract
 
