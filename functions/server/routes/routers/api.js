@@ -1,14 +1,15 @@
 const plants = require('./api/plants')
-const plantSearch = require('./api/plantSearch')
-const biblios = require('./api/biblios')
+const extracts = require('./api/extracts')
 const userData = require('./api/userData')
 
 module.exports = router => {
   router.route('/plants/search/:key').get(plants.search)
   router.route('/plants').put(plants.add)
-  router.route('/plant-search/:keyword').get(plantSearch)
-  router.route('/plant-search/:rank/:keyword').get(plantSearch)
-  router.route('/biblios').get(biblios)
+
+  router.route('/extracts/search/:key').get(extracts.search)
+  router.route('/extracts/subs/:id').get(extracts.subs)
+  router.route('/extracts').put(extracts.add)
+
   router.route('/user-data/:userId').get(userData)
   return router
 }
