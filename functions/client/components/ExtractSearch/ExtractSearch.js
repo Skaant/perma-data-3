@@ -12,8 +12,11 @@ export default class extends React.Component {
     }
   }
 
-  handleOpenChange(open) {
-    this.setState({ open })
+  handleOpenChange() {
+    const { open } = this.state
+    this.setState({
+      open: !open
+    })
   }
 
   handleKeyChange(key) {
@@ -24,6 +27,10 @@ export default class extends React.Component {
     const { mode, selectExtract } = this.props
     const { key } = this.state
     if (key.length >= 3) {
+      this.setState({
+        load: true,
+        results: []
+      })
       fetch(`/api/extracts/search/${ key }`, {
         method: 'GET'
       })
@@ -56,7 +63,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { mode, label, extract } = this.props
+    const { label, extract } = this.props
     const { open, key, results, load } = this.state
     return (
       <div className='plant-search'>
@@ -67,28 +74,30 @@ export default class extends React.Component {
           !open ? (
             <div className='row'>
               <button className='btn btn-x btn-x-border btn-outline-dark col-12'
-                  onClick={ () => this.handleOpenChange(true) }>
+                  onClick={ () => this.handleOpenChange() }>
                 open extract search</button>
             </div>
           ) : (
             <React.Fragment>
               <div className='row'>
+                <button className='btn btn-x btn-dark col-12'
+                    onClick={ () => this.handleOpenChange() }>
+                  collapse</button>
+              </div>
+              <div className='row'>
                 <input type='text'
-                    placeholder='type plant key here'
+                    placeholder='type extract key here'
                     className='form-control'
                     value={ key }
                     onChange={ e => this.handleKeyChange(e.target.value) }
                     onKeyPress={ e => e.charCode === 13
-                      && key.length >= 3 && this.searchPlant() }/>
+                      && key.length >= 3 && this.searchExtract() }/>
               </div>
               <div className='row'>
-                <button className='btn btn-x btn-outline-dark col-md-6'
-                    onClick={ () => this.handleOpenChange(false) }>
-                  close search form</button>
-                <button className='btn btn-x btn-primary col-md-6'
-                    onClick={ () => this.searchPlant() }
+                <button className='btn btn-x btn-primary offset-md-6 col-md-6'
+                    onClick={ () => this.searchExtract() }
                     disabled={ key.length < 3 }>
-                  run plant search</button>
+                  run extract search</button>
               </div>
               {
                 load && (
@@ -119,20 +128,6 @@ export default class extends React.Component {
             </React.Fragment>
           )
         }
-        <div className='row'>
-          {
-            extract ? (
-              <div className='col-12 alert alert-primary'>
-                { extract.title }</div>
-            ) : (mode === 'mandatory' ? (
-              <div className='col-12 alert alert-secondary'>
-                <b>no extract selected</b></div>
-            ) : (
-              <div className='col-12 alert alert-secondary'>
-                <b>top level extract</b></div>
-            ))
-          }
-        </div>
       </div>
     )
   }

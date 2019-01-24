@@ -95,7 +95,7 @@ export default class extends React.Component {
         {
           (rank !== null && rank !== 'family') && (
             <PlantSearch mode='mono' plant={ sup } rank={ rank }
-                label={ `parent rank plant (${ calculateRank(rank, -1) })` }
+                label={ `parent (${ calculateRank(rank, -1) })` }
                 selectPlant={ this.handleSupChange.bind(this) }/>
           )
         }

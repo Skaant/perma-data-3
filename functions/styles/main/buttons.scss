@@ -5,8 +5,20 @@ button.btn-x {
   letter-spacing: 2px;
   padding: 12px;
   margin-top: 8px;
+  margin-bottom: 8px;
 
   &.btn-x-border {
     border: 1px solid #DDD;
+  }
+
+  &:not(:hover).btn-x-light-dark {
+    background-color: #EEE;
+  }
+}
+
+.input-group {
+  
+  button.btn-x {
+    margin: 0;
   }
 }

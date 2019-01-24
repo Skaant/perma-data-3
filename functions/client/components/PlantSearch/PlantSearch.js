@@ -24,20 +24,24 @@ export default class extends React.Component {
     const { rank } = this.props
     const { key } = this.state
     if (key.length >= 3) {
+      this.setState({
+        load: true,
+        results: []
+      })
       fetch(`/api/plants/search/${ key }`, {
         method: 'GET'
       })
         .then(result => result.json())
-        .then(({ plants: results }) => {
-          const rankResults = results.filter(
+        .then(({ plants }) => {
+          const results = plants.filter(
             ({ rank: resultRank }) => resultRank === calculateRank(rank, -1))
-          if (rankResults.length === 1) {
+          if (results.length === 1) {
             this.props.selectPlant(results[0].id)
           }
           this.setState({
             load: false,
             results,
-            open: rankResults.length > 1
+            open: results.length > 1
           })
         })
         .catch(err => {
@@ -79,22 +83,26 @@ export default class extends React.Component {
           ) : (
             <React.Fragment>
               <div className='row'>
-                <input type='text'
-                    placeholder='type plant key here'
-                    className='form-control'
-                    value={ key }
-                    onChange={ e => this.handleKeyChange(e.target.value) }
-                    onKeyPress={ e => e.charCode === 13
-                      && key.length >= 3 && this.searchPlant() }/>
+                <button className='btn btn-x btn-x-light-dark btn-outline-dark col-md-12'
+                    onClick={ () => this.handleOpenChange(false) }>
+                  collapse form</button>
               </div>
               <div className='row'>
-                <button className='btn btn-x btn-outline-dark col-md-6'
-                    onClick={ () => this.handleOpenChange(false) }>
-                  close search form</button>
-                <button className='btn btn-x btn-primary col-md-6'
-                    onClick={ () => this.searchPlant() }
-                    disabled={ key.length < 3 }>
-                  run plant search</button>
+                <div className='input-group col-md-12'>
+                  <input type='text'
+                      placeholder='type plant key here'
+                      className='form-control'
+                      value={ key }
+                      onChange={ e => this.handleKeyChange(e.target.value) }
+                      onKeyPress={ e => e.charCode === 13
+                        && key.length >= 3 && this.searchPlant() }/>
+                  <div className='input-group-append'>
+                    <button className='btn btn-x btn-primary'
+                        onClick={ () => this.searchPlant() }
+                        disabled={ key.length < 3 }>
+                      search</button>
+                  </div>
+                </div>
               </div>
               {
                 load && (
@@ -127,30 +135,18 @@ export default class extends React.Component {
         }
         <div className='row'>
           {
-            (((mode === 'mono' && !plant) || (mode === 'multi' && !plants))
+            !load && (((mode === 'mono' && !plant) || (mode === 'multi' && !plants))
               && results.length === 0) && (
-                <div className='col-12 alert alert-secondary'>
+                <div className='col-12 alert alert-warning'>
                   <i>no plant selected</i></div>
               )
           }
           {
-            (mode === 'mono') 
-              && plant ? (
-                <div className='col-12 alert alert-primary'>{ plant } (
-                  <a onClick={ () => selectPlant(null) }>
-                    delete</a>)</div>
-              ) : results.length > 0 && (
-                <div className='col-12 alert alert-secondary'>
-                  <i>no result found of the { calculateRank(rank, -1) } rank</i>
-                </div>
-              )
-          }
-          {
-            (mode === 'multi' && plants) && plants.map(plant => (
-              <li key={ plant.id }>{ plant.id } (
+            (mode === 'mono') && plant && (
+              <div className='col-12 alert alert-primary'>{ plant } (
                 <a onClick={ () => selectPlant(null) }>
-                  delete</a>)</li>
-            ))
+                  delete</a>)</div>
+            )
           }
         </div>
       </div>

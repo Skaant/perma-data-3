@@ -27,9 +27,15 @@ button.btn-x {
   font-size: 0.6rem;
   letter-spacing: 2px;
   padding: 12px;
-  margin-top: 8px; }
+  margin-top: 8px;
+  margin-bottom: 8px; }
   button.btn-x.btn-x-border {
     border: 1px solid #DDD; }
+  button.btn-x:not(:hover).btn-x-light-dark {
+    background-color: #EEE; }
+
+.input-group button.btn-x {
+  margin: 0; }
 
 label {
   text-transform: uppercase;

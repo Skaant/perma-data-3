@@ -1,5 +1,5 @@
 import React from 'react'
-import ImageConverter from '../../../components/ImageConverter/ImageConverter';
+import ContentManager from '../../../components/ContentManager/ContentManager';
 import ExtractSearch from '../../../components/ExtractSearch/ExtractSearch';
 
 const Tesseract = window.Tesseract
@@ -9,11 +9,12 @@ export default class extends React.Component {
     super()
     this.state = {
       extract: {
-        parent: null,
+        parent: false,
         lang: 'EN',
         title: '',
+        content: '',
         author: '',
-        content: ''
+        tags: ''
       },
       message: null
     }
@@ -24,8 +25,13 @@ export default class extends React.Component {
     this.setState({ 
       extract: Object.assign({}, extract, {
         [key]: value
-      })
+      }),
+      message: null
     })
+  }
+
+  handleParentChange(parent) {
+    this.handleExtractChange('parent', parent)
   }
 
   addExtract() {
@@ -59,7 +65,17 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <h1 className='row'>ADD EXTRACT</h1>
-        <ExtractSearch mode='free' label='parent extract (if so)'/>
+        <div className='row'>
+          <label>top level extract ?</label>
+          <input type='checkbox' className='form-control'
+              onChange={ e => this.handleExtractChange('parent', e.target.value) } />
+        </div>
+        {
+          parent && (
+            <ExtractSearch label='parent extract'
+                selectExtract={ this.handleParentChange.bind(this) }/>
+          )
+        }
         <div className='row'>
           <label>title</label>
           <input type='text' className='form-control'
@@ -89,6 +105,11 @@ export default class extends React.Component {
             </React.Fragment>
           )
         }
+        <div className='row'>
+          <label>tags (separate with ', ')</label>
+          <input type='text' className='form-control'
+              onChange={ e => this.handleExtractChange('tags', e.target.value) } />
+        </div>
         {
           message && (
             <div className={ `row alert alert-${ message.type }` }>
