@@ -79,7 +79,7 @@ export default class extends React.Component {
         {
           !open ? (
             <div className='row'>
-              <button className='btn btn-x btn-x-border btn-outline-dark col-12'
+              <button className='btn btn-x closed btn-x-border btn-outline-dark col-12'
                   onClick={ () => this.handleOpenChange() }>
                 open plant search</button>
             </div>
@@ -138,18 +138,18 @@ export default class extends React.Component {
         }
         <div className='row'>
           {
-            !load && (((mode === 'mono' && !plant) || (mode === 'multi' && !plants))
-              && results.length === 0) && (
-                <div className='col-12 alert alert-warning'>
-                  <i>no plant selected</i></div>
-              )
-          }
-          {
             (mode === 'mono') && plant && (
               <div className='col-12 alert alert-primary'>{ plant } (
                 <a onClick={ () => selectPlant(null) }>
                   delete</a>)</div>
             )
+          }
+          {
+            !load && (((mode === 'mono' && !plant) || (mode === 'multi' && !plants))
+              && results.length === 0) && (
+                <div className='col-12 alert alert-warning'>
+                  no plant selected</div>
+              )
           }
         </div>
       </div>

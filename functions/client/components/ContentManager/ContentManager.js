@@ -66,11 +66,13 @@ export default class extends React.Component {
                   hide options</button>
               </div>
               <div className='row'>
-                <div className='input-group'>
+                <div className='file-input input-group'>
+                  <label className='form-control'>
+                    { (image && image.name) || 'select image to convert' }</label>
                   <input type='file' accept='image/*'
-                      className='form-control'
+                      className='file-input__activator form-control'
                       onChange={ e => this.handleImageChange(e.target.files[0]) }/>
-                  <div class="input-group-append">
+                  <div className="input-group-append">
                     <button className='btn btn-x btn-primary'
                         onClick={ () => this.convertImage() }
                         disabled={ !image }>
@@ -88,10 +90,14 @@ export default class extends React.Component {
             </React.Fragment>
           )
         }
-        <div className='row'>
-          <div className='alert alert-primary col-md-12'>
-            <ReactMarkdown source={ content }/></div>
-        </div>
+        {
+          content && (
+            <div className='row'>
+              <div className='alert alert-primary col-md-12'>
+                <ReactMarkdown source={ content }/></div>
+            </div>
+          )
+        }
       </div>
     )
   }

@@ -6,8 +6,41 @@ label {
   margin-top: 20px;
 }
 
+button.btn-x.closed {
+  margin-bottom: 0;
+}
+
+.alert {
+  margin-bottom: 0;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
 input,
-select {
+select,
+textarea,
+.alert {
   font-weight: 300;
   letter-spacing: 2px;
+}
+
+.input-group.file-input {
+  margin-bottom: 8px;
+
+  label {
+    margin-top: 0;
+    height: 40px;
+    font-size: 0.8rem;    
+    padding-top: 10px;
+  }
+
+  input.file-input__activator {
+    position: absolute;
+    width: calc(100% - 48px);
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+  }
 }

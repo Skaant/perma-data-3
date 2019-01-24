@@ -73,7 +73,7 @@ export default class extends React.Component {
         {
           !open ? (
             <div className='row'>
-              <button className='btn btn-x btn-x-border btn-outline-dark col-12'
+              <button className='btn btn-x closed btn-x-border btn-outline-dark col-12'
                   onClick={ () => this.handleOpenChange() }>
                 open extract search</button>
             </div>
@@ -130,6 +130,18 @@ export default class extends React.Component {
             </React.Fragment>
           )
         }
+        <div className='row'>
+          {
+            !load && (extract ? (
+              <div className='col-12 alert alert-primary'>{ extract } (
+                <a onClick={ () => selectExtract(null) }>
+                  delete</a>)</div>
+            ) : (
+              <div className='col-12 alert alert-warning'>
+                no extract selected</div>
+            ))
+          }
+        </div>
       </div>
     )
   }

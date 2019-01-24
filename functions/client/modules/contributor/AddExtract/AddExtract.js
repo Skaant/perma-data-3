@@ -78,7 +78,7 @@ export default class extends React.Component {
               onChange={ e => this.handleExtractChange('parent', e.target.checked) } />
         </div>
         {
-          parent && (
+          !parent && (
             <ExtractSearch label='parent extract'
                 selectExtract={ this.handleParentChange.bind(this) }/>
           )
@@ -90,7 +90,7 @@ export default class extends React.Component {
               onChange={ e => this.handleExtractChange('title', e.target.value) } />
         </div>
         {
-          !parent && (
+          parent && (
             <div className='row'>
               <label>lang</label>
               <select className='form-control'
@@ -109,7 +109,7 @@ export default class extends React.Component {
         <ContentManager lang={ lang } content={ content }
             changeContent={ this.handleContentChange.bind(this) }/>
         {
-          !parent && (
+          parent && (
             <div className='row'>
               <label>author</label>
               <input type='text' className='form-control'
