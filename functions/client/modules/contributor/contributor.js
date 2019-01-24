@@ -51,21 +51,26 @@ class Contributor extends React.Component {
         {
           (user && user.roles.includes('contributor')) && (
             <React.Fragment>
-              <div id='contributor__top-menu' className='row'>
-                {
-                  mode !== null ? (
-                    <button type='button' id='contributor__back-btn'
-                        className='btn btn-outline-dark col-md-4'
-                        onClick={ () => this.handleModeChange(null) }>
-                      back</button>
-                  ) : (
+              {
+                mode === null && (
+                  <div id='contributor__top-menu' className='row'>
                     <ContributeMenu mode={ mode }
                         handleModeChange={ this.handleModeChange.bind(this) } />
-                  )
-                }
-              </div>
+                  </div>
+                )
+              }
               <div className='row'>
                 <div id='contributor__tool' className='col-8 col-md-6 container-fluid'>
+                  {
+                    mode && (
+                      <div id='contributor__top-menu' className='row'>
+                        <button type='button'
+                            className='btn btn-x btn-dark col-md-6'
+                            onClick={ () => this.handleModeChange(null) }>
+                          menu back</button>
+                      </div>
+                    )
+                  }
                   {
                     mode === 'add-plant' && (
                       <AddPlant/>

@@ -60,11 +60,9 @@
 
 #contributor #contributor__top-menu {
   margin-bottom: 40px; }
-  #contributor #contributor__top-menu > #contributor__back-btn {
-    border: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 300; }
+
+#contributor #contributor__bot-menu {
+  margin-top: 40px; }
 
 #contributor #contributor__tool h1 {
   text-align: center;

@@ -73,7 +73,8 @@ export default class extends React.Component {
       message } = this.state
     return (
       <React.Fragment>
-        <h1 className='row'>ADD PLANT</h1>
+        <div className='row'>
+          <h1 className='col-md-12'>ADD PLANT</h1></div>
         <div className='row'>
           <label>id (latin taxonomy)</label>
           <input type='text' className='form-control'
@@ -110,14 +111,12 @@ export default class extends React.Component {
           )
         }
         <div id='contributor__bot-menu' className='row'>
-          <div className='col-md-6 offset-md-6'>
-            <button type='button'
-                className='btn btn-primary btn-x col'
-                onClick={ () => this.addPlant() }
-                disabled={ !id || !rank ||
-                  (rank !== null && rank !== 'family' && !sup) }>
-              send plant</button>
-          </div>
+          <button type='button'
+              className='btn btn-primary btn-x col-md-6 offset-md-6'
+              onClick={ () => this.addPlant() }
+              disabled={ !id || !rank ||
+                (rank !== null && rank !== 'family' && !sup) }>
+            send plant</button>
         </div>
       </React.Fragment>
     )
