@@ -36,10 +36,13 @@ export default class extends React.Component {
       })
         .then(result => result.json())
         .then(({ extracts: results }) => {
+          if (results.length === 1) {
+            selectExtract(results[0])
+          }
           this.setState({
             load: false,
             results,
-            open: rankResults.length > 1
+            open: results.length > 1
           })
         })
         .catch(err => {
@@ -133,7 +136,7 @@ export default class extends React.Component {
         <div className='row'>
           {
             !load && (extract ? (
-              <div className='col-12 alert alert-primary'>{ extract } (
+              <div className='col-12 alert alert-primary'>{ extract.title } (
                 <a onClick={ () => selectExtract(null) }>
                   delete</a>)</div>
             ) : (

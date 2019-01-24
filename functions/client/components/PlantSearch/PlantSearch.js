@@ -36,10 +36,12 @@ export default class extends React.Component {
       })
         .then(result => result.json())
         .then(({ plants }) => {
-          const results = plants.filter(
-            ({ rank: resultRank }) => resultRank === calculateRank(rank, -1))
+          const { selectPlant } = this.props
+          const results = rank ?
+            plants.filter(({ rank: resultRank }) => resultRank === calculateRank(rank, -1))
+            : plants
           if (results.length === 1) {
-            this.props.selectPlant(results[0].id)
+            selectPlant(results[0].id)
           }
           this.setState({
             load: false,

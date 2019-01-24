@@ -77,12 +77,9 @@ export default class extends React.Component {
           <input type='checkbox' className='form-control'
               onChange={ e => this.handleExtractChange('parent', e.target.checked) } />
         </div>
-        {
-          !parent && (
-            <ExtractSearch label='parent extract'
-                selectExtract={ this.handleParentChange.bind(this) }/>
-          )
-        }
+        <ExtractSearch label='parent extract'
+            extract={ parent }
+            selectExtract={ this.handleParentChange.bind(this) }/>
         <div className='row'>
           <label>title</label>
           <input type='text' className='form-control'

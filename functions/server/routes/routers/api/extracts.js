@@ -1,3 +1,5 @@
+const search = require('./extracts/search')
+
 module.exports = {
   add: (req, res) => {
     res.status(501)
@@ -5,7 +7,5 @@ module.exports = {
   subs: (req, res) => {
     res.status(501)
   },
-  search: (req, res) => {
-    res.status(501)
-  }
+  search
 }
