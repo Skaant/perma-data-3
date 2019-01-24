@@ -24,7 +24,7 @@ export default class extends React.Component {
   }
 
   searchExtract() {
-    const { mode, selectExtract } = this.props
+    const { selectExtract } = this.props
     const { key } = this.state
     if (key.length >= 3) {
       this.setState({

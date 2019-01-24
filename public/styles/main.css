@@ -35,7 +35,9 @@ button.btn-x {
     background-color: #EEE; }
 
 .input-group button.btn-x {
-  margin: 0; }
+  margin: 0;
+  padding-left: 16px;
+  padding-right: 16px; }
 
 label {
   text-transform: uppercase;

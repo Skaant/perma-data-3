@@ -1,8 +1,7 @@
 import React from 'react'
-import ContentManager from '../../../components/ContentManager/ContentManager';
-import ExtractSearch from '../../../components/ExtractSearch/ExtractSearch';
-
-const Tesseract = window.Tesseract
+import ContentManager from '../../../components/ContentManager/ContentManager'
+import ExtractSearch from '../../../components/ExtractSearch/ExtractSearch'
+import TagManager from '../../../components/TagManager/TagManager'
 
 export default class extends React.Component {
   constructor() {
@@ -14,7 +13,7 @@ export default class extends React.Component {
         title: '',
         content: '',
         author: '',
-        tags: ''
+        tags: []
       },
       message: null
     }
@@ -32,6 +31,14 @@ export default class extends React.Component {
 
   handleParentChange(parent) {
     this.handleExtractChange('parent', parent)
+  }
+
+  handleContentChange(content) {
+    this.handleExtractChange('content', content)
+  }
+
+  handleTagsChange(tags) {
+    this.handleExtractChange('tags', tags)
   }
 
   addExtract() {
@@ -59,7 +66,7 @@ export default class extends React.Component {
 
   render() {
     const { 
-      extract: { parent, lang, title, author, content },
+      extract: { parent, lang, title, author, content, tags },
       message
     } = this.state
     return (
@@ -79,37 +86,40 @@ export default class extends React.Component {
         <div className='row'>
           <label>title</label>
           <input type='text' className='form-control'
+              value={ title }
               onChange={ e => this.handleExtractChange('title', e.target.value) } />
         </div>
         {
           !parent && (
-            <React.Fragment>
-              <div className='row'>
-                <label>lang</label>
-                <select className='form-control'
-                    value={ lang }
-                    onChange={ e => this.handleExtractChange('lang', e.target.value) }>
-                  <option value={ null }>
-                    choose a lang</option>
-                  <option value='EN'>
-                    EN</option>
-                  <option value='FR'>
-                    FR</option>
-                </select>
-              </div>
-              <div className='row'>
-                <label>author</label>
-                <input type='text' className='form-control'
-                    onChange={ e => this.handleExtractChange('author', e.target.value) } />
-              </div>
-            </React.Fragment>
+            <div className='row'>
+              <label>lang</label>
+              <select className='form-control'
+                  value={ lang }
+                  onChange={ e => this.handleExtractChange('lang', e.target.value) }>
+                <option value={ null }>
+                  choose a lang</option>
+                <option value='EN'>
+                  EN</option>
+                <option value='FR'>
+                  FR</option>
+              </select>
+            </div>
           )
         }
-        <div className='row'>
-          <label>tags (separate with ', ')</label>
-          <input type='text' className='form-control'
-              onChange={ e => this.handleExtractChange('tags', e.target.value) } />
-        </div>
+        <ContentManager lang={ lang } content={ content }
+            changeContent={ this.handleContentChange.bind(this) }/>
+        {
+          !parent && (
+            <div className='row'>
+              <label>author</label>
+              <input type='text' className='form-control'
+                  value={ author }
+                  onChange={ e => this.handleExtractChange('author', e.target.value) } />
+            </div>
+          )
+        }
+        <TagManager tags={ tags }
+            changeTags={ this.handleTagsChange.bind(this) }/>
         {
           message && (
             <div className={ `row alert alert-${ message.type }` }>

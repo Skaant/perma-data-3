@@ -1,6 +1,7 @@
 import React from 'react'
 import PlantSearch from '../../../components/PlantSearch/PlantSearch'
 import calculateRank from '../../../../utils/functions/calculateRank'
+import TagManager from '../../../components/TagManager/TagManager';
 
 export default class extends React.Component {
   constructor() {
@@ -9,7 +10,8 @@ export default class extends React.Component {
       plant: {
         id: '',
         rank: 'species',
-        sup: null
+        sup: null,
+        tags: []
       },
       message: null
     }
@@ -66,7 +68,9 @@ export default class extends React.Component {
   }
 
   render() {
-    const { plant: { id, rank, sup }, message } = this.state
+    const { 
+      plant: { id, rank, sup },
+      message } = this.state
     return (
       <React.Fragment>
         <h1 className='row'>ADD PLANT</h1>

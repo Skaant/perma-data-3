@@ -12,8 +12,11 @@ export default class extends React.Component {
     }
   }
 
-  handleOpenChange(open) {
-    this.setState({ open })
+  handleOpenChange() {
+    const { open } = this.state
+    this.setState({
+      open: !open
+    })
   }
 
   handleKeyChange(key) {
@@ -77,18 +80,18 @@ export default class extends React.Component {
           !open ? (
             <div className='row'>
               <button className='btn btn-x btn-x-border btn-outline-dark col-12'
-                  onClick={ () => this.handleOpenChange(true) }>
+                  onClick={ () => this.handleOpenChange() }>
                 open plant search</button>
             </div>
           ) : (
             <React.Fragment>
               <div className='row'>
                 <button className='btn btn-x btn-x-light-dark btn-outline-dark col-md-12'
-                    onClick={ () => this.handleOpenChange(false) }>
+                    onClick={ () => this.handleOpenChange() }>
                   collapse form</button>
               </div>
               <div className='row'>
-                <div className='input-group col-md-12'>
+                <div className='input-group'>
                   <input type='text'
                       placeholder='type plant key here'
                       className='form-control'
@@ -100,7 +103,7 @@ export default class extends React.Component {
                     <button className='btn btn-x btn-primary'
                         onClick={ () => this.searchPlant() }
                         disabled={ key.length < 3 }>
-                      search</button>
+                      run</button>
                   </div>
                 </div>
               </div>
