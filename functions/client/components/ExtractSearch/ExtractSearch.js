@@ -85,19 +85,21 @@ export default class extends React.Component {
                   collapse</button>
               </div>
               <div className='row'>
-                <input type='text'
-                    placeholder='type extract key here'
-                    className='form-control'
-                    value={ key }
-                    onChange={ e => this.handleKeyChange(e.target.value) }
-                    onKeyPress={ e => e.charCode === 13
-                      && key.length >= 3 && this.searchExtract() }/>
-              </div>
-              <div className='row'>
-                <button className='btn btn-x btn-primary offset-md-6 col-md-6'
-                    onClick={ () => this.searchExtract() }
-                    disabled={ key.length < 3 }>
-                  run extract search</button>
+                <div className='input-group'>
+                  <input type='text'
+                      placeholder='type extract key here'
+                      className='form-control'
+                      value={ key }
+                      onChange={ e => this.handleKeyChange(e.target.value) }
+                      onKeyPress={ e => e.charCode === 13
+                        && key.length >= 3 && this.searchExtract() }/>
+                  <div className='input-group-append'>
+                  <button className='btn btn-x btn-primary'
+                        onClick={ () => this.searchExtract() }
+                        disabled={ key.length < 3 }>
+                      run</button>
+                  </div>
+                </div>
               </div>
               {
                 load && (

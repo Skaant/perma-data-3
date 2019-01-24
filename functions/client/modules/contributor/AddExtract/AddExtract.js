@@ -75,7 +75,7 @@ export default class extends React.Component {
         <div className='row'>
           <label>top level extract ?</label>
           <input type='checkbox' className='form-control'
-              onChange={ e => this.handleExtractChange('parent', e.target.value) } />
+              onChange={ e => this.handleExtractChange('parent', e.target.checked) } />
         </div>
         {
           parent && (

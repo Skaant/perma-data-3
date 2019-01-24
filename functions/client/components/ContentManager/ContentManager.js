@@ -48,6 +48,9 @@ export default class extends React.Component {
     const { image, open } = this.state
     return (
       <div className='content-manager'>
+        <div className='row'>
+          <label>content</label>
+        </div>
         {
           !open ? (
             <div className='row'>
@@ -65,12 +68,14 @@ export default class extends React.Component {
               <div className='row'>
                 <div className='input-group'>
                   <input type='file' accept='image/*'
-                      className='col-md-6'
+                      className='form-control'
                       onChange={ e => this.handleImageChange(e.target.files[0]) }/>
-                  <button className='btn btn-x btn-primary'
-                      onClick={ () => this.convertImage() }
-                      disabled={ !image }>
-                    convert image (from { lang })</button>
+                  <div class="input-group-append">
+                    <button className='btn btn-x btn-primary'
+                        onClick={ () => this.convertImage() }
+                        disabled={ !image }>
+                      { lang }</button>
+                  </div>
                 </div>
               </div>
               <div className='row'>
