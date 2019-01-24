@@ -1,9 +1,8 @@
+const add = require('./extracts/add')
 const search = require('./extracts/search')
 
 module.exports = {
-  add: (req, res) => {
-    res.status(501)
-  },
+  add,
   subs: (req, res) => {
     res.status(501)
   },

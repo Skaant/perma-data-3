@@ -18,7 +18,7 @@ module.exports = (name, props) => (
       }
       ${
         name === 'contributor' ? 
-`     <link rel="stylesheet" type="text/css" href="/modules/styles/contributor.css"/>` : ''
+`     <link rel="stylesheet" type="text/css" href="/modules/styles/contributor/contributor.css"/>` : ''
       }
       <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
       <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->

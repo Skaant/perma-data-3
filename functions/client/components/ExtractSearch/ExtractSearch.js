@@ -58,7 +58,8 @@ export default class extends React.Component {
   handleResultsSelect(value) {
     const { rank, selectExtract } = this.props
     const { results } = this.state
-    if (results.find(({ id }) => id === value).rank === calculateRank(rank, -1)) {
+    selectExtract((value && results.find(({ id }) => id === value)) || true)
+    if (value) {
       this.setState({
         open: false
       })
@@ -66,7 +67,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { label, extract } = this.props
+    const { label, extract, selectExtract } = this.props
     const { open, key, results, load } = this.state
     return (
       <div className='plant-search'>
@@ -116,14 +117,13 @@ export default class extends React.Component {
               {
                 results.length > 1 && (
                   <div className='row'>
-                    <label>plant results</label>
                     <select className='form-control'
                         onChange={ e => this.handleResultsSelect(e.target.value) }>
-                      <option value={ null }>Choose a plant</option>
+                      <option value={ null }>choose an extract</option>
                       {
-                        results.map(({ id }) => (
+                        results.map(({ id, title }) => (
                           <option key={ id } value={ id }>
-                            { id }</option>
+                            { title }</option>
                         ))
                       }
                     </select>
@@ -135,9 +135,9 @@ export default class extends React.Component {
         }
         <div className='row'>
           {
-            !load && (extract ? (
+            !load && ((extract && extract !== true) ? (
               <div className='col-12 alert alert-primary'>{ extract.title } (
-                <a onClick={ () => selectExtract(null) }>
+                <a onClick={ () => selectExtract(true) }>
                   delete</a>)</div>
             ) : (
               <div className='col-12 alert alert-warning'>

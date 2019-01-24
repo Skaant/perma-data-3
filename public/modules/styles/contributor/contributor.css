@@ -21,6 +21,16 @@
 #login-form #login-form__menu {
   margin-top: 12px; }
 
+.tag-manager p span {
+  font-size: initial;
+  font-weight: 300;
+  letter-spacing: 2px;
+  height: 36px;
+  padding: 8px 12px;
+  margin: 2px; }
+  .tag-manager p span b {
+    cursor: pointer; }
+
 #contributor #contribute-menu {
   text-align: center; }
   #contributor #contribute-menu h1,

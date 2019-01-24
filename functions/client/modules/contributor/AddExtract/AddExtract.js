@@ -8,7 +8,7 @@ export default class extends React.Component {
     super()
     this.state = {
       extract: {
-        parent: false,
+        parent: true,
         lang: 'EN',
         title: '',
         content: '',
@@ -42,9 +42,12 @@ export default class extends React.Component {
   }
 
   addExtract() {
+    const { extract } = this.state
     fetch('/api/extracts', {
       method: 'PUT',
-      body: JSON.stringify(this.state.extract)
+      body: JSON.stringify(Object.assign({}, extract, {
+        parent: extract.parent.id
+      }))
     })
       .then(result => result.json())
       .then(() => this.setState({
@@ -75,11 +78,16 @@ export default class extends React.Component {
         <div className='row'>
           <label>top level extract ?</label>
           <input type='checkbox' className='form-control'
-              onChange={ e => this.handleExtractChange('parent', e.target.checked) } />
+              checked={ parent ? false : true }
+              onChange={ e => this.handleExtractChange('parent', !e.target.checked) } />
         </div>
-        <ExtractSearch label='parent extract'
-            extract={ parent }
-            selectExtract={ this.handleParentChange.bind(this) }/>
+        {
+          parent !== false && (
+            <ExtractSearch label='parent extract'
+                extract={ parent }
+                selectExtract={ this.handleParentChange.bind(this) }/>
+          )
+        }
         <div className='row'>
           <label>title</label>
           <input type='text' className='form-control'
@@ -87,7 +95,7 @@ export default class extends React.Component {
               onChange={ e => this.handleExtractChange('title', e.target.value) } />
         </div>
         {
-          parent && (
+          !parent && (
             <div className='row'>
               <label>lang</label>
               <select className='form-control'
@@ -103,10 +111,11 @@ export default class extends React.Component {
             </div>
           )
         }
-        <ContentManager lang={ lang } content={ content }
+        <ContentManager lang={ (parent && parent !== true) ? parent.lang : lang }
+            content={ content }
             changeContent={ this.handleContentChange.bind(this) }/>
         {
-          parent && (
+          !parent && (
             <div className='row'>
               <label>author</label>
               <input type='text' className='form-control'

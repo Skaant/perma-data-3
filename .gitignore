@@ -12,7 +12,7 @@ firebase-debug.log*
 # Firebase config
 # Compiled & built
 public/modules/*.js
-public/modules/styles/*.css
+public/modules/styles/**
 public/styles/*.css
 functions/server/templates/build/*.js
 

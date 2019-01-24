@@ -32,7 +32,7 @@ export default class extends React.Component {
     const { tags } = this.props
     const { value } = this.state
     return (
-      <div className='tags-manager'>
+      <div className='tag-manager'>
         <div className='row'>
           <label>tag list</label>
           <div className='input-group'>
