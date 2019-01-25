@@ -41,7 +41,7 @@ export default class extends React.Component {
             plants.filter(({ rank: resultRank }) => resultRank === calculateRank(rank, -1))
             : plants
           if (results.length === 1) {
-            selectPlant(results[0].id)
+            selectPlant(results[0])
           }
           this.setState({
             load: false,
@@ -60,10 +60,10 @@ export default class extends React.Component {
   }
 
   handleResultsSelect(value) {
-    const { rank, selectPlant } = this.props
+    const { selectPlant } = this.props
     const { results } = this.state
-    if (results.find(({ id }) => id === value).rank === calculateRank(rank, -1)) {
-      selectPlant(value)
+    selectPlant(((value && results.find(({ id }) => id === value)) || true))
+    if (value) {
       this.setState({
         open: false
       })
@@ -140,15 +140,30 @@ export default class extends React.Component {
         }
         <div className='row'>
           {
-            (mode === 'mono') && plant && (
-              <div className='col-12 alert alert-primary'>{ plant } (
-                <a onClick={ () => selectPlant(null) }>
+            (mode === 'mono' && plant) && (
+              <div className='col-12 alert alert-primary'>
+                { plant.id } (<a onClick={ () => selectPlant(null) }>
                   delete</a>)</div>
             )
           }
           {
-            !load && (((mode === 'mono' && !plant) || (mode === 'multi' && !plants))
-              && results.length === 0) && (
+            (mode === 'multi' && plants.length > 0) && (
+              <div className='col-12 alert alert-primary'>
+                <ul>
+                  {
+                    plants.map(({ id }) => (
+                      <li key={ id }>
+                        { id } (<a onClick={ () => selectPlant(id) }>
+                          delete</a>)</li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )
+          }
+          {
+            !load && ((mode === 'mono' && !plant)
+                || (mode === 'multi' && plants.length === 0)) && (
                 <div className='col-12 alert alert-warning'>
                   no plant selected</div>
               )

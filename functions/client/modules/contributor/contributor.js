@@ -6,6 +6,7 @@ import Login from '../../components/Login/Login'
 import ContributeMenu from './ContributeMenu/ContributeMenu'
 import AddPlant from './AddPlant/AddPlant'
 import AddExtract from './AddExtract/AddExtract'
+import AddData from './AddData/AddData';
 
 firebase.initializeApp(firebaseConfig)
 
@@ -79,6 +80,11 @@ class Contributor extends React.Component {
                   {
                     mode === 'add-extract' && (
                       <AddExtract/>
+                    )
+                  }
+                  {
+                    mode === 'add-data' && (
+                      <AddData/>
                     )
                   }
                 </div>

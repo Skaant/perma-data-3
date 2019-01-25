@@ -51,7 +51,7 @@ button.btn-x.closed {
 
 .alert {
   margin-bottom: 0; }
-  .alert p:last-child {
+  .alert *:last-child {
     margin-bottom: 0; }
 
 input,

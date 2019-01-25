@@ -1,7 +1,6 @@
 import React from 'react'
 import PlantSearch from '../../../components/PlantSearch/PlantSearch'
 import calculateRank from '../../../../utils/functions/calculateRank'
-import TagManager from '../../../components/TagManager/TagManager';
 
 export default class extends React.Component {
   constructor() {
@@ -10,7 +9,7 @@ export default class extends React.Component {
       plant: {
         id: '',
         rank: 'species',
-        sup: null,
+        parent: null,
         tags: []
       },
       message: null
@@ -36,18 +35,21 @@ export default class extends React.Component {
     })
   }
 
-  handleSupChange(sup) {
+  handleParentChange(parent) {
     const { plant } = this.state
     this.setState({ 
-      plant: Object.assign({}, plant, { sup }),
+      plant: Object.assign({}, plant, { parent }),
       message: null
     })
   }
 
   addPlant() {
+    const { plant } = this.state
     fetch('/api/plants', {
       method: 'PUT',
-      body: JSON.stringify(this.state.plant)
+      body: JSON.stringify(Object.assign({}, plant, {
+        parent: plant.parent.id
+      }))
     })
       .then(result => result.json())
       .then(() => this.setState({
@@ -69,7 +71,7 @@ export default class extends React.Component {
 
   render() {
     const { 
-      plant: { id, rank, sup },
+      plant: { id, rank, parent },
       message } = this.state
     return (
       <React.Fragment>
@@ -99,9 +101,9 @@ export default class extends React.Component {
         </div>
         {
           (rank !== null && rank !== 'family') && (
-            <PlantSearch mode='mono' plant={ sup } rank={ rank }
+            <PlantSearch mode='mono' plant={ parent } rank={ rank }
                 label={ `parent (${ calculateRank(rank, -1) })` }
-                selectPlant={ this.handleSupChange.bind(this) }/>
+                selectPlant={ this.handleParentChange.bind(this) }/>
           )
         }
         {
@@ -115,7 +117,7 @@ export default class extends React.Component {
               className='btn btn-primary btn-x col-md-6 offset-md-6'
               onClick={ () => this.addPlant() }
               disabled={ !id || !rank ||
-                (rank !== null && rank !== 'family' && !sup) }>
+                (rank !== null && rank !== 'family' && !parent) }>
             send plant</button>
         </div>
       </React.Fragment>

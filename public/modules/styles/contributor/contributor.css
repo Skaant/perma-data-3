@@ -72,7 +72,7 @@
 
 #contributor #contributor__tool .alert {
   margin-top: 6px; }
-  #contributor #contributor__tool .alert > a {
+  #contributor #contributor__tool .alert a {
     text-decoration: underline;
     cursor: pointer; }
 
