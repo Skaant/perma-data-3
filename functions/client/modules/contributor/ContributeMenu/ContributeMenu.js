@@ -1,20 +1,25 @@
 import React from 'react'
+import MenuTool from './MenuTool/MenuTool';
 
 // included in contibutor module
-export default ({ mode, handleModeChange }) => (
-  <div id='contribute-menu' className='col-md-6 offset-md-3'>
-    <h1>CONTRIBUTE</h1>
-    <h2>PLANTS</h2>
-    <h3 className={ mode === 'add-plant' ? ' active' : '' }
-        onClick={ () => handleModeChange('add-plant') }>
-      add plant</h3>
-    <h2>EXTRACTS</h2>
-    <h3 className={ mode === 'add-extract' ? ' active' : '' }
-        onClick={ () => handleModeChange('add-extract') }>
-      add extract</h3>
-    <h2>DATA</h2>
-    <h3 className={ mode === 'add-data' ? ' active' : '' }
-        onClick={ () => handleModeChange('add-data') }>
-      add data</h3>
+export default ({ handleModeChange }) => (
+  <div id='contribute-menu' className='col-lg-8 offset-lg-2'>
+    <div className='row'>
+      <MenuTool title='plants'>
+        <button type='button' className='btn btn-x btn-primary col-12'
+            onClick={ () => handleModeChange('add-plant') }>
+          add</button>
+      </MenuTool>
+      <MenuTool title='extracts'>
+        <button type='button' className='btn btn-x btn-primary col-12'
+            onClick={ () => handleModeChange('add-extract') }>
+          add</button>
+      </MenuTool>
+      <MenuTool title='datas'>
+        <button type='button' className='btn btn-x btn-primary col-12'
+            onClick={ () => handleModeChange('add-data') }>
+          add</button>
+      </MenuTool>
+    </div>
   </div>
 )

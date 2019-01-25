@@ -32,31 +32,14 @@
     cursor: pointer; }
 
 #contributor #contribute-menu {
-  text-align: center; }
-  #contributor #contribute-menu h1,
-  #contributor #contribute-menu h2,
-  #contributor #contribute-menu h3 {
-    font-weight: 300;
-    letter-spacing: 0.15em; }
-  #contributor #contribute-menu > h1 {
-    font-size: 1.8rem;
-    margin-bottom: 28px; }
-  #contributor #contribute-menu > h2 {
-    font-size: 1.4rem;
-    margin-top: 16px; }
-  #contributor #contribute-menu > h3 {
-    font-size: 1rem;
-    cursor: pointer; }
-  #contributor #contribute-menu > .contribute-menu__tool {
-    font-size: 1rem;
+  text-align: center;
+  margin-top: 40px; }
+  #contributor #contribute-menu .card > .card-body > .card-title {
     text-transform: uppercase;
     font-weight: 300;
-    letter-spacing: 2px;
-    cursor: pointer; }
-    #contributor #contribute-menu > .contribute-menu__tool:hover {
-      text-decoration: underline; }
-    #contributor #contribute-menu > .contribute-menu__tool.active {
-      font-weight: initial; }
+    letter-spacing: 4px;
+    margin-top: 12px;
+    margin-bottom: 24px; }
 
 #contributor #contributor__top-menu {
   margin-bottom: 40px; }

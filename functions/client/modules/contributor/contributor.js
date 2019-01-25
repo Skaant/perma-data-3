@@ -20,6 +20,7 @@ class Contributor extends React.Component {
   }
 
   handleModeChange(mode) {
+    console.log(mode)
     const { mode: prevMode } = this.state
     if (mode != prevMode) {
       this.setState({ mode })

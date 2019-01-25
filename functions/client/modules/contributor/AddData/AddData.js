@@ -82,7 +82,7 @@ export default class extends React.Component {
     return (
       <React.Fragment>
         <div className='row'>
-          <h1 className='col-md-12'>ADD EXTRACT</h1></div>
+          <h1 className='col-md-12'>ADD DATA</h1></div>
         <ExtractSearch extract={ extract }
             selectExtract={ this.handleExtractChange.bind(this) }/>
         <div className='row'>
