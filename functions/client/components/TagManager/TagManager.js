@@ -15,7 +15,7 @@ export default class extends React.Component {
   addTag() {
     const { tags, changeTags } = this.props
     const { value } = this.state
-    tags.push(value)
+    tags.push(value.toLowerCase())
     changeTags(tags)
     this.setState({
       value: ''
@@ -29,12 +29,12 @@ export default class extends React.Component {
   }
 
   render() {
-    const { tags } = this.props
+    const { title, tags } = this.props
     const { value } = this.state
     return (
       <div className='tag-manager'>
         <div className='row'>
-          <label>tag list</label>
+          <label>{ title }</label>
           <div className='input-group'>
             <input type='text'
                 placeholder='type a new tag and press enter'
@@ -42,11 +42,11 @@ export default class extends React.Component {
                 value={ value }
                 onChange={ e => this.handleValueChange(e.target.value) }
                 onKeyPress={ e => e.charCode === 13
-                  && value.length >= 3 && this.addTag() }/>
+                  && value.length >= 2 && this.addTag() }/>
             <div className='input-group-append'>
               <button className='btn btn-x btn-primary'
                   onClick={ () => this.addTag() }
-                  disabled={ value.length < 3 }>
+                  disabled={ value.length < 2 }>
                 add</button>
             </div>
           </div>

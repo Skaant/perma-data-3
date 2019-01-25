@@ -125,7 +125,8 @@ export default class extends React.Component {
             </div>
           )
         }
-        <TagManager tags={ tags }
+        <TagManager title='tags (how to find)'
+            tags={ tags }
             changeTags={ this.handleTagsChange.bind(this) }/>
         {
           message && (

@@ -56,7 +56,7 @@ export default class extends React.Component {
   }
 
   handleResultsSelect(value) {
-    const { rank, selectExtract } = this.props
+    const { selectExtract } = this.props
     const { results } = this.state
     selectExtract((value && results.find(({ id }) => id === value)) || true)
     if (value) {

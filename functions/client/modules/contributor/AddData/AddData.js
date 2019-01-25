@@ -3,6 +3,7 @@ import PlantSearch from '../../../components/PlantSearch/PlantSearch'
 import calculateRank from '../../../../utils/functions/calculateRank'
 import ExtractSearch from '../../../components/ExtractSearch/ExtractSearch';
 import TagManager from '../../../components/TagManager/TagManager';
+import ExtractRender from '../../../components/ExtractRender/ExtractRender';
 
 export default class extends React.Component {
   constructor() {
@@ -11,9 +12,8 @@ export default class extends React.Component {
       data: {
         extract: null,
         plants: [],
-        type: null,
-        value: null,
-        tags: []
+        tags: [],
+        value: ''
       },
       message: null
     }
@@ -77,7 +77,7 @@ export default class extends React.Component {
 
   render() {
     const { 
-      data: { extract, plants, type, value, tags },
+      data: { extract, plants, value, tags },
       message } = this.state
     return (
       <React.Fragment>
@@ -85,28 +85,24 @@ export default class extends React.Component {
           <h1 className='col-md-12'>ADD DATA</h1></div>
         <ExtractSearch extract={ extract }
             selectExtract={ this.handleExtractChange.bind(this) }/>
+        {
+          (extract && extract.content) && (
+            <ExtractRender content={ extract.content }/>
+          )
+        }
+        <TagManager title='tags (describe data)'
+            tags={ tags }
+            changeTags={ this.handleTagsChange.bind(this) }/>
         <div className='row'>
-          <label>Type</label>
-          <select className='form-control'
-              value={ type }
-              onChange={ e => this.handleDataChange('type', e.target.value) }>
-            <option value={ null }>
-              choose a type</option>
-            <option value='name'>
-              name</option>
-            <option value='calendar'>
-              calendar</option>
-            <option value='cooking-receipe'>
-              cooking receipe</option>
-            <option value='hardiness'>
-              hardiness</option>
-          </select>
+          <label>value</label>
+          <input type='text' className='form-control'
+              placeholder='know your data formats'
+              value={ value }
+              onChange={ e => this.handleDataChange('value', e.target.value)}/>
         </div>
         <PlantSearch mode='multi' plants={ plants }
             label='plant(s)'
             selectPlant={ this.handlePlantsChange.bind(this) }/>
-        <TagManager tags={ tags }
-            changeTags={ this.handleTagsChange.bind(this) }/>
         {
           message && (
             <div className={ `row alert alert-${ message.type }` }>
@@ -118,7 +114,7 @@ export default class extends React.Component {
               className='btn btn-primary btn-x col-md-6 offset-md-6'
               onClick={ () => this.addData() }
               disabled={ false }>
-            send plant</button>
+            send data</button>
         </div>
       </React.Fragment>
     )

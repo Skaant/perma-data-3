@@ -29,7 +29,7 @@ export default class extends React.Component {
     this.setState({ 
       plant: Object.assign({}, plant, {
         rank,
-        sup: null
+        parent: null
       }),
       message: null
     })
@@ -48,7 +48,7 @@ export default class extends React.Component {
     fetch('/api/plants', {
       method: 'PUT',
       body: JSON.stringify(Object.assign({}, plant, {
-        parent: plant.parent.id
+        parent: plant.parent && plant.parent.id
       }))
     })
       .then(result => result.json())
@@ -89,14 +89,14 @@ export default class extends React.Component {
               onChange={ e => this.handleRankChange(e.target.value) }>
             <option value={ null }>
               choose a rank</option>
-            <option value='variety'>
-              variety</option>
-            <option value='species'>
-              species</option>
-            <option value='genus'>
-              genus</option>
             <option value='family'>
               family</option>
+            <option value='genus'>
+              genus</option>
+            <option value='species'>
+              species</option>
+            <option value='variety'>
+              variety</option>
           </select>
         </div>
         {

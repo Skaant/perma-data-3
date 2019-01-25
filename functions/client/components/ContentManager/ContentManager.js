@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
+import ExtractRender from '../ExtractRender/ExtractRender'
 
 const Tesseract = window.Tesseract
 const tesseractLangs = {
@@ -92,10 +92,7 @@ export default class extends React.Component {
         }
         {
           content && (
-            <div className='row'>
-              <div className='alert alert-primary col-md-12'>
-                <ReactMarkdown source={ content }/></div>
-            </div>
+            <ExtractRender content={ content }/>
           )
         }
       </div>
