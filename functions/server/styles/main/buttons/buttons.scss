@@ -1,3 +1,4 @@
+a.btn-x,
 button.btn-x {
   border: 0;
   text-transform: uppercase;
@@ -6,6 +7,7 @@ button.btn-x {
   padding: 12px;
   margin-top: 8px;
   margin-bottom: 8px;
+  font-weight: 300;
 
   &.btn-x-border {
     border: 1px solid #DDD;

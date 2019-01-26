@@ -1,12 +1,9 @@
-const html = require('../html')
+const html = require('../html/html')
 
 module.exports = (req, res) => {
   res.send(html({
     id: 'contributor',
     lang: 'en',
-    title: {
-      value: 'contributor',
-      link: '/contributor'
-    }
+    title: 'contributor'
   }))
 }

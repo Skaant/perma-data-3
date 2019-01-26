@@ -1,9 +1,9 @@
 module.exports = id => {
   switch(id) {
     case 'home':
-      return
+      return `<link rel="stylesheet" type="text/css" href="/styles/home/home.css"/>`
     case 'plant':
-      return `<link rel="stylesheet" type="text/css" href="/styles/plant.css"/>`
+      return `<link rel="stylesheet" type="text/css" href="/styles/plant/plant.css"/>`
     case 'contributor':
       return `<link rel="stylesheet" type="text/css" href="/modules/styles/contributor/contributor.css"/>`
   }

@@ -1,4 +1,4 @@
-const html = require('../html')
+const html = require('../html/html')
 const { langs: langsFetcher } = require('../fetchers')
 
 module.exports = (req, res) => {
@@ -10,9 +10,7 @@ module.exports = (req, res) => {
         res.send(html({
           id,
           lang,
-          title: {
-            value: langs.title
-          },
+          title: langs.title,
           description: langs.description,
           keywords: 'home,static,plants,search,collect',
           langs

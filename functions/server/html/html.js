@@ -1,9 +1,9 @@
-const renderer = require('./renderer')
-const templates = require('./templates/build')
-const header = require('./html/header')
-const linkSwitch = require('./html/linkSwitch')
-const scriptSwitch = require('./html/scriptSwitch')
-const footer = require('./html/footer')
+const renderer = require('../renderer')
+const templates = require('../templates/build')
+const header = require('./Header/Header')
+const linkSwitch = require('./utils/linkSwitch')
+const scriptSwitch = require('./utils/scriptSwitch')
+const footer = require('./Footer/Footer')
 
 module.exports = (props) => {
   const { id, lang, title, description, keywords } = props
@@ -14,14 +14,14 @@ module.exports = (props) => {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="theme-color" content="#000000">
-        <link rel="stylesheet" type="text/css" href="/styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/styles/main/main.css">
         <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.map.css">
         <link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css">
         ${ linkSwitch(id) || '' }
         <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
         <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
-        <title>${ title.value ?
-          `${ title.value } ` : '' }PERMA DATA</title>
+        <title>${ title ?
+          `${ title } - ` : '' }PERMA DATA</title>
         ${ description ?
           `<meta name="description" content=${ description }">` : '' }
         <meta name="keywords" content="permaculture,data${ keywords ?

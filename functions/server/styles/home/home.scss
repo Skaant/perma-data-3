@@ -1,0 +1,16 @@
+#home {
+
+  > .jumbotron {
+    text-align: center;
+    padding-bottom: 20px;
+
+    > p {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 28px;
+      margin-top: 52px;
+      letter-spacing: 2px;
+    }
+  }
+}

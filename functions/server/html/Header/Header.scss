@@ -1,0 +1,25 @@
+#header {
+  position: absolute;
+  width: 100%;
+
+  > h5 {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    padding: 8px;
+    transition: background-color ease-out 0.3s;
+    display: inline-block;
+    
+    &:hover {
+      background: black;
+
+      > a {
+        color: white;
+      }
+    }
+
+    > a {
+      color: black;
+      padding-left: 3px;
+    }
+  }
+}

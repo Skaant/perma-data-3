@@ -1,4 +1,4 @@
-const html = require('../html')
+const html = require('../html/html')
 const { plant: plantFetcher, lang: langFetcher, extracts: extractsFetcher } = require('../fetchers')
 const getHigherRanks = require('./utils/getHigherRanks')
 const getRankSuggestions = require('./utils/getRankSuggestions')

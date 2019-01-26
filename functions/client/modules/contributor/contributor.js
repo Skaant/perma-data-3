@@ -47,52 +47,57 @@ class Contributor extends React.Component {
   render() {
     const { mode, user } = this.state
     return (
-      <Login user={ user }
-          updateUser={ this.updateUser.bind(this) }>
-        {
-          (user && user.roles.includes('contributor')) && (
-            <React.Fragment>
-              {
-                mode === null && (
-                  <div id='contributor__top-menu' className='row'>
-                    <ContributeMenu mode={ mode }
-                        handleModeChange={ this.handleModeChange.bind(this) } />
+      <React.Fragment>
+        <div className='row'>
+          <h1 className='col-12'>contributor</h1>
+        </div>
+        <Login user={ user }
+            updateUser={ this.updateUser.bind(this) }>
+          {
+            (user && user.roles.includes('contributor')) && (
+              <React.Fragment>
+                {
+                  mode === null && (
+                    <div id='contributor__top-menu' className='row'>
+                      <ContributeMenu mode={ mode }
+                          handleModeChange={ this.handleModeChange.bind(this) } />
+                    </div>
+                  )
+                }
+                <div className='row'>
+                  <div id='contributor__tool' className='col-8 col-md-6 container-fluid'>
+                    {
+                      mode && (
+                        <div id='contributor__top-menu' className='row'>
+                          <button type='button'
+                              className='btn btn-x btn-dark col-md-6'
+                              onClick={ () => this.handleModeChange(null) }>
+                            menu back</button>
+                        </div>
+                      )
+                    }
+                    {
+                      mode === 'add-plant' && (
+                        <AddPlant/>
+                      )
+                    }
+                    {
+                      mode === 'add-extract' && (
+                        <AddExtract/>
+                      )
+                    }
+                    {
+                      mode === 'add-data' && (
+                        <AddData/>
+                      )
+                    }
                   </div>
-                )
-              }
-              <div className='row'>
-                <div id='contributor__tool' className='col-8 col-md-6 container-fluid'>
-                  {
-                    mode && (
-                      <div id='contributor__top-menu' className='row'>
-                        <button type='button'
-                            className='btn btn-x btn-dark col-md-6'
-                            onClick={ () => this.handleModeChange(null) }>
-                          menu back</button>
-                      </div>
-                    )
-                  }
-                  {
-                    mode === 'add-plant' && (
-                      <AddPlant/>
-                    )
-                  }
-                  {
-                    mode === 'add-extract' && (
-                      <AddExtract/>
-                    )
-                  }
-                  {
-                    mode === 'add-data' && (
-                      <AddData/>
-                    )
-                  }
                 </div>
-              </div>
-            </React.Fragment>
-          )
-        }
-      </Login>
+              </React.Fragment>
+            )
+          }
+        </Login>
+      </React.Fragment>
     )
   }
 }

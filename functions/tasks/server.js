@@ -16,7 +16,7 @@ const buildJS = () => gulp.src(['./server/templates/*.js'])
   .pipe(webpackStream(webpackServerConfig, webpack))
   .pipe(gulp.dest('./server/templates/build'))
 
-const buildSass = () => gulp.src(['./styles/*.scss', './server/styles/*.scss'])
+const buildSass = () => gulp.src(['./server/styles/*/**.scss'])
   .pipe(sass().on('error', sass.logError))
   .pipe(gulp.dest('../public/styles'))
 
