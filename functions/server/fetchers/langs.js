@@ -4,7 +4,7 @@ module.exports = (lang, pageId) =>
       .doc(`${ pageId }-${ lang }`).get()
         .then(doc => {
           if (!doc.exists) {
-            reject(new Error(`Language reference "${ pageId }-${ lang }" not found`))
+            resolve({})
           }
           return resolve(doc.data())
         })

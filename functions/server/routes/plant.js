@@ -1,10 +1,9 @@
 const html = require('../html/html')
-const { plant: plantFetcher, lang: langFetcher, extracts: extractsFetcher } = require('../fetchers')
-const getHigherRanks = require('./utils/getHigherRanks')
-const getRankSuggestions = require('./utils/getRankSuggestions')
+const { plant: plantFetcher, langs: langsFetcher, datas: datasFetcher } = require('../fetchers')
 
 module.exports = (req, res) => {
-  const { lang, params } = req
+  const { lang, params, originalUrl: url } = req
+  const id = 'plant'
   const plantId = params[0].slice(1)
 
   plantFetcher(plantId)
@@ -15,20 +14,19 @@ module.exports = (req, res) => {
           count: plant.count ? (plant.count + 1): 1
         })
         .catch(err => console.log(err))
-      Promise.all([langFetcher(lang), getHigherRanks(plant),
-          getRankSuggestions(plant), extractsFetcher(lang, plantId)])
-        .then(([langs, higherRanks, rankSuggestions, extracts]) => res.send(html('plant', {
+      Promise.all([langsFetcher(lang, id), datasFetcher(plantId)])
+        .then(([langs, datas]) => 
+          res.send(html({
+            id,
             lang,
             langs,
-            title: `${ plant.names[lang] } (${ lang.toUpperCase() }, ${ plant.id }) -`,
-            pageSubTitle: langs.misc.plants,
+            title: plantId,
             data: {
-              plant: Object.assign({}, plant, higherRanks, {
-                suggestions: rankSuggestions
-              }),
-              extracts
-            }
-        }))
+              plant,
+              datas
+            },
+            url
+          }))
       )
       .catch(err => console.log(err))
     })

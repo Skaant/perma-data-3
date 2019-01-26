@@ -6,7 +6,7 @@ const scriptSwitch = require('./utils/scriptSwitch')
 const footer = require('./Footer/Footer')
 
 module.exports = (props) => {
-  const { id, lang, title, description, keywords } = props
+  const { id, lang, title, description, keywords, url } = props
   return (
     `<!DOCTYPE html>
     <html lang="${ lang }">
@@ -31,7 +31,7 @@ module.exports = (props) => {
         <noscript>
           You need to enable JavaScript to run this app.
         </noscript>
-        ${ header(lang, title) }
+        ${ header(lang, url) }
         ${ renderer(templates[id], props) }
         ${ footer() }
         ${ scriptSwitch(id) || '' }
