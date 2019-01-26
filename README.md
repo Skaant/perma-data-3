@@ -21,6 +21,7 @@ you need the role `'contributor'` in order to interact with the contributor tool
 {
   ...data,
   lang: tags.en ? 'en' : tags.fr ? 'fr' : null, // mandatory
+  main: tags.main ? true : null,
   value, // mandatory
   fragments: value.split(' ').filter(f => f.length >= 3)
     /* calculated,

@@ -15,18 +15,22 @@ module.exports = (req, res) => {
         })
         .catch(err => console.log(err))
       Promise.all([langsFetcher(lang, id), datasFetcher(plantId)])
-        .then(([langs, datas]) => 
+        .then(([langs, datas]) => {
+          const name = datas.find(data => data.tags.includes('name')
+            && datas.filter(data => data.tags.includes(lang))
+            && datas.filter(data => data.tags.includes('main')))
           res.send(html({
             id,
             lang,
             langs,
-            title: plantId,
+            title: name ? name.value : plantId,
             data: {
               plant,
               datas
             },
             url
           }))
+        }
       )
       .catch(err => console.log(err))
     })
