@@ -2,7 +2,7 @@ const html = require('../html/html')
 const { langs: langsFetcher } = require('../fetchers')
 
 module.exports = (req, res) => {
-  const { lang } = req
+  const { lang, url } = req
   const id = 'home'
 
   langsFetcher(lang, id)
@@ -13,7 +13,8 @@ module.exports = (req, res) => {
           title: langs.title,
           description: langs.description,
           keywords: 'home,static,plants,search,collect',
-          langs
+          langs,
+          url
         }))
       )
     .catch(err => console.log(err))

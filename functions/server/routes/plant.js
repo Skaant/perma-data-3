@@ -2,7 +2,7 @@ const html = require('../html/html')
 const { plant: plantFetcher, langs: langsFetcher, datas: datasFetcher } = require('../fetchers')
 
 module.exports = (req, res) => {
-  const { lang, params, originalUrl: url } = req
+  const { lang, params, url } = req
   const id = 'plant'
   const plantId = params[0].slice(1)
 
