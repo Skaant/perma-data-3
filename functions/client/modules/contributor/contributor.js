@@ -6,7 +6,7 @@ import Login from '../../components/Login/Login'
 import ContributeMenu from './ContributeMenu/ContributeMenu'
 import AddPlant from './AddPlant/AddPlant'
 import AddExtract from './AddExtract/AddExtract'
-import AddData from './AddData/AddData';
+import AddData from './AddData/AddData'
 
 firebase.initializeApp(firebaseConfig)
 

@@ -71,17 +71,23 @@ export default class extends React.Component {
   }
 
   render() {
-    const { mode, label, rank, plant, plants, selectPlant } = this.props
+    const { mode, label, plant, plants, selectPlant } = this.props
     const { open, key, results, load } = this.state
     return (
       <div className='plant-search'>
-        <div className='row'>
-          <label>{ label }</label>
-        </div>
+        { 
+          label && (
+            <div className='row'>
+              <label>{ label }</label>
+            </div>
+          )
+        }
         {
           !open ? (
             <div className='row'>
-              <button className='btn btn-x closed btn-x-border btn-outline-dark col-12'
+              <button className={
+                `btn btn-x closed ${ mode === 'selection' ?
+                  'btn-primary' : 'btn-x-border btn-outline-dark' } col-12` }
                   onClick={ () => this.handleOpenChange() }>
                 open plant search</button>
             </div>

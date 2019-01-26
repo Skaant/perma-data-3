@@ -21,7 +21,7 @@ module.exports = (props) => {
         <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
         <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
         <title>${ title ?
-          `${ title } - ` : '' }PERMA DATA</title>
+          `${ title } - ` : '' }PERMADATA ${ lang.toUpperCase() }</title>
         ${ description ?
           `<meta name="description" content=${ description }">` : '' }
         <meta name="keywords" content="permaculture,data${ keywords ?

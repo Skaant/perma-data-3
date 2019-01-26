@@ -1,7 +1,7 @@
 module.exports = id => {
   switch(id) {
     case 'home':
-      return
+      return `<script src='/modules/home-bundle.js'></script>`
     case 'plant':
       return
     case 'contributor':
