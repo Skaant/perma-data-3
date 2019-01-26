@@ -1,9 +1,12 @@
 const html = require('../html')
 
 module.exports = (req, res) => {
-  res.send(html('contributor', {
+  res.send(html({
+    id: 'contributor',
     lang: 'en',
-    title: 'Contribute -',
-    pageSubTitle: 'contributor'
+    title: {
+      value: 'contributor',
+      link: '/contributor'
+    }
   }))
 }
