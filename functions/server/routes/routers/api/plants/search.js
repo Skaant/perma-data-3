@@ -3,9 +3,7 @@ const getById = id =>
     global.db.collection('plants').doc(id).get()
       .then(doc => {
         if (!doc.exists) {
-          res.status(404).send({
-            plants: []
-          })
+          resolve([])
         } else {
           const { rank } = doc.data()
           resolve([{
@@ -33,22 +31,31 @@ const getByTags = tag =>
       .catch(err => reject(err)))
 
 const getByNames = name =>
-  new Promise((resolve, reject) =>
-      resolve([]))
-    /* global.db.collection('plants')
-      .where('tags', 'array-contains', tag).get()
+  new Promise((resolve, reject) => 
+    global.db.collection('datas')
+      .where('fragments', 'array-contains', name).get()
       .then(snapshot => {
-        let plants = []
+        let plantRefs = {}
         snapshot.forEach(doc => {
-          const { rank } = doc.data()
-          plants.push({
-            id: doc.id,
-            rank
+          const { plants } = doc.data()
+          plants.forEach(plant => {
+            if (!plantRefs[plant.id]) {
+              plantRefs[plant.id] = plant
+            }
           })
         })
-        resolve(plants)
+        Promise.all(Object.keys(plantRefs).map(id => plantRefs[id].get()))
+          .then(results => resolve(results.filter(doc => doc.exists)
+            .map(doc => {
+              const { rank } = doc.data()
+              return {
+                id: doc.id,
+                rank
+              }
+            })))
+          .catch(err => reject(err))
       })
-      .catch(err => reject(err))) */
+      .catch(err => reject(err)))
 
 module.exports = (req, res) => {
   const { key } = req.params
