@@ -1,4 +1,4 @@
-const html = require('../app/html/html')
+const html = require('../../app/html/html')
 
 module.exports = (req, res) => {
   const { url } = req

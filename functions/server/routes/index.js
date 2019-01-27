@@ -1,6 +1,6 @@
-const home = require('./home')
-const plant = require('./plant')
-const contributor = require('./contributor')
+const home = require('./home/home')
+const plant = require('./plant/plant')
+const contributor = require('./contributor/contributor')
 
 module.exports = {
   home,

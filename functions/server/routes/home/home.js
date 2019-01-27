@@ -1,5 +1,5 @@
-const html = require('../app/html/html')
-const { langs: langsFetcher } = require('./fetchers')
+const html = require('../../app/html/html')
+const { langs: langsFetcher } = require('../../app/fetchers')
 
 module.exports = (req, res) => {
   const { lang, url } = req
