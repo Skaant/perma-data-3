@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import PlantSearch from '../../components/PlantSearch/PlantSearch';
+import PlantSearch from '../../../components/PlantSearch/PlantSearch';
 
 render((
   <PlantSearch mode='selection'

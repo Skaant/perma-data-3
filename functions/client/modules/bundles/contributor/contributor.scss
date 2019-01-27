@@ -1,9 +1,9 @@
-@import '../../components/Login/Login.scss';
-@import '../../components/TagManager/TagManager.scss';
+@import '../../../components/Login/Login.scss';
+@import '../../../components/TagManager/TagManager.scss';
 
 #contributor {
 
-  @import './ContributeMenu/ContributeMenu.scss';
+  @import '../../Contributor/ContributeMenu/ContributeMenu.scss';
 
   #contributor__top-menu {
     margin-bottom: 40px;

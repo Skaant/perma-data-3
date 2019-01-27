@@ -6,8 +6,8 @@ const webpackServerConfig = require('../webpack.server.config')
 const sass = require('gulp-sass')
 const named = require('vinyl-named')
 
-const clean = () => del(['./server/templates/build/*.js',
-  '!./server/templates/build/index.js'], {
+const clean = () => del(['./server/template*.js',
+  '!./server/templates/build/index.js', '../public/styles*'], {
     force: true
   })
 

@@ -1,16 +1,11 @@
 import React from 'react'
-import firebase from 'firebase/app'
-import firebaseConfig from '../../../firebase.config'
-import { render } from 'react-dom'
 import Login from '../../components/Login/Login'
 import ContributeMenu from './ContributeMenu/ContributeMenu'
 import AddPlant from './AddPlant/AddPlant'
 import AddExtract from './AddExtract/AddExtract'
 import AddData from './AddData/AddData'
 
-firebase.initializeApp(firebaseConfig)
-
-class Contributor extends React.Component {
+export default class extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -101,5 +96,3 @@ class Contributor extends React.Component {
     )
   }
 }
-
-render(<Contributor/>, document.getElementById('contributor'))

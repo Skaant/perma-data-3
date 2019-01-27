@@ -5,6 +5,6 @@ module.exports = id => {
     case 'plant':
       return `<link rel="stylesheet" type="text/css" href="/styles/plant/plant.css"/>`
     case 'contributor':
-      return `<link rel="stylesheet" type="text/css" href="/modules/styles/contributor/contributor.css"/>`
+      return `<link rel="stylesheet" type="text/css" href="/modules/contributor/contributor.css"/>`
   }
 }
