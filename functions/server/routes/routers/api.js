@@ -1,7 +1,8 @@
 const plants = require('./api/plants')
+const userData = require('./api/users')
 const extracts = require('./api/extracts')
 const datas = require('./api/datas')
-const userData = require('./api/userData')
+const inventories = require('./api/inventories')
 
 module.exports = router => {
   router.route('/plants/search/:key').get(plants.search)
@@ -13,7 +14,10 @@ module.exports = router => {
 
   router.route('/datas').put(datas.add)
 
-  router.route('/user-data/:userId').get(userData.get)
-  router.route('/user-data/inventory/:userId').get(userData.getInventory)
+  router.route('/users/:userId').get(userData.get)
+
+  router.route('/inventories/:userId').get(inventories.get)
+  router.route('/inventories/plant/:userId').post(inventories.addPlant)
+  router.route('/inventories/plant/:userId').delete(inventories.deletePlant)
   return router
 }

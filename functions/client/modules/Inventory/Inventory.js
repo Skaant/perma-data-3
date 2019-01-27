@@ -20,7 +20,7 @@ export default class extends React.Component {
   updateUser(user) {
     if (user) {
       const { uid, email } = user
-      fetch(`/api/user-data/${ email }`)
+      fetch(`/api/users/${ email }`)
         .then(result => result.json())
         .then(({ roles }) => {
           this.setState({
@@ -30,7 +30,7 @@ export default class extends React.Component {
               roles
             })
           })
-          fetch(`/api/user-data/inventory/${ email }`)
+          fetch(`/api/inventories/${ email }`)
             .then(result => result.json())
             .then(({ list }) => {
               this.setState({ list })

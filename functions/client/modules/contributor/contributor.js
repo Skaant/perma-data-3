@@ -24,7 +24,7 @@ export default class extends React.Component {
   updateUser(user) {
     if (user) {
       const { uid, email } = user
-      fetch(`/api/user-data/${ email }`)
+      fetch(`/api/users/${ email }`)
         .then(result => result.json())
         .then(userData => this.setState({
           user: Object.assign({}, {

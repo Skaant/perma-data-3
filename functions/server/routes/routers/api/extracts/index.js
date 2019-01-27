@@ -1,5 +1,5 @@
-const add = require('./extracts/add')
-const search = require('./extracts/search')
+const add = require('./add/add')
+const search = require('./search/search')
 
 module.exports = {
   add,
