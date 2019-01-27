@@ -2,7 +2,8 @@ const renderer = require('../renderer')
 const templates = require('../build')
 const header = require('./Header/Header')
 const linkSwitch = require('./utils/linkSwitch')
-const scriptSwitch = require('./utils/scriptSwitch')
+const topScriptSwitch = require('./utils/topScriptSwitch')
+const botScriptSwitch = require('./utils/botScriptSwitch')
 const footer = require('./Footer/Footer')
 
 module.exports = (props) => {
@@ -20,6 +21,7 @@ module.exports = (props) => {
         ${ linkSwitch(id) || '' }
         <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
         <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
+        ${ topScriptSwitch(id) || '' }
         <title>${ title ?
           `${ title } - ` : '' }PERMADATA ${ lang.toUpperCase() }</title>
         ${ description ?
@@ -34,7 +36,7 @@ module.exports = (props) => {
         ${ header(lang, url) }
         ${ renderer(templates[id], props) }
         ${ footer() }
-        ${ scriptSwitch(id) || '' }
+        ${ botScriptSwitch(id) || '' }
       </body>
     </html>`
   )

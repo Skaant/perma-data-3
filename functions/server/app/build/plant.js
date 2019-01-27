@@ -147,6 +147,18 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./server/templates/plant/DataList/DataList.js":
+/*!*****************************************************!*\
+  !*** ./server/templates/plant/DataList/DataList.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var datas = _ref.datas;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"col-lg-6 col-md-8 offset-lg-3 offset-md-2 container\"\n  }, datas.map(function (data) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"row alert alert-info\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"col-md-4\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"b\", null, data.tags.toString())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"col-md-8\"\n    }, data.value));\n  })));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/DataList/DataList.js?");
+
+/***/ }),
+
 /***/ "./server/templates/plant/plant.js":
 /*!*****************************************!*\
   !*** ./server/templates/plant/plant.js ***!
@@ -155,7 +167,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (props) {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"plant\",\n    className: \"main container\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", {\n    className: \"col-12\"\n  }, props.title)));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/plant.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _DataList_DataList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataList/DataList */ \"./server/templates/plant/DataList/DataList.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var title = _ref.title,\n      datas = _ref.datas;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"plant\",\n    className: \"main container\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", {\n    className: \"col-12\"\n  }, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DataList_DataList__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    datas: datas\n  }));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/plant.js?");
 
 /***/ }),
 

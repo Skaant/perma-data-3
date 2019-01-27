@@ -26,10 +26,8 @@ module.exports = (req, res) => {
             lang,
             langs,
             title: name ? name.value : plantId,
-            data: {
-              plant,
-              datas
-            },
+            plant,
+            datas,
             url
           }))
         }

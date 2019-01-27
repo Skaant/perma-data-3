@@ -5,6 +5,7 @@ module.exports = (tags, value) => {
       value,
       fragments: value.split(' ')
         .filter(fragment => fragment.length >= 3)
+        .map(fragment => fragment.toLowerCase())
     }
   } else {
     return { value }

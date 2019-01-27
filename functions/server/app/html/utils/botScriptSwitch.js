@@ -5,7 +5,6 @@ module.exports = id => {
     case 'plant':
       return
     case 'contributor':
-      return `<script src='/modules/contributor/contributor.js'></script>
-        <script src='/tesseract/tesseract.min.js'></script>`
+      return `<script src='/modules/contributor/contributor.js'></script>`
   }
 }
