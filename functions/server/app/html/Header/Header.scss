@@ -26,5 +26,9 @@
       color: black;
       padding-left: 3px;
     }
+
+    &:last-child {
+      float: right;
+    }
   }
 }

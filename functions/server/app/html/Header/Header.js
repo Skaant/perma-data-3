@@ -8,7 +8,11 @@ module.exports = (lang, url) =>
         title='=> ${ lang === 'en' ? 'FR' : 'EN' }'>
       ${ lang === 'en' ? 'EN' : 'FR' }</a>
   </h5><h5>
+    <a href='/${ lang }/inventory'>
+      INVENTORY</a>
+  </h5><h5>
     <a href='/${ lang }/contributor'>
-      CONTRIBUTOR</a></h5>
+      CONTRIBUTOR</a>
+  </h5>
 </div>
 `
