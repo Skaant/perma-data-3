@@ -1,5 +1,5 @@
-const html = require('../html/html')
-const { plant: plantFetcher, langs: langsFetcher, datas: datasFetcher } = require('../fetchers')
+const html = require('../app/html/html')
+const { plant: plantFetcher, langs: langsFetcher, datas: datasFetcher } = require('./fetchers')
 
 module.exports = (req, res) => {
   const { lang, params, url } = req

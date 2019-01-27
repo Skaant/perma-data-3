@@ -1,5 +1,5 @@
 const renderer = require('../renderer')
-const templates = require('../templates/build')
+const templates = require('../build')
 const header = require('./Header/Header')
 const linkSwitch = require('./utils/linkSwitch')
 const scriptSwitch = require('./utils/scriptSwitch')

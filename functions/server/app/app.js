@@ -1,8 +1,8 @@
 const express = require('express')
-const routes = require('./routes')
+const routes = require('../routes')
 const middlewares = require('./middlewares')
-const apiRouter = require('./routes/routers/api')
-const LANGS = require('../utils/refs/langs')
+const apiRouter = require('../routes/routers/api')
+const LANGS = require('../../utils/refs/langs')
 
 const app = express()
 

@@ -1,6 +1,6 @@
 const admin = require('firebase-admin')
 const functions = require('firebase-functions')
-const app = require('./server/app')
+const app = require('./server/app/app')
 
 admin.initializeApp(functions.config().firebase)
 global.db = admin.firestore()
