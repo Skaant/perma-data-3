@@ -30,6 +30,14 @@ export default class extends React.Component {
   }
 
   handleParentChange(parent) {
+    const { extract } = this.state
+    this.setState({ 
+      extract: Object.assign({}, extract, {
+        parent,
+        lang: parent.lang
+      }),
+      message: null
+    })
     this.handleExtractChange('parent', parent)
   }
 
