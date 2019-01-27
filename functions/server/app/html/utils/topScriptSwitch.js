@@ -6,5 +6,7 @@ module.exports = id => {
       return
     case 'contributor':
       return `<script src='/tesseract/tesseract.min.js'></script>`
+    case 'inventory':
+      return
   }
 }

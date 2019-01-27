@@ -13,6 +13,7 @@ module.exports = router => {
 
   router.route('/datas').put(datas.add)
 
-  router.route('/user-data/:userId').get(userData)
+  router.route('/user-data/:userId').get(userData.get)
+  router.route('/user-data/inventory/:userId').get(userData.getInventory)
   return router
 }
