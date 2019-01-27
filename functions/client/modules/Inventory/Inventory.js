@@ -1,5 +1,7 @@
 import React from 'react'
 import Login from '../../components/Login/Login'
+import PlantSearch from '../../components/PlantSearch/PlantSearch';
+import PlantList from './PlantList/PlantList';
 
 export default class extends React.Component {
   constructor() {
@@ -7,13 +9,6 @@ export default class extends React.Component {
     this.state = {
       user: null,
       list: null
-    }
-  }
-
-  handleModeChange(mode) {
-    const { mode: prevMode } = this.state
-    if (mode != prevMode) {
-      this.setState({ mode })
     }
   }
 
@@ -43,6 +38,52 @@ export default class extends React.Component {
     }
   }
 
+  addPlant(plant) {
+    const { user, list } = this.state
+    if (list.every(({ id }) => id !== plant.id)) {
+      list.push(plant)
+      fetch(`/api/inventories/plant/${ user.email }`, {
+        method: 'POST',
+        body: JSON.stringify({ 
+          list: list.map(plant => plant.id)
+        })
+      })
+        .then(result => result.json())
+        .then(() => this.setState({
+          list,
+          message: {
+            type: 'success',
+            value: 'extract added'
+          }
+        }))
+    } else {
+      this.setState({
+        message: {
+          type: 'warning',
+          value: 'plant already in the list'
+        }
+      })
+    }
+  }
+
+  deletePlant(plantId) {
+    const { user, list } = this.state
+    list.splice(list.indexOf(({ id }) => id === plantId), 1)
+    fetch(`/api/inventories/plant/${ user.email }`, {
+      method: 'DELETE',
+      body: JSON.stringify({ 
+        list: list.map(plant => plant.id)
+      })
+    })
+      .then(() => this.setState({
+        list,
+        message: {
+          type: 'success',
+          value: 'extract added'
+        }
+      }))
+  }
+
   render() {
     const { user, list } = this.state
     return (
@@ -52,24 +93,25 @@ export default class extends React.Component {
         </div>
         <Login user={ user }
             updateUser={ this.updateUser.bind(this) }>
-          {
-            list ? list.map(({ id, rank }) => (
-              <div className='row'>
-                <div className='col-md-8'>
-                  { id }
-                </div>
-                <div className='col-md-4'>
-                  { rank }
-                </div>
-              </div>
-            )) : (
-              <div className='row'>
-                <div className='alert alert-info'>
-                  .. inventory area is loading
-                </div>
-              </div>
-            )
-          }
+          <div className='content row'>
+            <div className='col-lg-6 col-md-8 offset-lg-3 offset-md-2 container'>
+              {
+                list ? (
+                  <React.Fragment>
+                    <PlantSearch selectPlant={ this.addPlant.bind(this) } />
+                    <PlantList list={ list }
+                        deletePlant={ this.deletePlant.bind(this) }/>
+                  </React.Fragment>
+                ) : (
+                  <div className='row'>
+                    <div className='alert alert-info col-12'>
+                      .. inventory area is loading
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </div>
         </Login>
       </React.Fragment>
     )

@@ -1,14 +1,12 @@
 module.exports = (req, res) => {
-  const plant = JSON.parse(req.body)
-  const splitPlantId = plant.id.split(' ')
-  const newPlant = Object.assign({}, plant, {
-    parent: plant.rank === 'family' ?
-      null : global.db.collection('plants').doc(plant.parent),
-    tags: splitPlantId.length >= 2 ? splitPlantId : null
+  const { userId } = req.params
+  const { list } = JSON.parse(req.body)
+  const newList = list.map(plant => global.db.collection('plants').doc(plant))
+  global.db.collection('inventories').doc(userId).update({
+    list: newList
   })
-  global.db.collection('plants').doc(plant.id).set(newPlant)
     .then(() => {
-      res.json(plant)
+      res.json(list)
     })
     .catch(err => {
       console.log(err)
