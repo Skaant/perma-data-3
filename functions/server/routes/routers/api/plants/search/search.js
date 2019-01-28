@@ -16,7 +16,7 @@ const getById = id =>
 const getByTags = tag =>
   new Promise((resolve, reject) => 
     global.db.collection('plants')
-      .where('tags', 'array-contains', tag).get()
+      .where('tags', 'array-contains', tag.toLowerCase()).get()
       .then(snapshot => {
         let plants = []
         snapshot.forEach(doc => {
@@ -33,7 +33,7 @@ const getByTags = tag =>
 const getByNames = name =>
   new Promise((resolve, reject) => 
     global.db.collection('datas')
-      .where('fragments', 'array-contains', name).get()
+      .where('fragments', 'array-contains', name.toLowerCase()).get()
       .then(snapshot => {
         let plantRefs = {}
         snapshot.forEach(doc => {
