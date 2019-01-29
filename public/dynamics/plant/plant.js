@@ -45,9 +45,8 @@ $.noConflict()
             }
           }
         })
-      console.log(selected, newList)
       newList.appendTo('#data-list__content')
-  }
+    }
   
     $('.data-item__tag')
       .on('click', e => {

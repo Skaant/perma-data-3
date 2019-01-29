@@ -1,5 +1,6 @@
 import React from 'react'
 import DataItem from './DataItem/DataItem'
+import TagList from './TagList/TagList';
 
 const getSortedTags = ({ tags }) => {
   if (tags.length > 1) {
@@ -23,14 +24,19 @@ const sortData = (a, b) => {
 }
 
 export default ({ datas }) => (
-  <div id='data-list' className='row'>
-    <div id='data-list__content' className='col-lg-6 col-md-8 offset-lg-3 offset-md-2 container'>
-      {
-        datas.sort(sortData)
-          .map(data => (
-            <DataItem key={ data.id } data={ data }/>
-          ))
-      }
+  <React.Fragment>
+    <div id='data-list'>
+      <TagList datas={ datas }/>
+      <div className='row'>
+        <div id='data-list__content' className='col-lg-6 col-md-8 offset-lg-3 offset-md-2 container'>
+          {
+            datas.sort(sortData)
+              .map(data => (
+                <DataItem key={ data.id } data={ data }/>
+              ))
+          }
+        </div>
+      </div>
     </div>
-  </div>
+  </React.Fragment>
 )
