@@ -3,7 +3,7 @@ module.exports = id => {
     case 'home':
       return 
     case 'plant':
-      return
+      return `<script src='/jquery/jquery.min.js'></script>`
     case 'contributor':
       return `<script src='/tesseract/tesseract.min.js'></script>`
     case 'inventory':

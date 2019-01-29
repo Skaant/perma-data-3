@@ -147,6 +147,18 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+/***/ "./server/templates/plant/DataList/DataItem/DataItem.js":
+/*!**************************************************************!*\
+  !*** ./server/templates/plant/DataList/DataItem/DataItem.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var _ref$data = _ref.data,\n      tags = _ref$data.tags,\n      value = _ref$data.value;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"data-item row alert alert-info\",\n    \"data-tags\": tags\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"col-md-4\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"b\", null, tags.sort(function (tagA, tagB) {\n    return tagA.localeCompare(tagB);\n  }).map(function (tag, index) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, index > 0 && ', ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"a\", {\n      key: \"tag\",\n      className: \"data-item__tag\",\n      \"data-value\": tag\n    }, tag));\n  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"col-md-8\"\n  }, value));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/DataList/DataItem/DataItem.js?");
+
+/***/ }),
+
 /***/ "./server/templates/plant/DataList/DataList.js":
 /*!*****************************************************!*\
   !*** ./server/templates/plant/DataList/DataList.js ***!
@@ -155,7 +167,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref) {\n  var datas = _ref.datas;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"col-lg-6 col-md-8 offset-lg-3 offset-md-2 container\"\n  }, datas.map(function (data) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"row alert alert-info\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"col-md-4\"\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"b\", null, data.tags.toString())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      className: \"col-md-8\"\n    }, data.value));\n  })));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/DataList/DataList.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _DataItem_DataItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DataItem/DataItem */ \"./server/templates/plant/DataList/DataItem/DataItem.js\");\n\n\n\nvar getSortedTags = function getSortedTags(_ref) {\n  var tags = _ref.tags;\n\n  if (tags.length > 1) {\n    return tags.sort(function (a, b) {\n      return a.localeCompare(b);\n    });\n  } else {\n    return tags;\n  }\n};\n\nvar sortData = function sortData(a, b) {\n  var aSortedTags = getSortedTags(a);\n  var bSortedTags = getSortedTags(b);\n  var i = 0;\n\n  while (i < aSortedTags.length && i < bSortedTags.length) {\n    if (aSortedTags[i] === bSortedTags[i]) {\n      i++;\n    } else {\n      return aSortedTags[i].localeCompare(bSortedTags[i]);\n    }\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (_ref2) {\n  var datas = _ref2.datas;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"data-list\",\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    id: \"data-list__content\",\n    className: \"col-lg-6 col-md-8 offset-lg-3 offset-md-2 container\"\n  }, datas.sort(sortData).map(function (data) {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DataItem_DataItem__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n      key: data.id,\n      data: data\n    });\n  })));\n});\n\n//# sourceURL=webpack://%5Bname%5D.js/./server/templates/plant/DataList/DataList.js?");
 
 /***/ }),
 
