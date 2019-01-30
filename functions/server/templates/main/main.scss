@@ -1,0 +1,17 @@
+@import '../../app/html/html.scss';
+@import './buttons/buttons.scss';
+@import './forms/forms.scss';
+
+.main.container {
+  padding-top: 80px;
+  padding-bottom: 40px;
+
+  h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 56px;
+    margin-top: 40px;
+  }
+}

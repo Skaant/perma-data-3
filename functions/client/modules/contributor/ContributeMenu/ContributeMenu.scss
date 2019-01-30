@@ -1,0 +1,18 @@
+#contribute-menu {
+  text-align: center;
+  margin-top: 40px;
+
+  .card {
+
+    > .card-body {
+
+      > .card-title {
+        text-transform: uppercase;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-top: 12px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+}

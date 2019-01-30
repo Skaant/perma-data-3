@@ -1,11 +1,26 @@
-const plantSearch = require('./api/plantSearch')
-const biblios = require('./api/biblios')
-const userData = require('./api/userData')
+const langs = require('./api/langs/langs')
+const plants = require('./api/plants')
+const userData = require('./api/users')
+const extracts = require('./api/extracts')
+const datas = require('./api/datas')
+const inventories = require('./api/inventories')
 
 module.exports = router => {
-  router.route('/plant-search/:keyword').get(plantSearch)
-  router.route('/plant-search/:rank/:keyword').get(plantSearch)
-  router.route('/biblios').get(biblios)
-  router.route('/user-data/:userId').get(userData)
+  router.route('/langs/:lang/:id').get(langs)
+
+  router.route('/plants/search/:lang/:key').get(plants.search)
+  router.route('/plants').put(plants.add)
+
+  router.route('/extracts/search/:key').get(extracts.search)
+  router.route('/extracts/subs/:id').get(extracts.subs)
+  router.route('/extracts').put(extracts.add)
+
+  router.route('/datas').put(datas.add)
+
+  router.route('/users/:userId').get(userData.get)
+
+  router.route('/inventories/:userId/:lang').get(inventories.get)
+  router.route('/inventories/plant/:userId').post(inventories.addPlant)
+  router.route('/inventories/plant/:userId').delete(inventories.deletePlant)
   return router
 }

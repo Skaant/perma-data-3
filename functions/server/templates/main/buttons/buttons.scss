@@ -1,0 +1,28 @@
+a.btn-x,
+button.btn-x {
+  border: 0;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: 300;
+
+  &.btn-x-border {
+    border: 1px solid #DDD;
+  }
+
+  &:not(:hover).btn-x-light-dark {
+    background-color: #EEE;
+  }
+}
+
+.input-group {
+  
+  button.btn-x {
+    margin: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
