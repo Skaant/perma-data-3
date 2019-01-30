@@ -25,10 +25,14 @@ export default class extends React.Component {
               roles
             })
           })
-          fetch(`/api/inventories/${ email }`)
+          fetch(`/api/inventories/${ email }/${
+            document.getElementsByTagName('html')[0].lang
+          }`)
             .then(result => result.json())
-            .then(({ list }) => {
-              this.setState({ list })
+            .then(({ plants }) => {
+              this.setState({ 
+                list: plants
+              })
             })
         })
     } else {

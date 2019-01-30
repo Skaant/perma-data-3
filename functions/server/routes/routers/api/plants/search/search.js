@@ -1,4 +1,4 @@
-const getName = require('./getName/getName')
+const getPlantWithName = require('../../commons/getPlantWithName/getPlantWithName')
 
 const getById = id =>
   new Promise((resolve, reject) => 
@@ -64,7 +64,7 @@ module.exports = (req, res) => {
   Promise.all([getById(key), getByTags(key), getByNames(key)])
     .then(([byId, byTags, byNames]) => {
       Promise.all(byId.concat(byTags).concat(byNames)
-        .map(plant => getName(plant, lang)))
+        .map(plant => getPlantWithName(plant, lang)))
       .then(plants => res.json({ plants }))
       .catch(err => {
         console.log(err)

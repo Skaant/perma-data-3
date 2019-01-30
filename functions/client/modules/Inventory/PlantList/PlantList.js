@@ -3,10 +3,10 @@ import React from 'react'
 export default ({ list, deletePlant }) => (
   <React.Fragment>
     {
-      list.map(({ id, rank }) => (
+      list.map(({ id, name, rank }) => (
         <div className='row alert alert-info'>
           <div className='col-md-8'>
-            { id } (<a onClick={ () => deletePlant(id) }>
+            { name || id } (<a onClick={ () => deletePlant(id) }>
                 delete</a>)
           </div>
           <div className='col-md-4'>

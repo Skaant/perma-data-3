@@ -7,6 +7,6 @@ export default () => (
     </div>
     <div className='col-8 offset-2 col-md-6 offset-md-3'>  
       <div className='alert alert-info'>
-        ...inventory area is loading</div></div>
+        .. inventory area is loading</div></div>
   </div>
 )

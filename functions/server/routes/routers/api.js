@@ -19,7 +19,7 @@ module.exports = router => {
 
   router.route('/users/:userId').get(userData.get)
 
-  router.route('/inventories/:userId').get(inventories.get)
+  router.route('/inventories/:userId/:lang').get(inventories.get)
   router.route('/inventories/plant/:userId').post(inventories.addPlant)
   router.route('/inventories/plant/:userId').delete(inventories.deletePlant)
   return router
