@@ -19,7 +19,8 @@ export default ({ datas }) => {
           .sort((a, b) => occurencesByTag[b] - occurencesByTag[a])
           .map(tag => (
             <button key={ tag } type='button'
-                className='btn btn-primary'>
+                data-value={ tag }
+                className='tag-list__item btn btn-primary'>
               { tag } <span className='badge badge-light'>{ occurencesByTag[tag] }</span>
             </button>
           ))

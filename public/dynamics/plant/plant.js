@@ -58,4 +58,29 @@ $.noConflict()
         }
         refreshList()
       })
+
+    const refreshTagItems = () => {
+      Array.from($('.tag-list__item'))
+        .forEach(tagItem => {
+          if($(tagItem).hasClass('btn-primary') 
+              && selected.includes($(tagItem).data('value'))) {
+            $(tagItem).removeClass('btn-primary').addClass('btn-success')
+          } else if ($(tagItem).hasClass('btn-success') 
+              && !selected.includes($(tagItem).data('value'))) {
+            $(tagItem).removeClass('btn-success').addClass('btn-primary')
+          }
+        })
+    }
+  
+    $('.data-item__tag, .tag-list__item')
+      .on('click', e => {
+        const { value } = $(e.target).data()
+        if (selected.includes(value)) {
+          selected.splice(selected.indexOf(value), 1)
+        } else {
+          selected.push(value)
+        }
+        refreshTagItems()
+        refreshList()
+      })
 })
