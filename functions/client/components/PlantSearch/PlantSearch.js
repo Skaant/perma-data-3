@@ -73,7 +73,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { mode, label, plant, plants, selectPlant } = this.props
+    const { mode, langs, label, plant, plants, selectPlant } = this.props
     const { open, key, results, load } = this.state
     return (
       <div className='plant-search'>
@@ -91,19 +91,19 @@ export default class extends React.Component {
                 `btn btn-x closed ${ mode === 'selection' ?
                   'btn-primary' : 'btn-x-border btn-outline-dark' } col-12` }
                   onClick={ () => this.handleOpenChange() }>
-                open plant search</button>
+                { langs ? langs.openPlantSearch : 'open plant search' }</button>
             </div>
           ) : (
             <React.Fragment>
               <div className='row'>
                 <button className='btn btn-x btn-x-light-dark btn-outline-dark col-md-12'
                     onClick={ () => this.handleOpenChange() }>
-                  collapse form</button>
+                  { langs ? langs.closePlantSearch : 'collapse form' }</button>
               </div>
               <div className='row'>
                 <div className='input-group'>
                   <input type='text'
-                      placeholder='type plant key here'
+                      placeholder={ langs ? langs.plantSearchPlaceholder : 'type plant key here' }
                       className='form-control'
                       value={ key }
                       onChange={ e => this.handleKeyChange(e.target.value) }
@@ -113,7 +113,7 @@ export default class extends React.Component {
                     <button className='btn btn-x btn-primary'
                         onClick={ () => this.searchPlant() }
                         disabled={ key.length < 3 }>
-                      run</button>
+                      go</button>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+const langs = require('./api/langs/langs')
 const plants = require('./api/plants')
 const userData = require('./api/users')
 const extracts = require('./api/extracts')
@@ -5,6 +6,8 @@ const datas = require('./api/datas')
 const inventories = require('./api/inventories')
 
 module.exports = router => {
+  router.route('/langs/:lang/:id').get(langs)
+
   router.route('/plants/search/:lang/:key').get(plants.search)
   router.route('/plants').put(plants.add)
 
