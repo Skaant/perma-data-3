@@ -5,7 +5,7 @@ const datas = require('./api/datas')
 const inventories = require('./api/inventories')
 
 module.exports = router => {
-  router.route('/plants/search/:key').get(plants.search)
+  router.route('/plants/search/:lang/:key').get(plants.search)
   router.route('/plants').put(plants.add)
 
   router.route('/extracts/search/:key').get(extracts.search)

@@ -1,3 +1,5 @@
+const getName = require('./getName/getName')
+
 const getById = id =>
   new Promise((resolve, reject) => 
     global.db.collection('plants').doc(id).get()
@@ -58,13 +60,17 @@ const getByNames = name =>
       .catch(err => reject(err)))
 
 module.exports = (req, res) => {
-  const { key } = req.params
+  const { lang, key } = req.params
   Promise.all([getById(key), getByTags(key), getByNames(key)])
-    .then(([byId, byTags, byNames]) => res.json({
-      plants: byId
-        .concat(byTags)
-        .concat(byNames)
-    }))
+    .then(([byId, byTags, byNames]) => {
+      Promise.all(byId.concat(byTags).concat(byNames)
+        .map(plant => getName(plant, lang)))
+      .then(plants => res.json({ plants }))
+      .catch(err => {
+        console.log(err)
+        res.status(500).send({ err })
+      })
+    })
     .catch(err => {
       console.log(err)
       res.status(500).send({ err })

@@ -31,7 +31,9 @@ export default class extends React.Component {
         load: true,
         results: []
       })
-      fetch(`/api/plants/search/${ key }`, {
+      fetch(`/api/plants/search/${
+        document.getElementsByTagName('html')[0].lang
+      }/${ key }`, {
         method: 'GET'
       })
         .then(result => result.json())
@@ -132,9 +134,9 @@ export default class extends React.Component {
                         onChange={ e => this.handleResultsSelect(e.target.value) }>
                       <option value={ null }>Choose a plant</option>
                       {
-                        results.map(({ id }) => (
+                        results.map(({ id, name }) => (
                           <option key={ id } value={ id }>
-                            { id }</option>
+                            { name || id }</option>
                         ))
                       }
                     </select>
