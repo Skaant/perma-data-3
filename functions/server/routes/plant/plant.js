@@ -4,6 +4,7 @@ const {
   langs: langsFetcher,
   datas: datasFetcher,
   plantRankParent: plantRankParentFetcher } = require('../../app/fetchers')
+const sameRankPlant = require('./sameRankPlants/sameRankPlants')
 
 module.exports = (req, res) => {
   const { lang, params, url } = req
@@ -18,15 +19,31 @@ module.exports = (req, res) => {
           count: plant.count ? (plant.count + 1): 1
         })
         .catch(err => console.log(err))
-      Promise.all([langsFetcher(lang, id), datasFetcher(plantId),
-          plantRankParentFetcher(plant, lang)])
-        .then(([langs, datas, plant]) => {
+      let promises = [langsFetcher(lang, id), datasFetcher(plantId),
+      plantRankParentFetcher(plant, lang)]
+      if (plant.rank !== 'family') {
+        promises.push(sameRankPlant(plant, lang))
+      } else {
+        promises.push(new Promise(resolve => resolve([])))
+      }
+      if (plant.rank !== 'variety') {
+        promises.push(sameRankPlant({
+          parent: plant,
+          id: null
+        }, lang))
+      } else {
+        promises.push(new Promise(resolve => resolve([])))
+      }
+      Promise.all(promises)
+        .then(([langs, datas, plant, similar, descendants]) => {
           res.send(html({
             id,
             lang,
             langs,
             title: plant.name,
             plant,
+            similar,
+            descendants,
             datas,
             url
           }))
