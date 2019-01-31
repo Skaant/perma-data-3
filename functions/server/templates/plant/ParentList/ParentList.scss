@@ -1,0 +1,16 @@
+#parent-list {
+
+  > li {
+    letter-spacing: 2px;
+
+    > span {
+      font-weight: 300;
+    }
+
+    > a {
+      color: black;
+      font-weight: initial;
+      text-decoration: underline;
+    }
+  }
+}

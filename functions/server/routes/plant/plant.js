@@ -2,7 +2,8 @@ const html = require('../../app/html/html')
 const {
   plant: plantFetcher,
   langs: langsFetcher,
-  datas: datasFetcher } = require('../../app/fetchers')
+  datas: datasFetcher,
+  plantRankParent: plantRankParentFetcher } = require('../../app/fetchers')
 
 module.exports = (req, res) => {
   const { lang, params, url } = req
@@ -17,15 +18,14 @@ module.exports = (req, res) => {
           count: plant.count ? (plant.count + 1): 1
         })
         .catch(err => console.log(err))
-      Promise.all([langsFetcher(lang, id), datasFetcher(plantId)])
-        .then(([langs, datas]) => {
-          const name = datas.find(data => data.tags.includes('name')
-            && data.tags.includes(lang) && data.tags.includes('main'))
+      Promise.all([langsFetcher(lang, id), datasFetcher(plantId),
+          plantRankParentFetcher(plant, lang)])
+        .then(([langs, datas, plant]) => {
           res.send(html({
             id,
             lang,
             langs,
-            title: name ? name.value : plantId,
+            title: plant.name,
             plant,
             datas,
             url
