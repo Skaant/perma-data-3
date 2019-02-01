@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default ({ lang, langs }) => {
+export default ({ lang, langs, featured }) => {
   const { 
     title,
     welcome1, welcome2, welcome3,
@@ -29,6 +29,19 @@ export default ({ lang, langs }) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='alert alert-success'>
+        <b>{ langs.featuredPlants } : </b>
+        {
+          featured.map((plant, index) => (
+            <React.Fragment>
+              { index > 0 ? ', ' : '' }
+              <a key={ plant.id } href={ `/${ lang }/plant/${ plant.id }` }
+                  className='text-body'>
+                { plant.name }</a>
+            </React.Fragment>
+          ))
+        }
       </div>
     </div>
   )

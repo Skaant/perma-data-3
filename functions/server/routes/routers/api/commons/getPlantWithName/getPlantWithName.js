@@ -11,6 +11,8 @@ module.exports = (plant, lang) => new Promise((resolve, reject) => global.db.col
         }))
       }
     })
-    resolve(plant)
+    resolve(Object.assign({}, plant, {
+      name: plant.id
+    }))
   })
   .catch(err => reject(err)))
