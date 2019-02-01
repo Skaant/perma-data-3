@@ -19,7 +19,7 @@ module.exports = (req, res) => {
           count: plant.count ? (plant.count + 1): 1
         })
         .catch(err => console.log(err))
-      let promises = [langsFetcher(lang, id), datasFetcher(plantId),
+      let promises = [langsFetcher(lang, id), datasFetcher(plantId, true),
       plantRankParentFetcher(plant, lang)]
       if (plant.rank !== 'family') {
         promises.push(sameRankPlant(plant, lang))
@@ -35,7 +35,8 @@ module.exports = (req, res) => {
         promises.push(new Promise(resolve => resolve([])))
       }
       Promise.all(promises)
-        .then(([langs, datas, plant, similar, descendants]) => {
+        .then(([langs, { datas, extracts }, plant, similar, descendants]) => {
+          console.log(datas, extracts)
           res.send(html({
             id,
             lang,
@@ -45,6 +46,7 @@ module.exports = (req, res) => {
             similar,
             descendants,
             datas,
+            extracts,
             url
           }))
         }

@@ -2,8 +2,9 @@ import React from 'react'
 import DataList from './DataList/DataList'
 import ParentList from './ParentList/ParentList'
 import SectionPlantList from './SectionPlantList/SectionPlantList';
+import ExtractList from './ExtractList/ExtractList';
 
-export default ({ lang, datas, plant, similar, descendants }) => {
+export default ({ lang, datas, extracts, plant, similar, descendants }) => {
   return (
   <div id='plant' className='main container'>
     <div className='row'>
@@ -30,6 +31,11 @@ export default ({ lang, datas, plant, similar, descendants }) => {
       (plant.rank !== 'variety' && descendants.length > 0) && (
         <SectionPlantList label={ `in this ${ plant.rank }` }
             list={ descendants } lang={ lang }/>
+      )
+    }
+    {
+      extracts.length > 0 && (
+        <ExtractList extracts={ extracts }/>
       )
     }
   </div>
