@@ -11,7 +11,7 @@ const plantRankParent = (plant, lang) =>
             .doc(plant.parent.id).get()
               .then(doc => {
                 if (!doc.exists) {
-                  reject(new Error(`No plant found with id "${ plantId }"`))
+                  reject(new Error(`No plant found with id "${ plan.id }"`))
                 } else {
                   const { rank, parent } = doc.data()
                   plantRankParent({
