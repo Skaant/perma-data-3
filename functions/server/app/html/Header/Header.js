@@ -33,12 +33,12 @@ module.exports = (lang, langs, url) => {
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">${ 'temp' }</h5>
+              <h5 class="modal-title">${ langs.plantSearch || 'plant search' }</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body mx-auto">
+            <div class="modal-body mx-auto mt-2 mb-4">
               <div id='anchor-search'>
                 <div className='alert alert-info'>
                   .. ${ langs.plantSearchLoading || 'plant search is loading'}

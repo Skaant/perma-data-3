@@ -7,7 +7,7 @@ export default ({ list, lang, label }) => (
       list.map((plant, index) => (
         <React.Fragment>
           { index > 0 ? ', ' : ' ' }
-          <a href={ `/${ lang }/plant/${ plant.id }` }>
+          <a href={ `/${ lang }/plant/${ plant.id }` } className='ml-2'>
             { plant.name }</a>
         </React.Fragment>
       ))

@@ -2,6 +2,11 @@
 @import './buttons/buttons.scss';
 @import './forms/forms.scss';
 
+h5 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
 .main.container {
   padding-top: 80px;
   padding-bottom: 40px;
