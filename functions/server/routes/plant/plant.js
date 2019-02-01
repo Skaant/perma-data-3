@@ -35,21 +35,27 @@ module.exports = (req, res) => {
         promises.push(new Promise(resolve => resolve([])))
       }
       Promise.all(promises)
-        .then(([langs, { datas, extracts }, plant, similar, descendants]) => {
-          console.log(datas, extracts)
-          res.send(html({
-            id,
-            lang,
-            langs,
-            title: plant.name,
-            plant,
-            similar,
-            descendants,
+        .then(([
+          langs,
+          {
             datas,
-            extracts,
-            url
-          }))
-        }
+            extracts
+          },
+          plant,
+          similar,
+          descendants
+        ]) => res.send(html({
+          id,
+          lang,
+          langs,
+          title: plant.name,
+          plant,
+          similar,
+          descendants,
+          datas,
+          extracts,
+          url
+        }))
       )
       .catch(err => console.log(err))
     })

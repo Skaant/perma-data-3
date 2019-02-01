@@ -1,0 +1,14 @@
+.extract-item {
+
+  > :first-child {
+   
+    > b {
+      font-weight: bold;
+    }
+  }
+
+  > :nth-child(2) {
+    font-size: 0.85rem;
+    text-align: right;
+  }
+}
