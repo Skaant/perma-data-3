@@ -20,7 +20,7 @@ export default ({ lang, langs }) => {
               <p><b>{ welcome1 }</b></p>
               <div id='anchor-search'>
                 <div className='alert alert-info'>
-                ...plant search is loading</div></div>
+                .. { langs.plantSearchLoading }</div></div>
             </div>
             <div className='col-md-4'>      
               <p>{ welcome2 }</p>

@@ -73,7 +73,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const { mode, langs, label, plant, plants, selectPlant } = this.props
+    const { mode, openDefault, langs = {}, label, plant, plants, selectPlant } = this.props
     const { open, key, results, load } = this.state
     return (
       <div className='plant-search'>
@@ -91,19 +91,23 @@ export default class extends React.Component {
                 `btn btn-x closed ${ mode === 'selection' ?
                   'btn-primary' : 'btn-x-border btn-outline-dark' } col-12` }
                   onClick={ () => this.handleOpenChange() }>
-                { langs ? langs.openPlantSearch : 'open plant search' }</button>
+                { langs.openPlantSearch || 'open plant search' }</button>
             </div>
           ) : (
             <React.Fragment>
-              <div className='row'>
-                <button className='btn btn-x btn-x-light-dark btn-outline-dark col-md-12'
-                    onClick={ () => this.handleOpenChange() }>
-                  { langs ? langs.closePlantSearch : 'collapse form' }</button>
-              </div>
+              {
+                !openDefault && (
+                  <div className='row'>
+                    <button className='btn btn-x btn-x-light-dark btn-outline-dark col-md-12'
+                        onClick={ () => this.handleOpenChange() }>
+                      { langs.closePlantSearch || 'collapse form' }</button>
+                  </div>
+                )
+              }
               <div className='row'>
                 <div className='input-group'>
                   <input type='text'
-                      placeholder={ langs ? langs.plantSearchPlaceholder : 'type plant key here' }
+                      placeholder={ langs.plantSearchPlaceholder || 'type plant key here' }
                       className='form-control'
                       value={ key }
                       onChange={ e => this.handleKeyChange(e.target.value) }
@@ -121,7 +125,7 @@ export default class extends React.Component {
                 load && (
                   <div className='row'>
                     <div className='col-12 alert alert-info'>
-                      ... search results are loading
+                      .. { langs.searchResultsLoading || 'search results are loading' }
                     </div>
                   </div>
                 )
@@ -129,10 +133,11 @@ export default class extends React.Component {
               {
                 results.length > 1 && (
                   <div className='row'>
-                    <label>plant results</label>
+                    <label>{ langs.searchResults || 'plant results' }</label>
                     <select className='form-control'
                         onChange={ e => this.handleResultsSelect(e.target.value) }>
-                      <option value={ null }>Choose a plant</option>
+                      <option value={ null }>
+                        { langs.choosePlant ||'choose a plant' }</option>
                       {
                         results.map(({ id, name }) => (
                           <option key={ id } value={ id }>

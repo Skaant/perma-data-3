@@ -10,9 +10,20 @@
     letter-spacing: 4px;
     font-weight: 300;
     text-align: center;
+    text-transform: uppercase;
 
     > button {
       font-weight: 300;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: unset;
+    }
+  }
+
+  #plant-search-modal {
+
+    .modal-body {
+      width: 80%;
     }
   }
 }

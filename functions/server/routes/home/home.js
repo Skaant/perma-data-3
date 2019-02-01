@@ -10,6 +10,7 @@ module.exports = (req, res) => {
         res.send(html({
           id,
           lang,
+          langs,
           title: langs.title,
           description: langs.description,
           keywords: 'home,static,plants,search,collect',

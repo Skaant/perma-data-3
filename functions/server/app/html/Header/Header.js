@@ -1,5 +1,6 @@
-module.exports = (lang, url) => 
-`
+module.exports = (lang, langs, url) => {
+  const home = url === '/'
+  return `
 <nav id='header' class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/${ lang }">PERMADATA</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="toggle navigation">
@@ -9,18 +10,45 @@ module.exports = (lang, url) =>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item mx-1">
         <a class="nav-link" href='/${ lang }/inventory'>
-          INVENTORY</a></li>
+          ${ langs.inventory || 'inventory' }</a></li>
       <li class="nav-item mx-1">
         <a class="nav-link" href='/${ lang }/contributor'>
-          CONTRIBUTOR</a></li>
+          ${ langs.contributor || 'contributor' }</a></li>
     </ul>
     <ul class="navbar-nav">
-      <button class="btn btn-primary mr-lg-3 px-4">SEARCH</button>
+      ${ 
+        home ? ''
+        : `<button type="button" class="btn btn-primary mr-lg-3 px-4" data-toggle="modal" data-target="#plant-search-modal">${
+          langs.searchPlant
+        }</button>` }
       <li class="nav-item mx-1">
-        <a  class="nav-link" href='/${ lang === 'en' ? 'fr' : 'en' }${ url }'
+        <a class="nav-link" href='/${ lang === 'en' ? 'fr' : 'en' }${ url }'
             title='=> ${ lang === 'en' ? 'FR' : 'EN' }'>
           ${ lang === 'en' ? 'EN' : 'FR' }</a></li>
     </ul>
   </div>
-</nav>
-`
+  ${
+    home ? '' : `
+      <div class="modal fade" id="plant-search-modal" tabindex="-1" role="dialog" aria-labelledby="plant-search-modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">${ 'temp' }</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body mx-auto">
+              <div id='anchor-search'>
+                <div className='alert alert-info'>
+                  .. ${ langs.plantSearchLoading || 'plant search is loading'}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  `
+  }
+</nav>`
+}

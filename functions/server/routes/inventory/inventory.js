@@ -8,9 +8,9 @@ module.exports = (req, res) => {
     .then(langs => res.send(html({
       id,
       lang,
+      langs,
       title: 'inventory',
       keywords: 'stash,seeds,plants,collect,store,calendar,sow,harvest',
-      langs,
       url
     })))
 }

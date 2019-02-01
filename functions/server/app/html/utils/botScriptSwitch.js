@@ -1,7 +1,7 @@
 module.exports = id => {
   switch(id) {
     case 'home':
-      return `<script src='/modules/home/home.js'></script>`
+      return
     case 'plant':
       return `<script src='/dynamics/plant/plant.js'></script>`
     case 'inventory':

@@ -7,10 +7,10 @@ const botScriptSwitch = require('./utils/botScriptSwitch')
 const footer = require('./Footer/Footer')
 
 module.exports = (props) => {
-  const { id, lang, title, description, keywords, url } = props
+  const { id, lang, langs, title, description, keywords, url } = props
   return (
     `<!DOCTYPE html>
-    <html lang="${ lang }">
+    <html lang="${ lang }" page="${ id }">
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,9 +34,10 @@ module.exports = (props) => {
         <noscript>
           You need to enable JavaScript to run this app.
         </noscript>
-        ${ header(lang, url) }
+        ${ header(lang, langs, url) }
         ${ renderer(templates[id], props) }
         ${ footer() }
+        <script src='/modules/main/main.js'></script>
         ${ botScriptSwitch(id) || '' }
         <script defer src='/bootstrap/bootstrap.min.js'></script>
       </body>
