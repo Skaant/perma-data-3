@@ -1,5 +1,9 @@
 .data-item {
 
+  > .col-12 {
+    font-size: 0.6rem;
+  }
+
   .data-item__tag {
     cursor: pointer;
   }

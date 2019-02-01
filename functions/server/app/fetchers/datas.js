@@ -19,10 +19,14 @@ module.exports = (plantId, linkExtracts) => new Promise((resolve, reject) => {
       })
       if (linkExtracts) {
         Promise.all(extractIds.map(extractId => extractParentLineage(extractId)))
-          .then(extracts =>resolve({
-            datas,
-            extracts
-          }))
+          .then(extracts => {
+            resolve({
+              datas: datas.map(data => Object.assign({}, data, {
+                extract: extracts.find(({ id }) => id === data.extract)
+              })),
+              extracts
+            })
+          })
           .catch(err => reject(err))
         } else {
           resolve({ datas })
