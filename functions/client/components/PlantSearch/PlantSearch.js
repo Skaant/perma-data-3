@@ -2,13 +2,13 @@ import React from 'react'
 import calculateRank from '../../../utils/functions/calculateRank'
 
 export default class extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       key: '',
       load: false,
       results: [],
-      open: false
+      open: props.openDefault ? true : false
     }
   }
 

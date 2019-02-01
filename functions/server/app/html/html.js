@@ -21,6 +21,7 @@ module.exports = (props) => {
         ${ linkSwitch(id) || '' }
         <!--link rel="manifest" href="%PUBLIC_URL%/manifest.json"-->
         <!--link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"-->
+        <script src='/jquery/jquery.min.js'></script>
         ${ topScriptSwitch(id) || '' }
         <title>${ title ?
           `${ title } - ` : '' }PERMADATA ${ lang.toUpperCase() }</title>
@@ -37,6 +38,7 @@ module.exports = (props) => {
         ${ renderer(templates[id], props) }
         ${ footer() }
         ${ botScriptSwitch(id) || '' }
+        <script defer src='/bootstrap/bootstrap.min.js'></script>
       </body>
     </html>`
   )
