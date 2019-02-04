@@ -1,5 +1,7 @@
 #plant {
 
-  @import './DataList/DataItem/DataItem.scss';
-  @import './DataList/TagList/TagList.scss';
+  @import './DataList/DataList.scss';
+  @import './ExtractList/ExtractList.scss';
+  @import './ParentList/ParentList.scss';
+  @import './SectionPlantList/SectionPlantList.scss';
 }

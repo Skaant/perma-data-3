@@ -26,4 +26,11 @@
       letter-spacing: 2px;
     }
   }
+
+  > .alert-success {
+
+    a {
+      text-decoration: underline;
+    }
+  }
 }
